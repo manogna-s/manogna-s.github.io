@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://manogna-s.github.io/sitemap.xml
