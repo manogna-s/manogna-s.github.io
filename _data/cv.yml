@@ -40,6 +40,9 @@
     - title: Source-Free Domain Adaptation
       items:
         - The objective is to adapt a model trained on a source domain to a target domain using only unlabelled samples.
+    - title: Test-Time Adaptation
+      items:
+        - The goal is to adapt a source trained model to a test domain in an online manner. The test domains can be continuously changing as well.
 
 - title: Work Experience
   type: time_table
