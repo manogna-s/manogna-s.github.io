@@ -8,38 +8,44 @@
   #   - name: Languages
   #     value: English, German
 
+- title: PES University
+  type: time_table
+  contents:
+    - title: Mathematics for Machine Learning
+      institution:  #Visiting Faculty
+      year: Jan-Apr 2023
+      description:
+         - Visiting Faculty
 - title: Indian Institute of Science
   type: time_table
   contents:
     - title: E9241 Digital Image Processing
       institution: #Aug-Dec 2021
-      year: Aug 2023 -
+      year: Aug-Dec 2023, 2021
     - title: E9201 Digital Signal Processing
       institution: #Aug-Dec 2021
-      year: Aug 2023 -
+      year: Aug-Dec 2023, 2022
     - title: E9246 Advanced Image Processing
       institution: #Aug-Dec 2021
       year: Jan-Apr 2023
-      # description:
-      #   - Description 1.
+#      description:
+#         - Description 1.
       #   - Description 2.
       #   - title: Description 3.
       #     contents:
       #       - Sub-description 1.
       #       - Sub-description 2.
-    - title: E9241 Digital Image Processing
-      institution: #Aug-Dec 2021
-      year: Aug-Dec 2021
+#    - title: E9201 Digital Signal Processing
+#      institution: #Aug-Dec 2021
+#      year: Aug-Dec 2022
+#    - title: E9241 Digital Image Processing
+#      institution: #Aug-Dec 2021
+#      year: Aug-Dec 2021
       # description:
       #   - Description 1.
       #   - Description 2.
 
-- title: PES University
-  type: time_table
-  contents:
-    - title: Mathematics for Machine Learning
-      institution: #Aug-Dec 2021
-      year: Jan-Apr 2023
+
 
 
 - title: NPTEL
