@@ -25,4 +25,4 @@ Prior to this, I worked as a Software Engineer at PathPartner Technology, Bangal
 
 I am interested in applying learning methods to solve computer vision problems, where one has access to only limited data and can encounter distribution shifts. Over the course of my PhD, I aim to develop methods capable of learning and adapting in such dynamic real-world environments with less data and compute power.
 
-Please find my CV [here](http://manogna-s.github.io/assets/pdf/ManognaS_CV_Apr2023.pdf).
+[comment]: <> (Please find my CV [here]&#40;http://manogna-s.github.io/assets/pdf/ManognaS_CV_Apr2023.pdf&#41;.)
