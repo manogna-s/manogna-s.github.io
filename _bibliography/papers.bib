@@ -3,7 +3,7 @@
       title={pSTarC: Pseudo Source Guided Target Clustering for Fully Test-Time Adaptation},
       author={Manogna Sreenivas and Goirik Chakrabarty and Soma Biswas},
       year={2024},
-      booktitle="WACV",
+      booktitle="Winter Conference on Applications of Computer Vision",
       eprint={2309.00846},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
@@ -17,14 +17,29 @@
       title={PhISH-Net: Physics Inspired System for High Resolution Underwater Image Enhancement},
       author={Aditya Chandrasekar and Manogna Sreenivas and Soma Biswas},
       year={2024},
-      booktitle="WACV",
+      booktitle="Winter Conference on Applications of Computer Vision",
       eprint={2309.00846},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       abstract= "Underwater imaging presents numerous challenges due to refraction, light absorption, and scattering, resulting in color degradation, low contrast, and blurriness. Enhancing underwater images is crucial for high-level computer vision tasks, but existing methods either neglect the physics-based image formation process or require expensive computations. In this paper, we propose an effective framework that combines a physics-based Underwater Image Formation Model (UIFM) with a deep image enhancement approach based on the retinex model. Firstly, we remove backscatter by estimating attenuation coefficients using depth information. Then, we employ a retinex model-based deep image enhancement module to enhance the images. To ensure adherence to the UIFM, we introduce a novel Wideband Attenuation prior. The proposed PhISH-Net framework achieves real-time processing of high-resolution underwater images using a lightweight neural network and a bilateral-grid-based upsampler. Extensive experiments on two underwater image datasets demonstrate the superior performance of our method compared to state-of-the-art techniques. Additionally, qualitative evaluation on a cross-dataset scenario confirms its generalization capability. Our contributions lie in combining the physics-based UIFM with deep image enhancement methods, introducing the wideband attenuation prior, and achieving superior performance and efficiency.",
-      selected={true}
+      selected={false}
 }
 
+
+@InProceedings{chakrabarty2023sata,
+      abbr={TMLR},
+      title={SANTA: Source Anchoring Network and Target Alignment for Continual Test Time Adaptation},
+      author={Goirik Chakrabarty and Manogna Sreenivas and Soma Biswas},
+      year={2023},
+      booktitle="Transactions in Machine Learning Research",
+      eprint={2304.10113},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      abstract = "Adapting a trained model to perform satisfactorily on continually changing test environ- ments is an important and challenging task. In this work, we propose a novel framework, SANTA, which aims to satisfy the following characteristics required for online adaptation: 1) can work effectively for different (even small) batch sizes; 2) should continue to work well on the source domain; 3) should have minimal tunable hyperparameters and storage requirements. Given a pre-trained network trained on source domain data, the proposed framework modifies the affine parameters of the batch normalization layers using source anchoring based self-distillation. This ensures that the model incorporates knowledge from the newly encountered domains, without catastrophically forgetting the previously seen do- mains. We also propose a source-prototype driven contrastive alignment to ensure natural grouping of the target samples, while maintaining the already learnt semantic information. Extensive evaluation on three benchmark datasets under challenging settings justify the effectiveness of SANTA for real-world applications.",
+      html={https://openreview.net/forum?id=V7guVYzvE4},
+      pdf={https://openreview.net/pdf?id=V7guVYzvE4},
+      selected={true}
+}
 
 @InProceedings{dss,
 abbr={ICCVW},
@@ -43,7 +58,7 @@ address="Cham",
 pages="262--277",
 isbn="978-3-031-25072-9",
 pdf={https://openaccess.thecvf.com/content/ICCV2023W/VCL/papers/Chakrabarty_A_Simple_Signal_for_Domain_Shift_ICCVW_2023_paper.pdf},
-selected={true}
+selected={false}
 }
 
 
@@ -64,17 +79,6 @@ pdf={https://openaccess.thecvf.com/content/CVPR2023W/ECV/papers/Sreenivas_Simila
 selected={true}
 }
 
-@misc{chakrabarty2023sata,
-      abbr={arXiv Preprint},
-      title={SATA: Source Anchoring and Target Alignment Network for Continual Test Time Adaptation},
-      author={Goirik Chakrabarty and Manogna Sreenivas and Soma Biswas},
-      year={2023},
-      eprint={2304.10113},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      abstract = "Adapting a trained model to perform satisfactorily on continually changing testing domains/environments is an important and challenging task. In this work, we propose a novel framework, SATA, which aims to satisfy the following characteristics required for online adaptation: 1) can work seamlessly with different (preferably small) batch sizes to reduce latency; 2) should continue to work well for the source domain; 3) should have minimal tunable hyper-parameters and storage requirements. Given a pre-trained network trained on source domain data, the proposed SATA framework modifies the batch-norm affine parameters using source anchoring based self-distillation. This ensures that the model incorporates the knowledge of the newly encountered domains, without catastrophically forgetting about the previously seen ones. We also propose a source-prototype driven contrastive alignment to ensure natural grouping of the target samples, while maintaining the already learnt semantic information. Extensive evaluation on three benchmark datasets under challenging settings justify the effectiveness of SATA for real-world applications.",
-      pdf={https://arxiv.org/pdf/2304.10113.pdf}
-}
 
 @InProceedings{10.1007/978-3-031-25072-9_17,
 abbr={ECCVW},
