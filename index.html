@@ -169,7 +169,7 @@
         
         
         <div class="periodical">
-          <em>In WACV</em>, 2024
+          <em>In Winter Conference on Applications of Computer Vision</em>, 2024
         </div>
         <div class="periodical">
           
@@ -196,54 +196,12 @@
 <li>
 <!-- _layouts/bib.html -->
       <div class="row">
-        <div class="col-sm-2 abbr"><abbr class="badge">WACV</abbr></div>
+        <div class="col-sm-2 abbr"><abbr class="badge">TMLR</abbr></div>
 
         <!-- Entry bib key -->
-        <div id="phish-net" class="col-sm-8">
+        <div id="chakrabarty2023sata" class="col-sm-8">
         <!-- Title -->
-        <div class="title">PhISH-Net: Physics Inspired System for High Resolution Underwater Image Enhancement</div>
-        <!-- Author -->
-        <div class="author">
-        
-
-        Aditya Chandrasekar, Manogna Sreenivas, and Soma Biswas</div>
-
-        <!-- Journal/Book title and date -->
-        
-        
-        <div class="periodical">
-          <em>In WACV</em>, 2024
-        </div>
-        <div class="periodical">
-          
-        </div>
-
-          <!-- Links/Buttons -->
-          <div class="links">
-            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
-          </div>
-          
-          <div class="badges">
-            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right" data-arxiv-id="2309.00846"></span>
-              <span class="__dimensions_badge_embed__" data-pmid="" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 6px;"></span>
-          </div>
-
-          <!-- Hidden abstract block -->
-          <div class="abstract hidden">
-            <p>Underwater imaging presents numerous challenges due to refraction, light absorption, and scattering, resulting in color degradation, low contrast, and blurriness. Enhancing underwater images is crucial for high-level computer vision tasks, but existing methods either neglect the physics-based image formation process or require expensive computations. In this paper, we propose an effective framework that combines a physics-based Underwater Image Formation Model (UIFM) with a deep image enhancement approach based on the retinex model. Firstly, we remove backscatter by estimating attenuation coefficients using depth information. Then, we employ a retinex model-based deep image enhancement module to enhance the images. To ensure adherence to the UIFM, we introduce a novel Wideband Attenuation prior. The proposed PhISH-Net framework achieves real-time processing of high-resolution underwater images using a lightweight neural network and a bilateral-grid-based upsampler. Extensive experiments on two underwater image datasets demonstrate the superior performance of our method compared to state-of-the-art techniques. Additionally, qualitative evaluation on a cross-dataset scenario confirms its generalization capability. Our contributions lie in combining the physics-based UIFM with deep image enhancement methods, introducing the wideband attenuation prior, and achieving superior performance and efficiency.</p>
-          </div>
-        </div>
-      </div>
-</li>
-<li>
-<!-- _layouts/bib.html -->
-      <div class="row">
-        <div class="col-sm-2 abbr"><abbr class="badge">ICCVW</abbr></div>
-
-        <!-- Entry bib key -->
-        <div id="dss" class="col-sm-8">
-        <!-- Title -->
-        <div class="title">A Simple Signal for Domain Shift</div>
+        <div class="title">SANTA: Source Anchoring Network and Target Alignment for Continual Test Time Adaptation</div>
         <!-- Author -->
         <div class="author">
         
@@ -254,7 +212,7 @@
         
         
         <div class="periodical">
-          <em>In ICCV Workshops</em>, 2023
+          <em>In Transactions in Machine Learning Research</em>, 2023
         </div>
         <div class="periodical">
           
@@ -263,17 +221,18 @@
           <!-- Links/Buttons -->
           <div class="links">
             <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
-            <a href="https://openaccess.thecvf.com/content/ICCV2023W/VCL/papers/Chakrabarty_A_Simple_Signal_for_Domain_Shift_ICCVW_2023_paper.pdf" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+            <a href="https://openreview.net/forum?id=V7guVYzvE4" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a>
+            <a href="https://openreview.net/pdf?id=V7guVYzvE4" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
           </div>
           
           <div class="badges">
-            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right" data-isbn="978-3-031-25072-9"></span>
+            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right" data-arxiv-id="2304.10113"></span>
               <span class="__dimensions_badge_embed__" data-pmid="" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 6px;"></span>
           </div>
 
           <!-- Hidden abstract block -->
           <div class="abstract hidden">
-            <p>Test time domain adaptation has come to the forefront as a challenging scenario in recent times. Although single domain test-time adaptation has been well studied and shown impressive performance, this can be limiting when the model is deployed in a dynamic test environment. We explore this continual domain test time adaptation problem here. Specifically, we question if we can translate the effectiveness of single domain adaptation methods to continuous test-time adaptation scenario. We take a step towards bridging the gap between these two settings by proposing a domain shift detection mechanism and hence allowing us to employ the current test-time adaptation methods even in a continual setting. We propose to use the given source domain trained model to continually measure the similarity between the feature representations of the consecutive batches. A domain shift is detected when this measure crosses a certain threshold, which we use as a trigger to reset the model back to source and continue test-time adaptation. We demonstrate the effectiveness of our method by performing experiments across datasets, batch sizes and different single domain test-time adaptation baselines.</p>
+            <p>Adapting a trained model to perform satisfactorily on continually changing test environ- ments is an important and challenging task. In this work, we propose a novel framework, SANTA, which aims to satisfy the following characteristics required for online adaptation: 1) can work effectively for different (even small) batch sizes; 2) should continue to work well on the source domain; 3) should have minimal tunable hyperparameters and storage requirements. Given a pre-trained network trained on source domain data, the proposed framework modifies the affine parameters of the batch normalization layers using source anchoring based self-distillation. This ensures that the model incorporates knowledge from the newly encountered domains, without catastrophically forgetting the previously seen do- mains. We also propose a source-prototype driven contrastive alignment to ensure natural grouping of the target samples, while maintaining the already learnt semantic information. Extensive evaluation on three benchmark datasets under challenging settings justify the effectiveness of SANTA for real-world applications.</p>
           </div>
         </div>
       </div>
