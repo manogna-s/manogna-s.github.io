@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta charset="utf-8">
+    <meta property="og:title" content="pSTarC" />
+    <meta property="og:description" content="pSTarC: Pseudo Source Guided Target Clustering for Fully Test-Time Adaptation" />
+    <meta property="og:url" content="https://manogna-s.github.io/pstarc" />
+    <meta property="og:image" content="https://manogna-s.github.io/pstarc/static/images/preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta name="description"
+        content="" />
+    <meta name="keywords"
+        content="Prompt Learning, Vision-Language models, Foundation models, Test-Time-Adaptation, Distribution Alignment" />
+    <meta name="viewport" content="initial-scale=1" />
+
+
+    <title>pSTarC</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="https://use.typekit.net/iag3ven.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-coy.min.css"/> -->
+    <link rel="stylesheet" href="./static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js">
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+
+    <!-- mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 20px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                pSTarC: Pseudo Source Guided Target Clustering for Fully Test-Time Adaptation
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <!-- TODO: FIX -->
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas<sup>1</sup></a>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="author-block">
+                                <a href="https://goirik-chakrabarty.github.io" target="_blank">Goirik Chakrabarty<sup>2</sup></a>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas<sup>1</sup></a>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>IISc Bangalore</span>
+                            &nbsp;
+                            <span class="author-block"><sup>2</sup>IISER Pune</span>
+                            &nbsp;
+<!--                            <span class="author-block"><sup>3</sup>Australian National University</span>-->
+                            <br>
+                            <span class="author-block">WACV 2024</span>
+                            <!-- <br style="line-height: 2px" /> -->
+                            <!-- <span class="author-block" style="font-size: 0.7em; font-style: italic;"><sup>*</sup>Equal
+                                contribution</span> -->
+
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://arxiv.org/pdf/2309.00846" target="_blank"
+                                    style="text-decoration:none;">
+                                    <span class="icon is-small">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </button>
+<!--                            <button class="external-link button is-medium is-ghost publication-links is-rounded">-->
+<!--                                <a href="./static/docs/AlignYourPrompts.pdf" target="_blank">-->
+<!--                                    <span class="icon is-small">-->
+<!--                                        <i class="fas fa-file-pdf"></i>-->
+<!--                                    </span>-->
+<!--                                    <span>pdf</span>-->
+<!--                                </a>-->
+<!--                            </button>-->
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://github.com/manogna-s/pSTarC" target="_blank">
+                                    <span class="icon is-small">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>code</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- hack to pull the below up vertically -->
+    <span style="display:block; margin-top:-1.75em;"/>
+
+        <!-- Method Overview -->
+<!--    <section class="section" id="method-overview">-->
+<!--        <div class="container is-max-widescreen">-->
+<!--            <div class="columns is-centered has-text-centered">-->
+<!--                <div class="column" style="border-radius: 10px; background-color: rgb(245,245,245)">-->
+<!--                    <h2 class="title is-3">-->
+<!--                        <span class="method-name">"Prompt Align"</span>-->
+<!--                    </h2>-->
+<!--                    <p style="padding: 10px;" />-->
+<!--                    <div id="method-overview-wrapper">-->
+<!--                        <img src="./static/images/STarC-block-diagram-final.pdf" alt="PromptAlign Concept."-->
+<!--                            class="method-overview-full-img  method-overview" draggable="false" />-->
+<!--                    </div>-->
+<!--                            <p style="padding: 10px;" />-->
+<!--                        <div class="method-overview-text has-text-justified">-->
+<!--                            <p>-->
+<!--                                PromptAlign matches the distribution statistics <strong> μ<sub>𝑙</sub>(τ ; 𝐩) </strong>,-->
+<!--                                <strong> σ²<sub>𝑙</sub>(τ ; 𝐩) </strong>, obtained from multiple augmented views of a single test sample,-->
+<!--                                with the source data distribution statistics <strong>μ̂<sub>𝑙</sub></strong>, <strong>σ̂²<sub>𝑙</sub></strong>.-->
+<!--                                This effectively brings the test sample closer to the distribution of the source data, where the domain shift-->
+<!--                                is denoted by <span style="color: purple; font-size: 1em;">▲<sub>1</sub></span> →-->
+<!--                                <span style="color: purple; font-size: 1em;">▲<sub>2</sub></span>.-->
+<!--                                <strong>τ</strong> denotes the distribution of the test sample, <strong>𝐩</strong> represents the prompts that are-->
+<!--                                updated, and <strong>𝑙</strong> refers to the vision-backbone layers. <strong>(b)</strong> Owing to the distribution-->
+<!--                                matching via prompts, PromptAlign surpasses the existing state-of-the-art prompt learning approaches-->
+<!--                                on 8 out of 10 datasets in cross-dataset generalization benchmarks.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+    <!--/ Method Overview -->
+
+    <!-- <p style="padding: 10px;" /> -->
+    <!-- Derivation. -->
+    <section class="section">
+        <div class="container is-max-desktop">
+<!--                <div class="columns is-centered has-text-centered">-->
+<!--                    <h2 class="title is-3">pSTarC</h2>-->
+<!--                 </div>-->
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-three-fourths">
+                        <figure>
+                            <img src="./static/images/STarC-block-diagram-final.png" alt="PromptAlign design" id="design-image"
+                                draggable="false" />
+<!--                            <figcaption>-->
+<!--                                pSTarC Framework: (1) Feature Generation: We randomly initialize a feature bank-->
+<!--                                which is iteratively optimized keeping the classifier fixed to minimize the-->
+<!--                                entropy of the features while maximizing the diversity across classes.-->
+<!--                                (2) Given the learnt-->
+<!--                                features, we aim to bring the low entropy samples towards the corresponding-->
+<!--                                pseudo-source features. We anchor the high entropy target samples to its own-->
+<!--                                prediction. We also enforce consistency between the predictions of the test-->
+<!--                                sample and its strong augmentation.-->
+<!--                            </figcaption>-->
+                        </figure>
+                    </div>
+                </div>
+<!--            <p style="padding: 20px;" />-->
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Test Time Adaptation (TTA) is a pivotal concept in machine learning,
+                            enabling models to perform well in real-world scenarios, where test
+                            data distribution differs from training. In this work, we propose a
+                            novel approach called pseudo Source guided Target Clustering (pSTarC)
+                            addressing the relatively unexplored area of TTA under real-world
+                            domain shifts. This method draws inspiration from target clustering
+                            techniques and exploits the source classifier for generating
+                            pseudo-source samples. The test samples are strategically aligned
+                            with these pseudo-source samples, facilitating their clustering and
+                            thereby enhancing TTA performance. pSTarC operates solely within the
+                            fully test-time adaptation protocol, removing the need for actual
+                            source data. Experimental validation on a variety of domain shift
+                            datasets, namely VisDA, Office-Home, DomainNet-126, CIFAR-100C
+                            verifies pSTarC’s effectiveness. This method exhibits significant
+                            improvements in prediction accuracy along with efficient computational
+                            requirements. Furthermore, we also demonstrate the universality of the
+                            pSTarC framework by showing its effectiveness for the continuous TTA framework.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+    <p style="padding: 15px;" />
+
+
+
+<!--    <p style="padding: 15px;" />-->
+<!--    <section class="section">-->
+<!--        &lt;!&ndash; Results &ndash;&gt;-->
+<!--        <div class="container is-max-desktop">-->
+<!--            <div class="columns is-centered has-text-centered">-->
+<!--                <div class="column is-three-quarters">-->
+<!--                    <h2 class="title is-3">Effect of Distibution Alignment</h2>-->
+<!--                    <div class="content has-text-justified">-->
+<!--                        <p>-->
+<!--                            We evaluate our distribution aloignment strategy  <span class="method-name">PromptAlign</span> on domnain generalization-->
+<!--                            settings and cross-dataset settings. For domain generalization, we evaluate on the ImageNet variants and also on the-->
+<!--                            recently released PUG dataset Imagenet variants.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <p style="padding: 20px;" />-->
+<!--        <div class="is-centered has-text-centered">-->
+<!--            <div class="table-container is-max-desktop">-->
+<!--                <table style="width:100%">-->
+<!--                    <caption>-->
+<!--                        Effect of token distribution alignment strategy for domain generalization.-->
+<!--                    </caption>-->
+
+<!--                    <small style="text-align:center; display:block;"> </small>-->
+
+<!--                    <tr>-->
+<!--                        <th></th>-->
+<!--                        <th>Imagenet V2</th>-->
+<!--                        <th>Imagenet Sketch</th>-->
+<!--                        <th>Imagenet A</th>-->
+<!--                        <th>Imagenet R</th>-->
+<!--                        <th>OOD Avg.</th>-->
+<!--                    </tr>-->
+<!--                        <td colspan="6" style="border-bottom: 1px solid #ddd;"></td>-->
+<!--                    <tr>-->
+<!--                        <td>MaPLe</td>-->
+<!--                        <td>64.07</td>-->
+<!--                        <td>49.15</td>-->
+<!--                        <td>50.90</td>-->
+<!--                        <td>76.98</td>-->
+<!--                        <td>60.28</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>MaPLe+TPT</td>-->
+<!--                        <td>64.87</td>-->
+<!--                        <td>48.16</td>-->
+<!--                        <td>58.08</td>-->
+<!--                        <td>78.12</td>-->
+<!--                        <td>62.31</td>-->
+<!--                    </tr>-->
+<!--                    <tr style="background-color:#e6e6e6">-->
+<!--                        <td>PromptAlign</td>-->
+<!--                        <td><b>65.29</b></td>-->
+<!--                        <td><b>50.23</b></td>-->
+<!--                        <td><b>59.37</b></td>-->
+<!--                        <td><b>79.33</b></td>-->
+<!--                        <td><b>63.55</b></td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <p style="padding: 20px;" />-->
+<!--        <div class="is-centered has-text-centered">-->
+<!--            <div class="table-container is-max-desktop">-->
+<!--                <table style="width:100%">-->
+<!--                    <caption">-->
+<!--                        Comparison of PromptAlign in cross-dataset evaluation.-->
+<!--                    </caption>-->
+<!--                    <small style="text-align:center; display:block;"> </small>-->
+<!--                    <tr>-->
+<!--                        <th></th>-->
+<!--                        <th>Caltech</th>-->
+<!--                        <th>Pets</th>-->
+<!--                        <th>Cars</th>-->
+<!--                        <th>Flowers</th>-->
+<!--                        <th>Food101</th>-->
+<!--                        <th>Aircraft</th>-->
+<!--                        <th>SUN397</th>-->
+<!--                        <th>DTD</th>-->
+<!--                        <th>EuroSAT</th>-->
+<!--                        <th>UCF101</th>-->
+<!--                        <th>Average</th>-->
+<!--                    </tr>-->
+<!--                        <td colspan="12" style="border-bottom: 1px solid #ddd;"></td>-->
+<!--                    <tr>-->
+<!--                        <td>CLIP </td>-->
+<!--                        <td>93.35</td>-->
+<!--                        <td>88.25</td>-->
+<!--                        <td>65.48</td>-->
+<!--                        <td>67.44</td>-->
+<!--                        <td>83.65</td>-->
+<!--                        <td>23.67</td>-->
+<!--                        <td>62.59</td>-->
+<!--                        <td>44.27</td>-->
+<!--                        <td>42.01</td>-->
+<!--                        <td>65.13</td>-->
+<!--                        <td>63.58</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>CLIP+TPT </td>-->
+<!--                        <td><strong>94.16</strong></td>-->
+<!--                        <td>87.79</td>-->
+<!--                        <td>66.87</td>-->
+<!--                        <td>68.98</td>-->
+<!--                        <td>84.67</td>-->
+<!--                        <td>24.78</td>-->
+<!--                        <td>65.50</td>-->
+<!--                        <td><strong>47.75</strong></td>-->
+<!--                        <td>42.44</td>-->
+<!--                        <td>68.04</td>-->
+<!--                        <td>65.10</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>CoOp </td>-->
+<!--                        <td>93.70</td>-->
+<!--                        <td>89.14</td>-->
+<!--                        <td>64.51</td>-->
+<!--                        <td>68.71</td>-->
+<!--                        <td>85.30</td>-->
+<!--                        <td>18.47</td>-->
+<!--                        <td>64.15</td>-->
+<!--                        <td>41.92</td>-->
+<!--                        <td>46.39</td>-->
+<!--                        <td>66.55</td>-->
+<!--                        <td>63.88</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>CoCoOp </td>-->
+<!--                        <td>93.79</td>-->
+<!--                        <td>90.46</td>-->
+<!--                        <td>64.90</td>-->
+<!--                        <td>70.85</td>-->
+<!--                        <td>83.97</td>-->
+<!--                        <td>22.29</td>-->
+<!--                        <td>66.89</td>-->
+<!--                        <td>45.45</td>-->
+<!--                        <td>39.23</td>-->
+<!--                        <td>68.44</td>-->
+<!--                        <td>64.63</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>MaPLe </td>-->
+<!--                        <td>93.53</td>-->
+<!--                        <td>90.49</td>-->
+<!--                        <td>65.57</td>-->
+<!--                        <td>72.23</td>-->
+<!--                        <td>86.20</td>-->
+<!--                        <td>24.74</td>-->
+<!--                        <td>67.01</td>-->
+<!--                        <td>46.49</td>-->
+<!--                        <td style="font-weight: bold">48.06</td>-->
+<!--                        <td>68.69</td>-->
+<!--                        <td>66.30</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>MaPLe+TPT </td>-->
+<!--                        <td>93.59</td>-->
+<!--                        <td>90.72</td>-->
+<!--                        <td>66.50</td>-->
+<!--                        <td>72.37</td>-->
+<!--                        <td>86.64</td>-->
+<!--                        <td>24.70</td>-->
+<!--                        <td style="font-weight: bold">67.54</td>-->
+<!--                        <td>45.87</td>-->
+<!--                        <td>47.80</td>-->
+<!--                        <td>69.19</td>-->
+<!--                        <td>66.50</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td style="background-color: #e6e6e6">PromptAlign </td>-->
+<!--                        <td style="background-color: #e6e6e6">94.01</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">90.76</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">68.50</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">72.39</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">86.65</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">24.80</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">67.54</td>-->
+<!--                        <td style="background-color: #e6e6e6">47.24</td>-->
+<!--                        <td style="background-color: #e6e6e6">47.86</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">69.47</td>-->
+<!--                        <td style="background-color: #e6e6e6; font-weight: bold">66.92</td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;/ Results. &ndash;&gt;-->
+<!--    </section>-->
+
+    <section class="section" id="paper">
+            <div class="container is-mobile">
+                <div class="columns is-centered has-text-centered">
+                    <div class="container content">
+                        <h2 class="title is-3">BibTeX</h2>
+                        <div id="bibtex" class="column has-text-justified is-centered">
+                            <!-- https://github.com/SaswatPadhi/prismjs-bibtex -->
+                            <pre><code class="language-bibtex">@misc{sreenivas2023pstarc,
+      title={pSTarC: Pseudo Source Guided Target Clustering for Fully Test-Time Adaptation},
+      author={Manogna Sreenivas and Goirik Chakrabarty and Soma Biswas},
+      year={2023},
+      eprint={2309.00846},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+    }</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <!-- TODO: UPDATE -->
+                <a class="icon-link" href="https://arxiv.org/pdf/2309.00846.pdf" target="_blank">
+                    <i class="ai ai-arxiv"></i>
+                </a>
+                &nbsp;
+                <!-- TODO: UPDATE -->
+<!--                <a class="icon-link" href="https://arxiv.org/pdf/2309.00846.pdf" target="_blank">-->
+<!--                    <i class="fas fa-file-pdf"></i>-->
+<!--                </a>-->
+                <!-- &nbsp;
+                <a class="icon-link" href="https://youtu.be/1hYtGZ0CUSA" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a> -->
+                &nbsp;
+                <a class="icon-link" href="./static/docs/pSTarC_slides.pdf" target="_blank">
+                    <i class="fas fa-file-powerpoint"></i>
+                </a>
+                &nbsp;
+                <a class="icon-link" href="https://github.com/manogna-s/pstarc"
+                    target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="content">
+                    <p>
+                        Page source code was adapted from
+                        <a href="https://manogna-s.github.io/pstarc/" target="_blank">here</a>
+<!--                        and-->
+<!--                        <a href="https://internet-explorer-ssl.github.io"-->
+<!--                            target="_blank">here</a>,-->
+                        and can be found in <a
+                            href="https://github.com/manogna-s/manogna-s.github.io/pstarc"
+                            target="_blank">this repository</a>.
+                    </p>
+                </div>
+            </div>
+    </footer>
+
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
+</body>
+
+</html>
