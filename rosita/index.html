@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta charset="utf-8">
+    <meta property="og:title" content="ROSITA" />
+    <meta property="og:description" content="Effectiveness of Vision Language Models for Open-world Single Image Test Time Adaptation" />
+    <meta property="og:url" content="https://manogna-s.github.io/rosita" />
+    <meta property="og:image" content="https://manogna-s.github.io/rosita/static/images/preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta name="description"
+        content="" />
+    <meta name="keywords"
+        content="Test-Time-Adaptation, Vision Language Models, Open World Learning, Distribution Alignment" />
+    <meta name="viewport" content="initial-scale=1" />
+
+
+    <title>ROSITA</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="https://use.typekit.net/iag3ven.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-coy.min.css"/> -->
+    <link rel="stylesheet" href="./static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js">
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+
+    <!-- mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 20px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                Effectiveness of Vision Language Models for <br> Open-world Single Image Test Time Adaptation
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <!-- TODO: FIX -->
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Indian Institute of Science </span>
+                            <br>
+                            <span class="author-block">Bengaluru, India </span>
+
+                            &nbsp;
+<!--                            <span class="author-block"><sup>2</sup>IISER Pune</span>-->
+                            &nbsp;
+<!--                            <span class="author-block"><sup>3</sup>Australian National University</span>-->
+                            <br>
+<!--                            <span class="author-block">PrePrint. Under Review</span>-->
+                            <!-- <br style="line-height: 2px" /> -->
+                            <!-- <span class="author-block" style="font-size: 0.7em; font-style: italic;"><sup>*</sup>Equal
+                                contribution</span> -->
+
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://arxiv.org/pdf/2309.00846" target="_blank"
+                                    style="text-decoration:none;">
+                                    <span class="icon is-small">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </button>
+<!--                            <button class="external-link button is-medium is-ghost publication-links is-rounded">-->
+<!--                                <a href="./static/docs/pSTarC_slides.pdf" target="_blank">-->
+<!--                                    <span class="icon is-small">-->
+<!--                                        <i class="fas fa-file-pdf"></i>-->
+<!--                                    </span>-->
+<!--                                    <span>slides</span>-->
+<!--                                </a>-->
+<!--                            </button>-->
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://github.com/manogna-s/ROSITA" target="_blank">
+                                    <span class="icon is-small">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>code</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- hack to pull the below up vertically -->
+    <span style="display:block; margin-top:-1.75em;"/>
+
+<!--    <section class="section">-->
+<!--        <div class="container is-max-desktop">-->
+<!--            &lt;!&ndash; Abstract. &ndash;&gt;-->
+<!--            <div class="columns is-centered has-text-centered">-->
+<!--                <div class="column is-three-quarters">-->
+<!--                    <h2 class="title is-3">Abstract</h2>-->
+<!--                    <div class="content has-text-justified">-->
+<!--                        <p>-->
+<!--                        We propose a novel framework to address the real-world challenging task of Single Image Test Time Adaptation in an open and dynamic environment. We leverage large scale Vision Language Models like CLIP to enable real time adaptation on a per-image basis without access to source data or ground truth labels. Since the deployed model can also encounter unseen classes in an open world, we first employ a simple and effective Out of Distribution (OOD) detection module to distinguish between weak and strong OOD samples. We propose a novel contrastive learning based objective to enhance the discriminability between weak and strong OOD samples by utilizing  small, dynamically updated feature banks. Finally, we also employ a classification objective for adapting the model using the reliable weak OOD samples. The proposed framework ROSITA combines these components, enabling continuous online adaptation of Vision Language Models on a single image basis. Extensive experimentation on diverse domain adaptation benchmarks validates the effectiveness of the proposed framework.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;/ Abstract. &ndash;&gt;-->
+
+<!--    <p style="padding: 5px;" />-->
+
+    <section class="section">
+        <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <h2 class="title is-3">ROSITA Framework</h2>
+                 </div>
+                <p style="padding: 10px;" />
+                <div class="columns is-centered has-text-centered">
+<!--                    <div class="column is-three-quarters">-->
+                        <figure>
+                            <img src="./static/images/rosita.png" alt="PromptAlign design" id="design-image"
+                                draggable="false" />
+                            <figcaption>
+                                <div class="content has-text-justified">
+                                    <small><b>Overview of ROSITA framework:</b> The test samples with Weak and Strong OOD data arrive one at a time. The image features are matched with the text based classifier, the confidence scores of which are used to distinguish between weak and strong OOD samples through a simple LDA based OOD classifier. Based on this classification and if a sample is identified to be reliable, the respective feature banks are updated and the proposed test-time objective is optimized to update the LayerNorm parameters of the Vision Encoder.</small>
+                                </div>
+                            </figcaption>
+                        </figure>
+<!--                    </div>-->
+                </div>
+<!--            <p style="padding: 20px;" />-->
+        </div>
+    </section>
+
+        <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                        We propose a novel framework to address the real-world challenging task of Single Image Test Time Adaptation in an open and dynamic environment. We leverage large scale Vision Language Models like CLIP to enable real time adaptation on a per-image basis without access to source data or ground truth labels. Since the deployed model can also encounter unseen classes in an open world, we first employ a simple and effective Out of Distribution (OOD) detection module to distinguish between weak and strong OOD samples. We propose a novel contrastive learning based objective to enhance the discriminability between weak and strong OOD samples by utilizing  small, dynamically updated feature banks. Finally, we also employ a classification objective for adapting the model using the reliable weak OOD samples. The proposed framework ROSITA combines these components, enabling continuous online adaptation of Vision Language Models on a single image basis. Extensive experimentation on diverse domain adaptation benchmarks validates the effectiveness of the proposed framework.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+
+<!--            <div class="columns is-centered has-text-centered">-->
+<!--                <div class="column is-three-quarters">-->
+<!--                    <div class="content has-text-justified">-->
+<!--                        <p class="equation-text">-->
+<!--                            <h4>1. Feature Generation:</h4> We randomly initialize a feature bank-->
+<!--                                which is iteratively optimized keeping the classifier fixed to minimize the-->
+<!--                                entropy of the features while maximizing the diversity across classes.-->
+<!--                        </p>-->
+<!--                        <p class="equation">-->
+<!--                            \begin{align}-->
+<!--                            \mathbf{f}^{*} = arg\min_{\mathbf{f}} \mathcal{L}_{ent}(\mathbf{f}; h) + \beta \mathcal{L}_{div}(\mathbf{f}; h)-->
+<!--&lt;!&ndash;                            \label{eq:source-stats}&ndash;&gt;-->
+<!--                            \end{align}-->
+<!--                        </p>-->
+<!--                        where-->
+<!--                        <p class="equation">-->
+<!--                            \begin{align}-->
+<!--                            \mathcal{L}_{e n t}\left(\mathbf{f} ; h\right)  =-\frac{1}{N} \sum_{i=1}^N  \sum_{k=1}^C p_k\log p_k; \quad\quad-->
+<!--                                        \mathcal{L}_{d i v}\left(\mathbf{f} ; h\right)=\sum_{k=1}^C \hat{p}_k \log \hat{p}_k-->
+<!--                            \end{align}-->
+<!--                        </p>-->
+
+<!--                        <p class="equation-text">-->
+<!--                            <h4>2. Pseudo Source Guided Target Clustering:</h4> Given the learnt-->
+<!--                                features, we aim to bring the low entropy samples towards the corresponding-->
+<!--                                pseudo-source features. We anchor the high entropy target samples to its own-->
+<!--                                prediction. We also enforce consistency between the predictions of the test-->
+<!--                                sample and its strong augmentation.-->
+<!--                        </p>-->
+<!--                        <p class="equation">-->
+<!--                            \begin{align}-->
+<!--                                    \mathcal{L}_{\textrm{pSTarC}}(x_k) =\underbrace{\vphantom{\sum_{p_{j}^{+}\in \mathbf{p}^{+}} p_{k}^{T}p_{j}^{+}}-p_{k}^{T}\tilde{p}_{k}}_\text{$L_{aug}$} - \underbrace{\sum_{p_{j}^{+}\in \mathbf{p}^{+}} p_{k}^{T}p_{j}^{+}}_{\text{$L_{attr}$}} + \underbrace{\vphantom{\sum_{p_{j}^{+}\in \mathbf{p}^{+}} p_{k}^{T}p_{j}^{+}}\lambda \sum_{x_{j}\in\mathbf{x}_t} p_{k}^{T}p_{j} }_\text{$L_{disp}$}&lt;!&ndash;                            \label{eq:source-stats}&ndash;&gt;-->
+<!--                            \end{align}-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--    <section class="section">-->
+<!--        <div class="container is-max-desktop">-->
+<!--                <div class="columns is-centered has-text-centered">-->
+<!--                    <h2 class="title is-3">Experimental Results</h2>-->
+<!--                </div>-->
+<!--                <p style="padding: 10px;" />-->
+<!--                <div class="columns is-centered has-text-centered">-->
+<!--                    <div class="column is-three-quarters">-->
+<!--                        <div class="method-overview-text has-text-justified">-->
+<!--                            <p>-->
+<!--                                The following plot summarises the effectiveness of pSTarC across different adaptation-->
+<!--                                benchmarks in TTA and CTTA setting.-->
+
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                        <figure>-->
+<!--                            <img src="./static/images/spider-plot-pstarc.png" alt="results" id="spider-plot"-->
+<!--                                draggable="false" />-->
+<!--                            <figcaption>-->
+<!--                               Figure: Comparison of pSTarC with prior TTA methods.-->
+<!--                            </figcaption>-->
+<!--                        </figure>-->
+<!--                        <p style="padding: 25px;" />-->
+<!--                        <div class="content has-text-justified">-->
+<!--                            <p class="equation-text">-->
+<!--                            <h4>Ablation Study</h4>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                        <figure>-->
+<!--                            <img src="./static/images/ablation.png" alt="results" id="ablation"-->
+<!--                                draggable="false" />-->
+<!--                            <figcaption>-->
+<!--                               Table 1: Importance of each loss term.-->
+<!--                            </figcaption>-->
+<!--                        </figure>-->
+<!--                        <p style="padding: 15px;" />-->
+<!--                        <figure>-->
+<!--                            <img src="./static/images/batch-size.png" alt="results" id="ablation"-->
+<!--                                draggable="false" />-->
+<!--                            <figcaption>-->
+<!--                               Table 2: Performance across varying batch sizes.-->
+<!--                            </figcaption>-->
+<!--                        </figure>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--&lt;!&ndash;            <p style="padding: 20px;" />&ndash;&gt;-->
+<!--        </div>-->
+<!--    </section>-->
+
+
+    <section class="section" id="paper">
+            <div class="container is-mobile">
+                <div class="columns is-centered has-text-centered">
+                    <div class="container content">
+                        <h2 class="title is-3">BibTeX</h2>
+                        <div id="bibtex" class="column has-text-justified is-centered">
+                            <!-- https://github.com/SaswatPadhi/prismjs-bibtex -->
+                            <pre><code class="language-bibtex">
+ @misc{sreenivas2023pstarc,
+  title={pSTarC: Pseudo Source Guided Target Clustering for Fully Test-Time Adaptation},
+  author={Manogna Sreenivas and Goirik Chakrabarty and Soma Biswas},
+  year={2023},
+  eprint={2309.00846},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}
+                            </code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <!-- TODO: UPDATE -->
+                <a class="icon-link" href="https://arxiv.org/pdf/2309.00846.pdf" target="_blank">
+                    <i class="ai ai-arxiv"></i>
+                </a>
+                &nbsp;
+                <!-- TODO: UPDATE -->
+<!--                <a class="icon-link" href="https://arxiv.org/pdf/2309.00846.pdf" target="_blank">-->
+<!--                    <i class="fas fa-file-pdf"></i>-->
+<!--                </a>-->
+                <!-- &nbsp;
+                <a class="icon-link" href="https://youtu.be/1hYtGZ0CUSA" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a> -->
+                &nbsp;
+                <a class="icon-link" href="./static/docs/pSTarC_slides.pdf" target="_blank">
+                    <i class="fas fa-file-powerpoint"></i>
+                </a>
+                &nbsp;
+                <a class="icon-link" href="https://github.com/manogna-s/rosita"
+                    target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="content">
+                    <p>
+                        Page source code was adapted from
+                        <a href="https://nerfies.github.io" target="_blank">here</a>
+<!--                        and-->
+<!--                        <a href="https://internet-explorer-ssl.github.io"-->
+<!--                            target="_blank">here</a>,-->
+                        and can be found in <a
+                            href="https://github.com/manogna-s/manogna-s.github.io/pstarc"
+                            target="_blank">this repository</a>.
+                    </p>
+                </div>
+            </div>
+    </footer>
+
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
+</body>
+
+</html>

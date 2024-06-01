@@ -1,3 +1,17 @@
+@InProceedings{sreenivas2024rosita,
+      abbr={arXiV},
+      title={Effectiveness of Vision Language Models for Open-world Single Image Test Time Adaptation},
+      author={Manogna Sreenivas and Soma Biswas},
+      year={2024},
+      booktitle="PrePrint. Under Review",
+      eprint={2309.00846},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      abstract = "We propose a novel framework to address the real-world challenging task of Single Image Test Time Adaptation in an open and dynamic environment. We leverage large scale Vision Language Models like CLIP to enable real time adaptation on a per-image basis without access to source data or ground truth labels. Since the deployed model can also encounter unseen classes in an open world, we first employ a simple and effective Out of Distribution (OOD) detection module to distinguish between weak and strong OOD samples. We propose a novel contrastive learning based objective to enhance the discriminability between weak and strong OOD samples by utilizing  small, dynamically updated feature banks. Finally, we also employ a classification objective for adapting the model using the reliable weak OOD samples. The proposed framework ROSITA combines these components, enabling continuous online adaptation of Vision Language Models on a single image basis. Extensive experimentation on diverse domain adaptation benchmarks validates the effectiveness of the proposed framework.",
+      website={https://manogna-s.github.io/rosita/},
+      selected={true}
+}
+
 @InProceedings{sreenivas2023pstarc,
       abbr={WACV},
       title={pSTarC: Pseudo Source Guided Target Clustering for Fully Test-Time Adaptation},
@@ -24,6 +38,7 @@
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       abstract= "Underwater imaging presents numerous challenges due to refraction, light absorption, and scattering, resulting in color degradation, low contrast, and blurriness. Enhancing underwater images is crucial for high-level computer vision tasks, but existing methods either neglect the physics-based image formation process or require expensive computations. In this paper, we propose an effective framework that combines a physics-based Underwater Image Formation Model (UIFM) with a deep image enhancement approach based on the retinex model. Firstly, we remove backscatter by estimating attenuation coefficients using depth information. Then, we employ a retinex model-based deep image enhancement module to enhance the images. To ensure adherence to the UIFM, we introduce a novel Wideband Attenuation prior. The proposed PhISH-Net framework achieves real-time processing of high-resolution underwater images using a lightweight neural network and a bilateral-grid-based upsampler. Extensive experiments on two underwater image datasets demonstrate the superior performance of our method compared to state-of-the-art techniques. Additionally, qualitative evaluation on a cross-dataset scenario confirms its generalization capability. Our contributions lie in combining the physics-based UIFM with deep image enhancement methods, introducing the wideband attenuation prior, and achieving superior performance and efficiency.",
+      pdf={https://openaccess.thecvf.com/content/WACV2024/papers/Chandrasekar_PhISH-Net_Physics_Inspired_System_for_High_Resolution_Underwater_Image_Enhancement_WACV_2024_paper.pdf},
       selected={false}
 }
 
@@ -39,6 +54,7 @@
       primaryClass={cs.CV},
       abstract = "Adapting a trained model to perform satisfactorily on continually changing test environ- ments is an important and challenging task. In this work, we propose a novel framework, SANTA, which aims to satisfy the following characteristics required for online adaptation: 1) can work effectively for different (even small) batch sizes; 2) should continue to work well on the source domain; 3) should have minimal tunable hyperparameters and storage requirements. Given a pre-trained network trained on source domain data, the proposed framework modifies the affine parameters of the batch normalization layers using source anchoring based self-distillation. This ensures that the model incorporates knowledge from the newly encountered domains, without catastrophically forgetting the previously seen do- mains. We also propose a source-prototype driven contrastive alignment to ensure natural grouping of the target samples, while maintaining the already learnt semantic information. Extensive evaluation on three benchmark datasets under challenging settings justify the effectiveness of SANTA for real-world applications.",
       html={https://openreview.net/forum?id=V7guVYzvE4},
+      code = {https://github.com/goirik-chakrabarty/SANTA},
       pdf={https://openreview.net/pdf?id=V7guVYzvE4},
       selected={true}
 }
@@ -78,7 +94,7 @@ pages="262--277",
 abstract="Cross-Domain Few-Shot Learning (CD-FSL) aims to recognize new classes from unseen domains, given limited training samples. Majority of the state-of-the-art approaches for this task introduce new task-specific additional parameters for adapting to the novel task, which involves changing the trained model architecture, in addition to increasing the number of model parameters. The first contribution of this work is to revisit the existing approaches like modifying the Batch Normalization affine parameters and the scale hyperparameter in cosine similarity based softmax loss for adapting the trained model to the new tasks, without changing the model architecture. Secondly, to aid the model learning with few examples per class, we propose to augment the data of each class with the styles of the semantically similar classes. Extensive evaluation on the challenging Meta-Dataset shows that this simple framework is very effective for the CD-FSL task. We also show that the Similar-class Style Augmentation module can be seamlessly integrated with existing approaches to further improve their performance, thus establishing the state-of-the-art in this challenging area.",
 isbn="978-3-031-25072-9",
 pdf={https://openaccess.thecvf.com/content/CVPR2023W/ECV/papers/Sreenivas_Similar_Class_Style_Augmentation_for_Efficient_Cross-Domain_Few-Shot_Learning_CVPRW_2023_paper.pdf},
-selected={true}
+selected={false}
 }
 
 
@@ -106,26 +122,6 @@ pdf={https://github.com/manogna-s/da-fer/blob/main/DIFC_WCPA_ECCVW'22.pdf},
 selected={false}
 }
 
-
-@InProceedings{dss,
-abbr={ICLRW},
-author="Chakrabarty, Goirik
-and Sreenivas, Manogna
-and Biswas, Soma",
-editor="Karlinsky, Leonid
-and Michaeli, Tomer
-and Nishino, Ko",
-title="Domain Shift Signal for Low Resource Continuous Test-Time Adaptation",
-booktitle="ICLR Workshops",
-abstract="Test time domain adaptation has come to the forefront as a challenging scenario in recent times. Although single domain test-time adaptation has been well studied and shown impressive performance, this can be limiting when the model is deployed in a dynamic test environment. We explore this continual domain test time adaptation problem here. Specifically, we question if we can translate the effectiveness of single domain adaptation methods to continuous test-time adaptation scenario. We propose to use the given source domain trained model to continually measure the similarity between the feature representations of the consecutive batches. A domain shift is detected when this measure falls below a certain threshold, which we use as a trigger to reset the model back to source and continue test-time adaptation. We demonstrate the effectiveness of our method by performing experiments across datasets, batch sizes and different single domain test-time adaptation baselines. This can have a significant impact in a variety of applications, from healthcare and agriculture to transportation and finance. As a result, this research has the potential to greatly benefit developing countries by providing new tools and techniques for building more effective and efficient machine learning systems.",
-year="2023",
-publisher="Springer Nature Switzerland",
-address="Cham",
-pages="262--277",
-isbn="978-3-031-25072-9",
-selected={false},
-pdf={https://pml4dc.github.io/iclr2023/pdf/PML4DC_ICLR2023_46.pdf}
-}
 
 @InProceedings{jumpstyle,
 abbr={ICLRW},
