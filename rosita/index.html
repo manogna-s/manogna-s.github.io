@@ -60,7 +60,7 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <p style="padding: 20px;" />
+                        <p style="padding: 5px;" />
                         <h1 class="title is-1 publication-title">
                             <span id="main-title">
                                 Effectiveness of Vision Language Models for <br> Open-world Single Image Test Time Adaptation
@@ -99,7 +99,7 @@
 
                         <div class="buttons is-centered">
                             <button class="external-link button is-medium is-ghost publication-links is-rounded">
-                                <a href="https://arxiv.org/pdf/2309.00846" target="_blank"
+                                <a href="https://arxiv.org/abs/2406.00481" target="_blank"
                                     style="text-decoration:none;">
                                     <span class="icon is-small">
                                         <i class="ai ai-arxiv"></i>
@@ -155,15 +155,17 @@
                 <div class="columns is-centered has-text-centered">
                     <h2 class="title is-3">ROSITA Framework</h2>
                  </div>
-                <p style="padding: 10px;" />
+                <p style="padding: 3px;" />
                 <div class="columns is-centered has-text-centered">
 <!--                    <div class="column is-three-quarters">-->
                         <figure>
-                            <img src="./static/images/rosita.png" alt="PromptAlign design" id="design-image"
+                            <img src="./static/images/ROSITA_animated_gif.gif" alt="PromptAlign design" id="design-image"
                                 draggable="false" />
                             <figcaption>
                                 <div class="content has-text-justified">
-                                    <small><b>Overview of ROSITA framework:</b> The test samples with Weak and Strong OOD data arrive one at a time. The image features are matched with the text based classifier, the confidence scores of which are used to distinguish between weak and strong OOD samples through a simple LDA based OOD classifier. Based on this classification and if a sample is identified to be reliable, the respective feature banks are updated and the proposed test-time objective is optimized to update the LayerNorm parameters of the Vision Encoder.</small>
+                                    <small><b>Overview of ROSITA framework:</b> The test samples with Weak and Strong OOD data arrive one at a time. The image features are matched with the text based classifier, the confidence scores of which are used to distinguish between weak and strong OOD samples through a simple LDA based OOD classifier. Based on this classification and if a sample is identified to be reliable, the respective feature banks are updated and the proposed test-time objective is optimized to update the LayerNorm parameters of the Vision Encoder.</br>
+<!--                                        <b>viz credits:</b> <a href="https://in.linkedin.com/in/rohitronie" target="_blank">Rohit Kumar</a>-->
+                                    </small>
                                 </div>
                             </figcaption>
                         </figure>
@@ -180,8 +182,9 @@
                 <div class="column is-three-quarters">
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
-                        <p>
+                        <p><small>
                         We propose a novel framework to address the real-world challenging task of Single Image Test Time Adaptation in an open and dynamic environment. We leverage large scale Vision Language Models like CLIP to enable real time adaptation on a per-image basis without access to source data or ground truth labels. Since the deployed model can also encounter unseen classes in an open world, we first employ a simple and effective Out of Distribution (OOD) detection module to distinguish between weak and strong OOD samples. We propose a novel contrastive learning based objective to enhance the discriminability between weak and strong OOD samples by utilizing  small, dynamically updated feature banks. Finally, we also employ a classification objective for adapting the model using the reliable weak OOD samples. The proposed framework ROSITA combines these components, enabling continuous online adaptation of Vision Language Models on a single image basis. Extensive experimentation on diverse domain adaptation benchmarks validates the effectiveness of the proposed framework.
+                        </small>
                         </p>
                     </div>
                 </div>
@@ -277,34 +280,27 @@
 <!--    </section>-->
 
 
-    <section class="section" id="paper">
-            <div class="container is-mobile">
-                <div class="columns is-centered has-text-centered">
-                    <div class="container content">
-                        <h2 class="title is-3">BibTeX</h2>
-                        <div id="bibtex" class="column has-text-justified is-centered">
-                            <!-- https://github.com/SaswatPadhi/prismjs-bibtex -->
-                            <pre><code class="language-bibtex">
- @misc{sreenivas2023pstarc,
-  title={pSTarC: Pseudo Source Guided Target Clustering for Fully Test-Time Adaptation},
-  author={Manogna Sreenivas and Goirik Chakrabarty and Soma Biswas},
-  year={2023},
-  eprint={2309.00846},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV}
+     <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h3 class="title">BibTeX</h3>
+        <pre><code class="language-bibtex">
+@misc{sreenivas2024effectiveness,
+      title={Effectiveness of Vision Language Models for Open-world Single Image Test Time Adaptation},
+      author={Manogna Sreenivas and Soma Biswas},
+      year={2024},
+      eprint={2406.00481},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
-                            </code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </code></pre>
+      </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
+        <div class="container is-max-desktop content">
             <div class="content has-text-centered">
                 <!-- TODO: UPDATE -->
-                <a class="icon-link" href="https://arxiv.org/pdf/2309.00846.pdf" target="_blank">
+                <a class="icon-link" href="https://arxiv.org/pdf/2406.00481" target="_blank">
                     <i class="ai ai-arxiv"></i>
                 </a>
                 &nbsp;
@@ -317,11 +313,11 @@
                     <i class="fab fa-youtube"></i>
                 </a> -->
                 &nbsp;
-                <a class="icon-link" href="./static/docs/pSTarC_slides.pdf" target="_blank">
-                    <i class="fas fa-file-powerpoint"></i>
-                </a>
+<!--                <a class="icon-link" href="./static/docs/pSTarC_slides.pdf" target="_blank">-->
+<!--                    <i class="fas fa-file-powerpoint"></i>-->
+<!--                </a>-->
                 &nbsp;
-                <a class="icon-link" href="https://github.com/manogna-s/rosita"
+                <a class="icon-link" href="https://github.com/manogna-s/ROSITA"
                     target="_blank">
                     <i class="fab fa-github"></i>
                 </a>
@@ -335,7 +331,7 @@
 <!--                        <a href="https://internet-explorer-ssl.github.io"-->
 <!--                            target="_blank">here</a>,-->
                         and can be found in <a
-                            href="https://github.com/manogna-s/manogna-s.github.io/pstarc"
+                            href="https://github.com/manogna-s/manogna-s.github.io/rosita"
                             target="_blank">this repository</a>.
                     </p>
                 </div>
