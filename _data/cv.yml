@@ -98,7 +98,15 @@
         - Secured a rank of 172 in Karnataka Common Entrance Test (KCET).
 
 
-# - title: Other Interests
-#   type: list
-#   contents:
-#     - <u>Hobbies:</u> Sketching, Music, etc.
+- title: Peer Reviews
+  type: time_table
+  contents:
+    - year: 2025
+      items:
+        - AAAI (6), WACV (2), ICLR (3), CVPR (4), TPAMI (1), Pattern Recognition (1),  ICCV (3), BMVC (4)
+    - year: 2024
+      items:
+        - CVPR (3), ECCV (1), BMVC (3), ACCV (2)
+    - year: 2023
+      items:
+        - ICCV (1)

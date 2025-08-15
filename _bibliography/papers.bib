@@ -1,3 +1,21 @@
+@InProceedings{sreenivas2025segassist,
+      abbr={BMVC},
+      title={Segmentation Assisted Incremental Test Time Adaptation in an Open World},
+      author={Manogna Sreenivas and Soma Biswas},
+      year={2025},
+      booktitle="British Machine Vision Conference",
+      eprint={2406.00481},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      abstract = "In dynamic environments, unfamiliar objects and distribution shifts are often encountered which challenge the generalization abilities of the deployed trained models. This work addresses Incremental Test Time Adaptation (ITTA) of Vision-Language Models (VLMs), tackling scenarios where unseen classes and unseen domains continuously appear during testing. Unlike traditional Test Time Adaptation approaches where the test samples come only from a predefined set of classes, our framework allows models to adapt simultaneously to both covariate and label shifts, actively incorporating new classes as they emerge. Towards this goal, we establish a new benchmark for ITTA, integrating single-image TTA methods for VLMs with active labeling to query an oracle for samples potentially representing unseen classes during test time. We propose a segmentation assisted active labeling module, termed SegAssist, which is training-free and repurposes the VLM’s segmentation capabilities to refine active sample selection, prioritizing samples likely to belong to unseen classes. Extensive experiments on several benchmark datasets demonstrate the potential of SegAssist to enhance the performance of VLMs in real-world scenarios, where continuous adaptation to emerging data is essential.",
+      website={https://manogna-s.github.io/segassist/},
+      arxiv={2508.20029},
+      code = {https://github.com/manogna-s/SegAssist},
+      selected={true}
+}
+
+
+
 @InProceedings{sreenivas2024rosita,
       abbr={TMLR},
       title={Effectiveness of Vision Language Models for Open-world Single Image Test Time Adaptation},
@@ -10,7 +28,7 @@
       abstract = "We propose a novel framework to address the real-world challenging task of Single Image Test Time Adaptation in an open and dynamic environment. We leverage large scale Vision Language Models like CLIP to enable real time adaptation on a per-image basis without access to source data or ground truth labels. Since the deployed model can also encounter unseen classes in an open world, we first employ a simple and effective Out of Distribution (OOD) detection module to distinguish between weak and strong OOD samples. We propose a novel contrastive learning based objective to enhance the discriminability between weak and strong OOD samples by utilizing  small, dynamically updated feature banks. Finally, we also employ a classification objective for adapting the model using the reliable weak OOD samples. The proposed framework ROSITA combines these components, enabling continuous online adaptation of Vision Language Models on a single image basis. Extensive experimentation on diverse domain adaptation benchmarks validates the effectiveness of the proposed framework.",
       website={https://manogna-s.github.io/rosita/},
       html={https://openreview.net/forum?id=72YVabBErN},
-      code = {https://github.com/ostta/ROSITA},
+      code = {https://github.com/manogna-s/ROSITA},
       selected={true}
 }
 
@@ -41,6 +59,7 @@
       primaryClass={cs.CV},
       abstract= "Underwater imaging presents numerous challenges due to refraction, light absorption, and scattering, resulting in color degradation, low contrast, and blurriness. Enhancing underwater images is crucial for high-level computer vision tasks, but existing methods either neglect the physics-based image formation process or require expensive computations. In this paper, we propose an effective framework that combines a physics-based Underwater Image Formation Model (UIFM) with a deep image enhancement approach based on the retinex model. Firstly, we remove backscatter by estimating attenuation coefficients using depth information. Then, we employ a retinex model-based deep image enhancement module to enhance the images. To ensure adherence to the UIFM, we introduce a novel Wideband Attenuation prior. The proposed PhISH-Net framework achieves real-time processing of high-resolution underwater images using a lightweight neural network and a bilateral-grid-based upsampler. Extensive experiments on two underwater image datasets demonstrate the superior performance of our method compared to state-of-the-art techniques. Additionally, qualitative evaluation on a cross-dataset scenario confirms its generalization capability. Our contributions lie in combining the physics-based UIFM with deep image enhancement methods, introducing the wideband attenuation prior, and achieving superior performance and efficiency.",
       pdf={https://openaccess.thecvf.com/content/WACV2024/papers/Chandrasekar_PhISH-Net_Physics_Inspired_System_for_High_Resolution_Underwater_Image_Enhancement_WACV_2024_paper.pdf},
+      code = {https://github.com/chandrasekaraditya/PhISH-Net},
       selected={false}
 }
 
@@ -58,7 +77,7 @@
       html={https://openreview.net/forum?id=V7guVYzvE4},
       code = {https://github.com/goirik-chakrabarty/SANTA},
       pdf={https://openreview.net/pdf?id=V7guVYzvE4},
-      selected={true}
+      selected={false}
 }
 
 @InProceedings{dss,

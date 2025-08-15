@@ -53,8 +53,14 @@
   contents:
     - title: Deep Learning for Computer Vision
       institution: #Aug-Dec 2021
-      year: Aug-Oct 2022
+      year: Aug-Oct 2022, 2025
 
+- title: SVYM
+  type: time_table
+  contents:
+    - title: Workshop on Machine Learning, Computer Vision, Generative AI
+      institution: #Aug-Dec 2021
+      year: Aug 2024, 2025
 
 # - title: Research Interests
 #   type: nested_list
