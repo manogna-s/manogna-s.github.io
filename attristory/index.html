@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="AttriStory" />
+    <meta property="og:description" content="AttriStory: Fine-grained Attribute Realization for Visual Storytelling with Diffusion Models" />
+    <meta property="og:url" content="https://manogna-s.github.io/attristory" />
+    <meta name="keywords" content="Visual Storytelling, Diffusion Models, Attribute Realization, Text-to-Image Generation" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>AttriStory</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/index.css">
+    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+        }
+        .results-table th, .results-table td {
+            padding: 8px 14px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .results-table th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+        .results-table td:first-child {
+            text-align: left;
+        }
+        .results-table tr.attriloss-row td {
+            font-weight: bold;
+            color: #2c6e49;
+        }
+        .results-table tr.separator td {
+            border-top: 2px solid #aaa;
+        }
+        .section-alt {
+            background-color: #f9f9f9;
+        }
+        body {
+            font-size: 1.0rem;
+        }
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 20px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                AttriStory: Fine-grained Attribute Realization for Visual Storytelling with Diffusion Models
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://rohit.vision/" target="_blank">Rohit Kumar</a>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Indian Institute of Science, Bengaluru, India</span>
+                            <br>
+                            <span class="author-block"><b>CVPR Workshops, 2026</b></span>
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <!-- Uncomment when arXiv link is available
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="ai ai-arxiv"></i></span>
+                                    <span>arXiv</span>
+                                </a>
+                            </button>
+                            -->
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="../assets/My_Publications/AttriStory_CVPRW_2026.pdf" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>Paper</span>
+                                </a>
+                            </button>
+                            <!-- Uncomment when code is available
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://github.com/manogna-s/AttriStory" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fab fa-github"></i></span>
+                                    <span>Code</span>
+                                </a>
+                            </button>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <!-- Teaser -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/teaser.png" alt="Teaser: story generated from the AttriStory benchmark" draggable="false" />
+                        <figcaption>
+                            <b>Figure 1.</b> Visualization of a story generated from the AttriStory benchmark. This story of <i>Ben</i>
+                            illustrates the dual challenge in visual storytelling: maintaining character consistency across scenes,
+                            while realizing fine-grained attributes such as clothing and accessories (e.g., <i>red apron</i>,
+                            <i>grey shirt and brown coat</i>, <i>green helmet</i>).
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Visual storytelling with diffusion models has made impressive strides in maintaining
+                            character consistency across narrative scenes. However, a critical gap remains: while
+                            these methods ensure a character remains consistent across scenes, they provide no
+                            systematic method to ensure if fine-grained attributes such as color and textures of
+                            clothing, accessories are faithfully rendered in the generated images. Towards this goal,
+                            we introduce <b>AttriStory</b>, a benchmark enabling attribute realization in visual
+                            storytelling. We curate 200 multi-scene stories across 10 distinct artistic styles using
+                            a Large Language Model. Each scene is constructed with detailed attribute specifications
+                            to enable rich visual narratives. Further, to address attribute realization, we propose a
+                            plug-and-play latent optimization module that operates during early denoising steps, when
+                            the model establishes structural and semantic content. We achieve this through the
+                            <b>AttriLoss</b> objective designed to maximize alignment between the cross-attention maps
+                            for desired attribute-object pairs while suppressing spurious associations, guiding models
+                            to localize attributes correctly. This approach operates orthogonally to existing
+                            consistency mechanisms, integrating seamlessly with current story generation pipelines
+                            without requiring architectural modifications. Our experiments demonstrate consistent
+                            improvements on incorporating AttriLoss across all baselines. This work positions
+                            attribute realization as a distinct, complementary dimension of visual storytelling,
+                            alongside character consistency, advancing the field toward fine-grained
+                            attribute-controlled story generation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AttriStory Benchmark -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">The AttriStory Benchmark</h2>
+            </div>
+            <p style="padding: 10px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            Existing visual storytelling benchmarks (e.g., ConsiStory) capture narratives through
+                            minimal descriptions such as <i>"A photo of a young boy riding a bike through golden fields."</i>
+                            This is insufficient for professional creative workflows where artists specify rich details:
+                            <i>"A watercolor illustration of Oliver, a lively 8-year-old boy with sandy blond hair and
+                            brown eyes, riding a <b>green bike wearing a red hoodie</b> past golden fields."</i>
+                        </p>
+                        <p>
+                            We define this as the <b>attribute realization problem</b>: ensuring that explicitly specified,
+                            fine-grained visual attributes (e.g., <i>"red shirt"</i>, <i>"blue sneakers"</i>) are actually
+                            realized in generated images — orthogonal to cross-scene character consistency.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/benchmark_comparison.png" alt="ConsiStory vs AttriStory benchmark comparison" draggable="false" />
+                        <figcaption>
+                            <b>Figure 2.</b> Comparison of story narratives in prior benchmarks vs. ours. ConsiStory (top) provides
+                            minimal visual specifications capturing only basic character identity and actions. AttriStory (bottom)
+                            enriches narratives with explicit positive (\(P^+\)) and negative (\(P^-\)) attribute-object pairs for each
+                            scene, enabling systematic evaluation of fine-grained attribute realization.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p style="padding: 15px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>We use ChatGPT to generate stories with the following structured components per scene:</p>
+                        <ul>
+                            <li><b>Character Description:</b> A detailed multi-attribute specification (e.g., <i>"Maya, a 25-year-old woman with curly brown hair"</i>)</li>
+                            <li><b>Scene Narratives:</b> Scene-specific text descriptions enriched with fine-grained visual attributes</li>
+                            <li><b>Positive Pairs \(P^+\):</b> Attribute-object pairs that should co-occur (e.g., <i>["pink", "dress"]</i>, <i>["white", "lilies"]</i>)</li>
+                            <li><b>Negative Pairs \(P^-\):</b> Pairs that should not co-occur (e.g., <i>["pink", "lilies"]</i>, <i>["white", "dress"]</i>), preventing spurious associations</li>
+                        </ul>
+                        <p>
+                            The benchmark comprises <b>200 multi-scene stories</b> (5 scenes each) across <b>10 distinct artistic styles</b>:
+                            photo, cartoon style, 3D animation, watercolor illustration, oil painting, crayon drawing, neon punk style,
+                            Pixar-style, hyperrealistic digital painting, and pastel color painting. Each scene is annotated with 2 to 5
+                            attribute-object pairs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/llm_pipeline.png" alt="LLM-driven benchmark generation pipeline" draggable="false" />
+                        <figcaption>
+                            <b>Figure 3.</b> LLM-driven benchmark generation. The pipeline inputs artistic styles and structured
+                            instructions emphasizing explicit, fine-grained attribute specifications. For each story, the LLM chooses
+                            an artistic style and generates character descriptions, scene narratives, and positive (\(P^+\)) and
+                            negative (\(P^-\)) attribute-object pairs.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method: AttriLoss -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">AttriLoss: Targeted IoU Loss for Attribute-Object Grounding</h2>
+            </div>
+            <p style="padding: 10px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/method.png" alt="AttriLoss method overview" draggable="false" />
+                        <figcaption>
+                            <b>Figure 4.</b> AttriLoss: Targeted IoU loss on cross-attention maps. Our method optimizes spatial
+                            overlap between attention maps of attribute-object token pairs during early denoising steps. By
+                            maximizing IoU for positive pairs (e.g., <i>pink</i> and <i>dress</i> should co-occur) and minimizing
+                            IoU for negative pairs (e.g., <i>pink</i> and <i>lilies</i> should not overlap), we guide the model
+                            to correctly localize fine-grained attributes.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p style="padding: 15px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            A key challenge in visual storytelling is imperfect alignment between prompt-specified attributes
+                            and generated visual objects. For a prompt like <i>"wearing a pink dress holding a bouquet of white
+                            lilies,"</i> attention maps for tokens <i>"pink"</i> and <i>"lilies"</i> may overlap spatially even
+                            though <i>"pink"</i> should only attend to <i>"dress"</i>. This ambiguous overlap causes the model
+                            to generate, e.g., pink roses instead of white lilies.
+                        </p>
+                        <p>
+                            Our key observation is that cross-attention maps provide a direct visualization of attribute-object
+                            associations. We explicitly manipulate the spatial overlap between maps to encourage correct and
+                            discourage spurious associations.
+                        </p>
+
+                        <h4>IoU between attention maps</h4>
+                        <p>
+                            For each text token \(k\), let \(\mathbf{A}_k \in \mathbb{R}^{H \times W}\) be its spatial
+                            cross-attention map aggregated across U-Net layers. The Intersection-over-Union between two maps is:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \text{IoU}(\mathbf{A}_i, \mathbf{A}_j) = \frac{\mathbf{A}_i \odot \mathbf{A}_j}{\max(\mathbf{A}_i + \mathbf{A}_j - \mathbf{A}_i \odot \mathbf{A}_j,\; \epsilon)}
+                            \end{align}
+                        </p>
+                        <p>
+                            where \(\odot\) denotes element-wise multiplication and \(\epsilon\) is a small constant for
+                            numerical stability.
+                        </p>
+
+                        <h4>AttriLoss objective</h4>
+                        <p>
+                            Let \(P^+\) be positive attribute-object pairs that should co-occur spatially, and \(P^-\) be
+                            negative pairs that should not. The loss is:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \mathcal{L}_{\text{Attri}} = -\sum_{(i,j) \in P^+} \text{IoU}(\mathbf{A}_i, \mathbf{A}_j)
+                            + \sum_{(i,j) \in P^-} \text{IoU}(\mathbf{A}_i, \mathbf{A}_j)
+                            \end{align}
+                        </p>
+                        <p>
+                            The latent code \(\mathbf{z}_t\) is updated via gradient descent:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \mathbf{z}'_t \leftarrow \mathbf{z}_t - \nabla_{\mathbf{z}_t} \mathcal{L}_{\text{Attri}}
+                            \end{align}
+                        </p>
+                        <p>
+                            This update is applied during the <b>early denoising timesteps (steps 1–25 out of 50)</b>, which
+                            are critical for establishing structure and semantic content including colors and textures. AttriLoss
+                            integrates as a <b>plug-and-play module</b> with Vanilla SDXL, ConsiStory, and StoryDiffusion —
+                            no architectural modifications or retraining required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p style="padding: 10px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/attention_maps.png" alt="Attention maps comparison" draggable="false" />
+                        <figcaption>
+                            <b>Figure 5.</b> Attention maps of ConsiStory and with AttriLoss. The baseline shows ambiguous
+                            spatial overlaps where attribute tokens <i>pink</i> and <i>lilies</i> attend to the same regions,
+                            resulting in pink roses. With AttriLoss, the attention maps for attribute-object pairs sharpen into
+                            distinct regions (<i>pink</i> and <i>lilies</i> don't overlap), achieving correct spatial localization.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualitative Results -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Qualitative Results</h2>
+            </div>
+            <p style="padding: 10px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/qualitative_consistory.png" alt="ConsiStory baseline with and without AttriLoss" draggable="false" />
+                        <figcaption>
+                            <b>Figure 6.</b> Qualitative results of ConsiStory with and without AttriLoss. Using ConsiStory, character
+                            consistency is maintained but fine-grained attributes are incorrectly bound: <i>white lilies</i> are rendered
+                            as <i>pink roses and white lilies</i> (scene 1), and the <i>red umbrella</i> appears partially blue (scene 2).
+                            With AttriLoss, attribute-object associations are properly grounded while character consistency is preserved.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p style="padding: 20px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/qualitative_storydiffusion.png" alt="StoryDiffusion baseline with and without AttriLoss" draggable="false" />
+                        <figcaption>
+                            <b>Figure 7.</b> Qualitative results of StoryDiffusion with and without AttriLoss. Without AttriLoss, attributes
+                            such as <i>grey coat</i> (scene 2), <i>yellow coat</i> (scene 3), and <i>beige jacket</i> (scene 4) are not
+                            correctly rendered. With AttriLoss, compositional attributes are faithfully realized while character consistency
+                            is preserved across scenes.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p style="padding: 20px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/qualitative_styles.png" alt="Attribute realization across diverse stories and artistic styles" draggable="false" />
+                        <figcaption>
+                            <b>Figure 8.</b> Attribute realization across diverse stories using ConsiStory (top) and with AttriLoss (bottom),
+                            across varied artistic styles: Pixar, cartoon, oil painting, photo, watercolor. AttriLoss corrects
+                            attribute-object binding failures: peacock's <i>red velvet capelet</i> (1), Dr. Barkley's <i>glasses</i> (2),
+                            <i>yellow flag</i> on the raft (3), Luke's <i>green hoodie</i> (4), Oliver's <i>green bike</i> (5).
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantitative Results -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Quantitative Results</h2>
+            </div>
+            <p style="padding: 10px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            We evaluate across four metrics: <b>VQA-Score</b> (attribute realization via VQA),
+                            <b>CLIP-T</b> (image-text alignment), <b>CLIP-I</b> (cross-scene character consistency),
+                            and <b>DreamSim</b> (perceptual quality). AttriLoss consistently improves all baselines.
+                            Notably, CLIP-I scores remain strong after adding AttriLoss, confirming that attribute
+                            grounding does not compromise cross-scene consistency.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p style="padding: 10px;" />
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>VQA-Score ↑</th>
+                                <th>CLIP-T ↑</th>
+                                <th>CLIP-I ↑</th>
+                                <th>DreamSim ↑</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1Prompt1Story</td>
+                                <td>0.8117</td>
+                                <td>0.3816</td>
+                                <td>0.8410</td>
+                                <td>0.6929</td>
+                            </tr>
+                            <tr class="separator">
+                                <td>Vanilla SDXL</td>
+                                <td>0.7957</td>
+                                <td>0.3696</td>
+                                <td>0.8188</td>
+                                <td>0.6760</td>
+                            </tr>
+                            <tr class="attriloss-row">
+                                <td>&nbsp;&nbsp;&nbsp;+ AttriLoss</td>
+                                <td>0.8225</td>
+                                <td>0.3775</td>
+                                <td>0.8517</td>
+                                <td>0.7170</td>
+                            </tr>
+                            <tr class="separator">
+                                <td>StoryDiffusion</td>
+                                <td>0.8363</td>
+                                <td>0.3912</td>
+                                <td>0.8301</td>
+                                <td>0.6925</td>
+                            </tr>
+                            <tr class="attriloss-row">
+                                <td>&nbsp;&nbsp;&nbsp;+ AttriLoss</td>
+                                <td>0.8636</td>
+                                <td>0.3874</td>
+                                <td>0.8553</td>
+                                <td>0.7215</td>
+                            </tr>
+                            <tr class="separator">
+                                <td>ConsiStory</td>
+                                <td>0.8136</td>
+                                <td>0.3871</td>
+                                <td>0.8494</td>
+                                <td>0.7326</td>
+                            </tr>
+                            <tr class="attriloss-row">
+                                <td>&nbsp;&nbsp;&nbsp;+ AttriLoss</td>
+                                <td>0.8490</td>
+                                <td>0.3909</td>
+                                <td>0.8667</td>
+                                <td>0.7555</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 0.75em; font-size: 0.9em; color: #555;">
+                        Table 1. Quantitative comparison on integrating AttriLoss with prior visual storytelling methods.
+                        Bold green rows indicate + AttriLoss variants. ConsiStory + AttriLoss achieves the best overall performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BibTeX -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre><code class="language-bibtex">@InProceedings{sreenivas2026attristory,
+  author    = {Sreenivas, Manogna and Kumar, Rohit and Biswas, Soma},
+  title     = {AttriStory: Fine-grained Attribute Realization for Visual Storytelling with Diffusion Models},
+  booktitle = {CVPR Workshops},
+  year      = {2026}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="../pstarc/static/js/index.js"></script>
+    <script src="../pstarc/static/js/prism.js"></script>
+</body>
+
+</html>
