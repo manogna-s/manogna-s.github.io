@@ -57,7 +57,7 @@ Author names are auto-linked on the publications page via `_data/coauthors.yml`.
 - **Font size**: Override to `1.0rem` via a `<style>` block in the page (shared CSS uses `1.2rem`).
 - **Text and image width**: Use `<div class="column">` (full width), not `column is-three-quarters`.
 - **Images**: `figure img { max-height: 480px; width: auto; display: block; margin: 0 auto; }` — limits height, preserves aspect ratio, centres the image.
-- **Tables**: Match the SegAssist results table style — `results-table` class, bold+green for the proposed method row (`segassist-row` pattern), `group-sep` class for group dividers.
+- **Tables**: Match the SegAssist results table style — `results-table` class, bold+green for the proposed method row (`segassist-row` pattern), `group-sep` class for group dividers. Always force-center all cells with `text-align: center !important` on both `th`/`td` and their `:first-child` variants — the shared `index.css` has `text-align: right !important` on first children which will override without this.
 - **BibTeX copy button**: Always include. Steps:
   - Add `class="language-bibtex"` to both `<pre>` and `<code>`.
   - Load `prism.css`, `prism.min.js`, `prism-bibtex.min.js` in `<head>`.
