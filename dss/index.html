@@ -235,95 +235,38 @@
                             We evaluate DSS on three benchmarks (ImageNet-C, CIFAR-100C, CIFAR-10C) with 15 corruption types at severity 5. Each TTA method is compared in three settings: <strong>TTA</strong> (oracle domain shift labels, upper bound), <strong>CTTA</strong> (continual, no domain labels, baseline), and <strong>DSS</strong> (our method, no domain labels). Metric: error % (lower is better). Numbers in brackets show improvement of DSS over CTTA.
                         </p>
 
-                        <!-- ImageNet-C -->
-                        <h4>ImageNet-C</h4>
                         <div style="overflow-x:auto;">
                         <table class="results-table">
                             <thead>
                                 <tr>
-                                    <th>Method</th>
-                                    <th>Mean Error (%)</th>
+                                    <th rowspan="2">Method</th>
+                                    <th colspan="3">Mean Error (%) &darr;</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Source</td><td>82.0</td></tr>
-                                <tr><td>BN Stats</td><td>68.6</td></tr>
-                                <tr class="group-sep"><td>CoTTA</td><td>62.6</td></tr>
-                                <tr><td>RMT</td><td>59.9</td></tr>
-                                <tr><td>SATA</td><td>60.1</td></tr>
-                                <tr class="group-sep"><td>TENT-TTA</td><td>58.6</td></tr>
-                                <tr><td>TENT-CTTA</td><td>86.8</td></tr>
-                                <tr class="dss-row"><td>TENT-DSS (Ours)</td><td>57.9 (+28.9)</td></tr>
-                                <tr class="group-sep"><td>AaD-TTA</td><td>68.5</td></tr>
-                                <tr><td>AaD-CTTA</td><td>90.0</td></tr>
-                                <tr class="dss-row"><td>AaD-DSS (Ours)</td><td>68.4 (+21.6)</td></tr>
-                                <tr class="group-sep"><td>EATA-TTA</td><td>56.9</td></tr>
-                                <tr><td>EATA-CTTA</td><td>58.0</td></tr>
-                                <tr class="dss-row"><td>EATA-DSS (Ours)</td><td>56.7 (+1.3)</td></tr>
-                            </tbody>
-                        </table>
-                        </div>
-                        <p class="table-caption">Table 1: ImageNet-C results (ResNet-50 backbone). DSS restores CTTA performance to TTA levels.</p>
-
-                        <!-- CIFAR-100C -->
-                        <h4 style="margin-top:1.5em;">CIFAR-100C</h4>
-                        <div style="overflow-x:auto;">
-                        <table class="results-table">
-                            <thead>
                                 <tr>
-                                    <th>Method</th>
-                                    <th>Mean Error (%)</th>
+                                    <th>ImageNet-C</th>
+                                    <th>CIFAR-100C</th>
+                                    <th>CIFAR-10C</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>Source</td><td>46.4</td></tr>
-                                <tr><td>BN Stats</td><td>35.4</td></tr>
-                                <tr class="group-sep"><td>CoTTA</td><td>32.5</td></tr>
-                                <tr><td>RMT</td><td>30.2</td></tr>
-                                <tr><td>SATA</td><td>30.3</td></tr>
-                                <tr class="group-sep"><td>TENT-TTA</td><td>31.0</td></tr>
-                                <tr><td>TENT-CTTA</td><td>61.2</td></tr>
-                                <tr class="dss-row"><td>TENT-DSS (Ours)</td><td>31.5 (+29.7)</td></tr>
-                                <tr class="group-sep"><td>AaD-TTA</td><td>34.9</td></tr>
-                                <tr><td>AaD-CTTA</td><td>62.5</td></tr>
-                                <tr class="dss-row"><td>AaD-DSS (Ours)</td><td>35.0 (+27.5)</td></tr>
-                                <tr class="group-sep"><td>EATA-TTA</td><td>31.6</td></tr>
-                                <tr><td>EATA-CTTA</td><td>32.2</td></tr>
-                                <tr class="dss-row"><td>EATA-DSS (Ours)</td><td>31.4 (+0.8)</td></tr>
+                                <tr><td>Source</td><td>82.0</td><td>46.4</td><td>43.5</td></tr>
+                                <tr><td>BN Stats</td><td>68.6</td><td>35.4</td><td>20.4</td></tr>
+                                <tr class="group-sep"><td>CoTTA</td><td>62.6</td><td>32.5</td><td>16.2</td></tr>
+                                <tr><td>RMT</td><td>59.9</td><td>30.2</td><td>17.0</td></tr>
+                                <tr><td>SATA</td><td>60.1</td><td>30.3</td><td>16.1</td></tr>
+                                <tr class="group-sep"><td>TENT-TTA</td><td>58.6</td><td>31.0</td><td>18.6</td></tr>
+                                <tr><td>TENT-CTTA</td><td>86.8</td><td>61.2</td><td>20.7</td></tr>
+                                <tr class="dss-row"><td>TENT-DSS (Ours)</td><td>57.9 (+28.9)</td><td>31.5 (+29.7)</td><td>18.4 (+0.2)</td></tr>
+                                <tr class="group-sep"><td>AaD-TTA</td><td>68.5</td><td>34.9</td><td>19.6</td></tr>
+                                <tr><td>AaD-CTTA</td><td>90.0</td><td>62.5</td><td>22.0</td></tr>
+                                <tr class="dss-row"><td>AaD-DSS (Ours)</td><td>68.4 (+21.6)</td><td>35.0 (+27.5)</td><td>19.5 (+1.5)</td></tr>
+                                <tr class="group-sep"><td>EATA-TTA</td><td>56.9</td><td>31.6</td><td>18.1</td></tr>
+                                <tr><td>EATA-CTTA</td><td>58.0</td><td>32.2</td><td>17.9</td></tr>
+                                <tr class="dss-row"><td>EATA-DSS (Ours)</td><td>56.7 (+1.3)</td><td>31.4 (+0.8)</td><td>17.9 (0.0)</td></tr>
                             </tbody>
                         </table>
                         </div>
-                        <p class="table-caption">Table 2: CIFAR-100C results (ResNeXt-29 backbone).</p>
-
-                        <!-- CIFAR-10C -->
-                        <h4 style="margin-top:1.5em;">CIFAR-10C</h4>
-                        <div style="overflow-x:auto;">
-                        <table class="results-table">
-                            <thead>
-                                <tr>
-                                    <th>Method</th>
-                                    <th>Mean Error (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Source</td><td>43.5</td></tr>
-                                <tr><td>BN Stats</td><td>20.4</td></tr>
-                                <tr class="group-sep"><td>CoTTA</td><td>16.2</td></tr>
-                                <tr><td>RMT</td><td>17.0</td></tr>
-                                <tr><td>SATA</td><td>16.1</td></tr>
-                                <tr class="group-sep"><td>TENT-TTA</td><td>18.6</td></tr>
-                                <tr><td>TENT-CTTA</td><td>20.7</td></tr>
-                                <tr class="dss-row"><td>TENT-DSS (Ours)</td><td>18.4 (+0.2)</td></tr>
-                                <tr class="group-sep"><td>AaD-TTA</td><td>19.6</td></tr>
-                                <tr><td>AaD-CTTA</td><td>22.0</td></tr>
-                                <tr class="dss-row"><td>AaD-DSS (Ours)</td><td>19.5 (+1.5)</td></tr>
-                                <tr class="group-sep"><td>EATA-TTA</td><td>18.1</td></tr>
-                                <tr><td>EATA-CTTA</td><td>17.9</td></tr>
-                                <tr class="dss-row"><td>EATA-DSS (Ours)</td><td>17.9 (0.0)</td></tr>
-                            </tbody>
-                        </table>
-                        </div>
-                        <p class="table-caption">Table 3: CIFAR-10C results (WideResNet-28 backbone).</p>
+                        <p class="table-caption">Table 1: Mean error % (lower is better) across 15 corruptions at severity 5. Numbers in brackets show improvement of DSS over the corresponding CTTA baseline. Backbones: ResNet-50 (ImageNet-C), ResNeXt-29 (CIFAR-100C), WideResNet-28 (CIFAR-10C).</p>
                     </div>
                 </div>
             </div>
