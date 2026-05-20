@@ -13,7 +13,7 @@
   contents:
     - title: PhD
       institution: Image Analysis and Computer Vision Lab, IISc, Bangalore
-      year: 2020 -
+      year: 2020 - 2026
       # description:
       #   - Description 1.
       #   - Description 2.
@@ -28,41 +28,44 @@
       #   - Description 1.
       #   - Description 2.
 
-- title: Research Interests
-  type: nested_list
-  contents:
-    - title: Unsupervised Domain Adaptation
-      items:
-        - Designing methods to learn using labeled source along with unlabeled target domain data to obtain robust representations generalizing across domains.
-    - title: Cross-Domain Few Shot Learning
-      items:
-        - Designing effective methods capable of adapting a base model to an unseen task from an unseen domain given limited training samples.
-    - title: Source-Free Domain Adaptation
-      items:
-        - The objective is to adapt a model trained on a source domain to a target domain using only unlabelled samples.
-    - title: Test-Time Adaptation
-      items:
-        - The goal is to adapt a source trained model to a test domain in an online manner. The test domains can be continuously changing as well.
+#- title: Research Interests
+#  type: nested_list
+#  contents:
+#    - title: Unsupervised Domain Adaptation
+#      items:
+#        - Designing methods to learn using labeled source along with unlabeled target domain data to obtain robust representations generalizing across domains.
+#    - title: Cross-Domain Few Shot Learning
+#      items:
+#        - Designing effective methods capable of adapting a base model to an unseen task from an unseen domain given limited training samples.
+#    - title: Source-Free Domain Adaptation
+#      items:
+#        - The objective is to adapt a model trained on a source domain to a target domain using only unlabelled samples.
+#    - title: Test-Time Adaptation
+#      items:
+#        - The goal is to adapt a source trained model to a test domain in an online manner. The test domains can be continuously changing as well.
 
 - title: Work Experience
   type: time_table
   contents:
+    - title: Senior Software Engineer
+      institution: PathPartner Technology, Bangalore
+      year: Jan 2020 - Sep 2020
+      description:
+        - DSP Optimization for ML Workloads - Implemented SIMD-vectorized kernels using intrinsics to accelerate TensorFlow operations on Cadence Tensilica Vision DSPs, improving execution efficiency on resource-constrained edge devices.
     - title: Software Engineer
       institution: PathPartner Technology, Bangalore
-      year: 2017 - 2020
+      year: Jul 2017 - Dec 2019
       description:
-        - Worked on CNN based Face Detection for Driver Monitoring System.
-        - Porting Deep Convolutional Models to edge devices.
-        - Developed SIMD vectorized algorithms to support TensorFlow APIs for Cadence Vision DSPs.
-        # - title: Description 3.
-        #   contents:
-        #     - Sub-description 1.
-        #     - Sub-description 2.
-    - title: Intern
-      institution: Wipro Technologies, Bangalore
-      year: 2016
-      description:
-        - Worked on Pedestrian Detection module as a part of “Wipro Autonomous Vehicle” team, using HOG feature extractor and SVM as classifier.
+        - Face Detector for Driver Monitoring System - Built and deployed a Single-Shot Detector-based face detection system for driver monitoring SDK, integrated across Intel, ARM, Qualcomm, and Cadence platforms for real-time inference.
+        - Edge Deployment of Deep Learning Models - Ported and optimized TensorFlow/Caffe models to edge devices using SNPE, OpenVINO, and ArmNN, enabling efficient on-device inference.
+        - MLPerf-style Benchmarking - Benchmarked representative CNN architectures (e.g., ResNet, Inception) on NVIDIA Jetson TX2 and Nano, analyzing latency, throughput, and energy trade-offs to inform deployment decisions on edge hardware.
+        - Industrial Defect Detection - Developed a CNN-based visual inspection system for detecting defective vacuum-sealed food packages for real-time deployment in industrial production pipelines.
+
+#    - title: Intern
+#      institution: Wipro Technologies, Bangalore
+#      year: 2016
+#      description:
+#        - Worked on Pedestrian Detection module as a part of “Wipro Autonomous Vehicle” team, using HOG feature extractor and SVM as classifier.
 
     # - title: Director
     #   institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.

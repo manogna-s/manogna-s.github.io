@@ -6,7 +6,7 @@
       booktitle="CVPR Workshops",
       abstract = "Visual storytelling with diffusion models has made impressive strides in maintaining character consistency across narrative scenes. However, a critical gap remains: while these methods ensure a character remains consistent across scenes, they provide no systematic method to ensure if fine-grained attributes such as color and textures of clothing, accessories are faithfully rendered in the generated images. Towards this goal, we introduce AttriStory, a benchmark enabling attribute realization in visual storytelling. We curate 200 multi-scene stories across 10 distinct artistic styles using Large Language Model. Each scene is constructed with detailed attribute specifications to enable rich visual narratives. Further, to address attribute realization, we propose a plug-and-play latent optimization module that operates during early denoising steps, when the model establishes structural and semantic content. We achieve this through AttriLoss objective designed to maximize alignment between the cross-attention maps for desired attribute-object pairs while suppressing spurious associations, guiding models to localize attributes correctly. This approach operates orthogonally to existing consistency mechanisms, integrating seamlessly with current story generation pipelines without requiring architectural modifications. Our experiments demonstrate consistent improvements on incorporating AttriLoss across all baselines. This work positions attribute realization as a distinct, complementary dimension of visual storytelling, alongside character consistency, advancing the field toward fine-grained attribute-controlled story generation.",
       website={https://manogna-s.github.io/attristory/},
-      selected={false}
+      selected={true}
 }
 
 
@@ -23,7 +23,7 @@
       website={https://manogna-s.github.io/segassist/},
       arxiv={2508.20029},
       code = {https://github.com/manogna-s/SegAssist},
-      selected={true}
+      selected={false}
 }
 
 
@@ -158,26 +158,5 @@ html={https://link.springer.com/chapter/10.1007/978-3-031-25072-9_17},
 pdf={https://github.com/manogna-s/da-fer/blob/main/DIFC_WCPA_ECCVW'22.pdf},
 website={https://manogna-s.github.io/difc/},
 selected={false}
-}
-
-
-@InProceedings{jumpstyle,
-abbr={ICLRW},
-author="Singh, Aakash
-and Sreenivas, Manogna
-and Biswas, Soma",
-editor="Karlinsky, Leonid
-and Michaeli, Tomer
-and Nishino, Ko",
-title="JumpStyle: A Framework for Data-Efficient Online Adaptation",
-booktitle="ICLR Workshops",
-abstract="Research in deep learning is restrictive in developing countries due to a lack of computational resources, quality training data, and expert knowledge, which negatively impacts the performance of deep networks. Moreover, these models are prone to suffer from distribution shift during testing. To address these challenges, this paper presents a novel approach for fine-tuning deep networks in a Domain Generalization setting. The proposed framework, JumpStyle, comprises two key components: (1) an innovative initialization technique that jumpstarts the adaptation process, and (2) the use of style-aware augmentation with pseudo-labeling, in conjunction with a simple and effective test-time adaptation baseline named Tent. Importantly, JumpStyle only requires access to a pre-trained model and is not limited by the training method. The effectiveness of this approach is extensively evaluated through experiments.",
-year="2023",
-publisher="Springer Nature Switzerland",
-address="Cham",
-pages="262--277",
-isbn="978-3-031-25072-9",
-selected={false},
-pdf={https://pml4dc.github.io/iclr2023/pdf/PML4DC_ICLR2023_47.pdf}
 }
 
