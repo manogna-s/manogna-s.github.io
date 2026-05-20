@@ -4,7 +4,7 @@
 :root {
     /* --link-color: #3273dc; */
     --link-color: #362FD9;
-    --accent-color: #FF1700;
+    --accent-color: #1c1a7a;
 }
 
 body {
@@ -303,25 +303,30 @@ pre[class*="language-"] {
 
 pre[class*="language-"] button {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 8px;
+    right: 8px;
 
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.95rem;
+    padding: 0;
     background-color: white;
-
-    /* border: ridge 2px #7b7b7c; */
-    border: ridge 2px var(--link-color);
-    border-radius: 5px;
-    text-shadow: #c4c4c4 0 0 1px;
-    color: var(--link-color);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: #555;
+    opacity: 0.75;
+    transition: opacity 0.2s, background-color 0.2s, color 0.2s;
 }
 
 pre[class*="language-"] button:hover {
     cursor: pointer;
-    background-color: var(--link-color);
-    color: white;
+    opacity: 1;
+    background-color: #f0f0f0;
+    color: #000;
+    border-color: #999;
 }
 
 #bibtex {
