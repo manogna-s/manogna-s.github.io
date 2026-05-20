@@ -7,28 +7,72 @@
     <meta property="og:title" content="PhISH-Net" />
     <meta property="og:description" content="PhISH-Net: Physics Inspired System for High Resolution Underwater Image Enhancement" />
     <meta property="og:url" content="https://manogna-s.github.io/phish-net" />
-    <meta name="keywords" content="Underwater Image Enhancement, Physics-based, Image Processing" />
+    <meta name="keywords" content="Underwater Image Enhancement, Physics-based, Retinex, Image Processing, WACV" />
     <meta name="viewport" content="initial-scale=1" />
 
     <title>PhISH-Net</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
-    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="../pstarc/static/css/index.css">
-    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/prism.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-size: 1.0rem; }
+
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+        figure img {
+            max-height: 480px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .section-alt { background-color: #f9f9f9; }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88em;
+        }
+        .results-table th, .results-table td {
+            padding: 5px 8px;
+            text-align: center !important;
+            border: 1px solid #ddd;
+        }
+        .results-table th:first-child, .results-table td:first-child { text-align: center !important; }
+        .results-table th { background-color: #f0f0f0; font-weight: 600; }
+        .results-table tr.phish-row td { font-weight: bold; color: #2c6e49; }
+        .results-table tr.group-sep td { border-top: 2px solid #aaa; }
+        .results-table tr.section-header td {
+            background-color: #e8e8e8;
+            font-weight: 600;
+        }
+        .table-caption {
+            margin-top: 0.6em;
+            font-size: 0.88em;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-body">
             <div class="container is-max-desktop">
@@ -54,10 +98,10 @@
                             </span>
                         </div>
                         <p style="padding: 0.25rem;" />
-                        <div class="is-size-5 publication-authors">
+                        <div class="is-size-6 publication-authors">
                             <span class="author-block">Indian Institute of Science, Bengaluru, India</span>
                             <br>
-                            <span class="author-block"><b>Winter Conference on Applications of Computer Vision (WACV), 2024</b></span>
+                            <span class="author-block"><b>WACV, 2024</b></span>
                         </div>
 
                         <p style="padding: 20px;" />
@@ -66,13 +110,13 @@
                             <button class="external-link button is-medium is-ghost publication-links is-rounded">
                                 <a href="https://openaccess.thecvf.com/content/WACV2024/papers/Chandrasekar_PhISH-Net_Physics_Inspired_System_for_High_Resolution_Underwater_Image_Enhancement_WACV_2024_paper.pdf" target="_blank" style="text-decoration:none;">
                                     <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
-                                    <span>paper</span>
+                                    <span>Paper</span>
                                 </a>
                             </button>
                             <button class="external-link button is-medium is-ghost publication-links is-rounded">
                                 <a href="https://github.com/chandrasekaraditya/PhISH-Net" target="_blank" style="text-decoration:none;">
                                     <span class="icon is-small"><i class="fab fa-github"></i></span>
-                                    <span>code</span>
+                                    <span>Code</span>
                                 </a>
                             </button>
                         </div>
@@ -84,36 +128,337 @@
 
     <span style="display:block; margin-top:-1.75em;"/>
 
+    <!-- Abstract -->
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
-                <div class="column is-three-quarters">
+                <div class="column">
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
-                        <p><small>
-                            Underwater imaging presents numerous challenges due to refraction, light absorption, and scattering, resulting in color degradation, low contrast, and blurriness. Enhancing underwater images is crucial for high-level computer vision tasks, but existing methods either neglect the physics-based image formation process or require expensive computations. In this paper, we propose an effective framework that combines a physics-based Underwater Image Formation Model (UIFM) with a deep image enhancement approach based on the retinex model. Firstly, we remove backscatter by estimating attenuation coefficients using depth information. Then, we employ a retinex model-based deep image enhancement module to enhance the images. To ensure adherence to the UIFM, we introduce a novel Wideband Attenuation prior. The proposed PhISH-Net framework achieves real-time processing of high-resolution underwater images using a lightweight neural network and a bilateral-grid-based upsampler. Extensive experiments on two underwater image datasets demonstrate the superior performance of our method compared to state-of-the-art techniques. Additionally, qualitative evaluation on a cross-dataset scenario confirms its generalization capability. Our contributions lie in combining the physics-based UIFM with deep image enhancement methods, introducing the wideband attenuation prior, and achieving superior performance and efficiency.
-                        </small></p>
+                        <p>
+                            Underwater imaging presents numerous challenges due to refraction, light absorption, and scattering, resulting in color degradation, low contrast, and blurriness. Enhancing underwater images is crucial for high-level computer vision tasks, but existing methods either neglect the physics-based image formation process or require expensive computations. In this paper, we propose an effective framework that combines a physics-based Underwater Image Formation Model (UIFM) with a deep image enhancement approach based on the retinex model. Firstly, we remove backscatter by estimating attenuation coefficients using depth information. Then, we employ a retinex model-based deep image enhancement module to enhance the images. To ensure adherence to the UIFM, we introduce a novel <span class="method-name">Wideband Attenuation prior</span>. The proposed <span class="method-name">PhISH-Net</span> framework achieves real-time processing of high-resolution underwater images using a lightweight neural network and a bilateral-grid-based upsampler. Extensive experiments on two underwater image datasets demonstrate the superior performance of our method compared to state-of-the-art techniques.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Problem Setting -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Problem Setting</h2>
+                    <div class="content">
+                        <p>
+                            Underwater images are degraded by two physical effects: (i) <b>direct signal attenuation</b>, where colors are absorbed differently by water as a function of depth and wavelength (red absorbed more than blue/green); and (ii) <b>backscatter</b>, from light scattered by suspended particles toward the camera. We follow the UIFM from Sea-Thru, which models any captured image \(I\) per channel \(c \in \{r,g,b\}\) as:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ I_c = D_c + B_c \tag{1} \]
+                        </div>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ I = J \cdot e^{-\beta_d z} + B^\infty (1 - e^{-\beta_b z}) \tag{2} \]
+                        </div>
+                        <p>
+                            Here \(J\) is the unattenuated scene, \(z\) is depth, \(\beta_d\) is the wideband attenuation coefficient, \(\beta_b\) is the backscatter coefficient, and \(B^\infty\) is the background backscatter color. The goal is to recover \(J\) from \(I\) and a depth map \(z\).
+                        </p>
+                    </div>
+
+                    <figure>
+                        <img src="./static/images/Results_UIEB.png" alt="Sample PhISH-Net enhancement results from UIEB dataset">
+                        <figcaption>
+                            <b>Fig. 1:</b> Sample results on the UIEB dataset. <b>Top:</b> input underwater images; <b>Bottom:</b> corresponding PhISH-Net enhanced outputs.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Proposed Method: PhISH-Net</h2>
+
+                    <h3 class="title is-4">Backscatter Estimation</h3>
+                    <div class="content">
+                        <p>
+                            We first estimate and remove the backscatter component \(B\). The depth map \(z\) is obtained from an off-the-shelf monocular depth estimator (boosted MiDaS). The depth map is partitioned into 10 evenly spaced clusters; within each cluster, the darkest 1% of RGB triplets (where \(I \approx B\)) are collected into set \(\Omega\). An overestimate of backscatter is \(\hat{B}(\Omega) \approx I(\Omega)\), which follows:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \hat{B} = \underbrace{J' \cdot e^{-\beta_{d'} z}}_{\text{Residual}} + B^\infty(1 - e^{-\beta_b z}) \tag{3} \]
+                        </div>
+                        <p>
+                            The coefficients \(B^\infty, \beta_b, \beta_{d'}, J'\) are estimated by non-linear least squares fitting. The direct signal is then \(D_c = I_c - \hat{B}_c\).
+                        </p>
+                    </div>
+
+                    <figure>
+                        <img src="./static/images/Results_Depth.png" alt="Impact of depth boosting on depth estimation">
+                        <figcaption>
+                            <b>Fig. 2: Impact of Depth Boosting.</b> (a) Sample image from the UIEB dataset. (b) Depth estimate from the base MiDaS model. (c) Depth estimate after boosting, showing finer detail for backscatter estimation.
+                        </figcaption>
+                    </figure>
+
+                    <p style="padding: 8px;" />
+
+                    <h3 class="title is-4">PhISH-Net: Retinex-Based Enhancement</h3>
+                    <div class="content">
+                        <p>
+                            The direct signal \(D\) resembles a low-light underexposed image. Following the retinex model, we decompose \(D = S \ast \tilde{I}\) where \(S\) is the illumination map and \(\tilde{I}\) is the reflectance (enhanced image). PhISH-Net predicts a 3-channel illumination map \(S_{hr}\) from which the enhanced image is obtained as \(I_{out} = D_{hr} / (S_{hr} + \epsilon)\).
+                        </p>
+                        <p>
+                            The network uses a lightweight convolutional encoder to extract features at low resolution. Local and global features are then used to predict bilateral grid coefficients, which are applied to a full-resolution guide map to produce \(S_{hr}\). This keeps most computation at low resolution while generating high-resolution outputs.
+                        </p>
+                    </div>
+
+                    <h3 class="title is-4">Wideband Attenuation Prior</h3>
+                    <div class="content">
+                        <p>
+                            To couple the deep enhancement with the physics of the UIFM, we introduce a novel loss that constrains the predicted illumination map to respect the known behavior of the attenuation coefficient \(\beta_d\). A coarse estimate of \(\beta_d\) can be derived from the predicted \(S_{hr}\) and depth \(z\):
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \hat{\beta}_d(z) = \frac{-\log S_{hr}}{z} \tag{4} \]
+                        </div>
+                        <p>
+                            Sea-Thru established that \(\beta_d\) follows a two-term exponential decay with depth:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \beta_d(z) = a \cdot e^{-b \cdot z} + c \cdot e^{-d \cdot z} \tag{5} \]
+                        </div>
+                        <p>
+                            The wideband attenuation prior loss enforces this relationship:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}_a = \left\|\frac{-\log S_{hr}}{z} - (a e^{-bz} + c e^{-dz})\right\|^2 \tag{6} \]
+                        </div>
+                        <p>
+                            The coefficients \(V = [a, b, c, d]\) are predicted by a learnable network from encoder features. The total training loss combines reconstruction, color, smoothness, and attenuation prior:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L} = w_r \mathcal{L}_r + w_c \mathcal{L}_c + w_s \mathcal{L}_s + w_a \mathcal{L}_a \tag{7} \]
+                        </div>
+                        <p>
+                            with \(w_r = 10,\ w_s = 2,\ w_c = 1,\ w_a = 0.5\).
+                        </p>
+                    </div>
+
+                    <figure>
+                        <img src="./static/images/PhISHNet.png" alt="PhISH-Net pipeline overview">
+                        <figcaption>
+                            <b>Fig. 3:</b> PhISH-Net pipeline. (1) Backscatter is estimated and removed using depth. (2) PhISH-Net predicts bilateral grid coefficients from the low-resolution direct signal, yielding a high-resolution illumination map and enhanced image via the retinex model.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Results</h2>
+
+                    <!-- Table 1: Main results -->
+                    <h3 class="title is-4">Comparison with State-of-the-Art</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>PSNR&uarr;</th>
+                                    <th>PSNR-L&uarr;</th>
+                                    <th>SSIM&uarr;</th>
+                                    <th>PCQI&uarr;</th>
+                                    <th>UCIQE&uarr;</th>
+                                    <th>UIQM&uarr;</th>
+                                    <th>UICM&uarr;</th>
+                                    <th>UIConM&uarr;</th>
+                                    <th>CCF&uarr;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="section-header">
+                                    <td colspan="10">UIEB Dataset</td>
+                                </tr>
+                                <tr>
+                                    <td>FUnIE-GAN</td>
+                                    <td>17.38</td><td>20.06</td><td>0.729</td><td>0.639</td>
+                                    <td>0.546</td><td>1.399</td><td>5.778</td><td>1.161</td><td>21.06</td>
+                                </tr>
+                                <tr>
+                                    <td>UW-GAN</td>
+                                    <td>16.23</td><td>19.15</td><td>0.764</td><td>0.719</td>
+                                    <td>0.566</td><td>1.347</td><td>5.555</td><td>1.122</td><td>22.84</td>
+                                </tr>
+                                <tr>
+                                    <td>UWCNN</td>
+                                    <td>12.02</td><td>13.78</td><td>0.647</td><td>0.392</td>
+                                    <td>0.506</td><td>1.065</td><td>1.922</td><td>0.940</td><td>11.00</td>
+                                </tr>
+                                <tr>
+                                    <td>HLRP</td>
+                                    <td>13.03</td><td>13.79</td><td>0.287</td><td>0.233</td>
+                                    <td>0.636</td><td>1.648</td><td>9.509</td><td>1.192</td><td>36.93</td>
+                                </tr>
+                                <tr>
+                                    <td>MLLE</td>
+                                    <td>18.11</td><td>19.47</td><td>0.799</td><td>0.911</td>
+                                    <td>0.604</td><td>1.629</td><td>4.827</td><td>1.012</td><td>36.27</td>
+                                </tr>
+                                <tr>
+                                    <td>IBLA</td>
+                                    <td>15.56</td><td>17.78</td><td>0.739</td><td>0.695</td>
+                                    <td>0.602</td><td>1.440</td><td>7.331</td><td>1.014</td><td>28.98</td>
+                                </tr>
+                                <tr>
+                                    <td>TOPAL</td>
+                                    <td>20.59</td><td>22.67</td><td>0.867</td><td>0.715</td>
+                                    <td>0.584</td><td>1.221</td><td>5.009</td><td>1.032</td><td>21.22</td>
+                                </tr>
+                                <tr>
+                                    <td>UDCP</td>
+                                    <td>11.93</td><td>12.73</td><td>0.644</td><td>0.612</td>
+                                    <td>0.596</td><td>1.573</td><td>7.199</td><td>1.175</td><td>27.14</td>
+                                </tr>
+                                <tr>
+                                    <td>Water-Net</td>
+                                    <td>18.70</td><td>19.72</td><td>0.862</td><td>0.693</td>
+                                    <td>0.571</td><td>1.264</td><td>5.064</td><td>1.063</td><td>16.50</td>
+                                </tr>
+                                <tr>
+                                    <td>ICSP</td>
+                                    <td>11.79</td><td>13.10</td><td>0.634</td><td>0.732</td>
+                                    <td>0.564</td><td>1.476</td><td>6.301</td><td>1.048</td><td>26.69</td>
+                                </tr>
+                                <tr class="phish-row group-sep">
+                                    <td>PhISH-Net</td>
+                                    <td>21.14</td><td>23.43</td><td>0.869</td><td>0.929</td>
+                                    <td>0.641</td><td>1.597</td><td>8.817</td><td>1.151</td><td>37.24</td>
+                                </tr>
+                                <tr class="section-header">
+                                    <td colspan="10">EUVP Dataset</td>
+                                </tr>
+                                <tr>
+                                    <td>FUnIE-GAN</td>
+                                    <td>20.56</td><td>27.47</td><td>0.887</td><td>0.893</td>
+                                    <td>0.509</td><td>1.555</td><td>4.098</td><td>1.250</td><td>29.23</td>
+                                </tr>
+                                <tr>
+                                    <td>UW-GAN</td>
+                                    <td>15.76</td><td>22.84</td><td>0.916</td><td>0.965</td>
+                                    <td>0.526</td><td>1.474</td><td>3.391</td><td>1.216</td><td>29.31</td>
+                                </tr>
+                                <tr>
+                                    <td>UWCNN</td>
+                                    <td>15.52</td><td>18.45</td><td>0.844</td><td>0.645</td>
+                                    <td>0.543</td><td>1.421</td><td>1.638</td><td>1.261</td><td>19.57</td>
+                                </tr>
+                                <tr>
+                                    <td>MLLE</td>
+                                    <td>14.25</td><td>16.19</td><td>0.613</td><td>1.030</td>
+                                    <td>0.588</td><td>1.730</td><td>2.991</td><td>0.776</td><td>36.22</td>
+                                </tr>
+                                <tr>
+                                    <td>IBLA</td>
+                                    <td>16.92</td><td>23.09</td><td>0.864</td><td>0.989</td>
+                                    <td>0.590</td><td>1.562</td><td>4.618</td><td>1.110</td><td>39.54</td>
+                                </tr>
+                                <tr>
+                                    <td>TOPAL</td>
+                                    <td>18.30</td><td>24.48</td><td>0.934</td><td>0.994</td>
+                                    <td>0.583</td><td>1.491</td><td>3.252</td><td>1.199</td><td>34.90</td>
+                                </tr>
+                                <tr>
+                                    <td>Water-Net</td>
+                                    <td>18.26</td><td>24.35</td><td>0.936</td><td>0.883</td>
+                                    <td>0.579</td><td>1.498</td><td>3.147</td><td>1.231</td><td>25.62</td>
+                                </tr>
+                                <tr>
+                                    <td>ICSP</td>
+                                    <td>12.13</td><td>14.51</td><td>0.671</td><td>0.980</td>
+                                    <td>0.575</td><td>1.590</td><td>4.092</td><td>0.973</td><td>41.29</td>
+                                </tr>
+                                <tr class="phish-row group-sep">
+                                    <td>PhISH-Net</td>
+                                    <td>20.92</td><td>27.47</td><td>0.856</td><td>1.038</td>
+                                    <td>0.592</td><td>1.593</td><td>4.357</td><td>1.151</td><td>38.86</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 1:</b> Image quality metrics on UIEB and EUVP datasets (all higher is better). PhISH-Net achieves the best PSNR, PSNR-L, and SSIM on UIEB, and is competitive across all metrics on EUVP.</p>
+
+                    <!-- Table 2: Ablation -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Ablation Study</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>\(\mathcal{L}_r\)</th>
+                                    <th>\(\mathcal{L}_c\)</th>
+                                    <th>\(\mathcal{L}_s\)</th>
+                                    <th>\(\mathcal{L}_a\)</th>
+                                    <th>PSNR&uarr;</th>
+                                    <th>SSIM&uarr;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>&#10003;</td><td></td><td></td><td></td>
+                                    <td>20.80</td><td>0.830</td>
+                                </tr>
+                                <tr>
+                                    <td>&#10003;</td><td>&#10003;</td><td></td><td></td>
+                                    <td>20.86</td><td>0.832</td>
+                                </tr>
+                                <tr>
+                                    <td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td></td>
+                                    <td>20.87</td><td>0.832</td>
+                                </tr>
+                                <tr class="phish-row group-sep">
+                                    <td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td>
+                                    <td>21.14</td><td>0.869</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 2:</b> Ablation of loss components on UIEB. The wideband attenuation prior \(\mathcal{L}_a\) provides the largest single gain, confirming the value of physics-based supervision.</p>
+
+                    <!-- Photofinishing -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Impact of Photofinishing</h3>
+                    <figure>
+                        <img src="./static/images/Results_PF.png" alt="Impact of photofinishing post-processing">
+                        <figcaption>
+                            <b>Fig. 4: Impact of Photofinishing (PF).</b> Left: raw underwater image; Centre: PhISH-Net output; Right: PhISH-Net + PF, showing improved naturalness and colour balance.
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BibTeX -->
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h3 class="title">BibTeX</h3>
-            <pre><code class="language-bibtex">@InProceedings{chandrasekar2024phishnet,
-  abbr={WACV},
-  author={Chandrasekar, Aditya and Sreenivas, Manogna and Biswas, Soma},
-  title={PhISH-Net: Physics Inspired System for High Resolution Underwater Image Enhancement},
-  booktitle={Winter Conference on Applications of Computer Vision},
-  year={2024}
+            <pre class="language-bibtex"><code class="language-bibtex">@InProceedings{chandrasekar2024phishnet,
+  author    = {Chandrasekar, Aditya and Sreenivas, Manogna and Biswas, Soma},
+  title     = {PhISH-Net: Physics Inspired System for High Resolution Underwater Image Enhancement},
+  booktitle = {Winter Conference on Applications of Computer Vision},
+  year      = {2024}
 }</code></pre>
         </div>
     </section>
 
-    <script src="../pstarc/static/js/index.js"></script>
-    <script src="../pstarc/static/js/prism.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
 </body>
 
 </html>
