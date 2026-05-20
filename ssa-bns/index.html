@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="SSA-BNS" />
+    <meta property="og:description" content="Similar Class Style Augmentation for Efficient Cross-Domain Few-Shot Learning" />
+    <meta property="og:url" content="https://manogna-s.github.io/ssa-bns" />
+    <meta name="keywords" content="Cross-Domain Few-Shot Learning, Style Augmentation, Domain Generalization" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>SSA-BNS</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/index.css">
+    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 5px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                Similar Class Style Augmentation for Efficient Cross-Domain Few-Shot Learning
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Indian Institute of Science, Bengaluru, India</span>
+                            <br>
+                            <span class="author-block"><b>CVPR Workshops (ECV), 2023</b></span>
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://openaccess.thecvf.com/content/CVPR2023W/ECV/papers/Sreenivas_Similar_Class_Style_Augmentation_for_Efficient_Cross-Domain_Few-Shot_Learning_CVPRW_2023_paper.pdf" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>paper</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p><small>
+                            Cross-Domain Few-Shot Learning (CD-FSL) aims to recognize new classes from unseen domains, given limited training samples. Majority of the state-of-the-art approaches for this task introduce new task-specific additional parameters for adapting to the novel task, which involves changing the trained model architecture, in addition to increasing the number of model parameters. The first contribution of this work is to revisit the existing approaches like modifying the Batch Normalization affine parameters and the scale hyperparameter in cosine similarity based softmax loss for adapting the trained model to the new tasks, without changing the model architecture. Secondly, to aid the model learning with few examples per class, we propose to augment the data of each class with the styles of the semantically similar classes. Extensive evaluation on the challenging Meta-Dataset shows that this simple framework is very effective for the CD-FSL task. We also show that the Similar-class Style Augmentation module can be seamlessly integrated with existing approaches to further improve their performance, thus establishing the state-of-the-art in this challenging area.
+                        </small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre><code class="language-bibtex">@InProceedings{sreenivas2023ssabns,
+  abbr={CVPRW},
+  author={Sreenivas, Manogna and Biswas, Soma},
+  title={Similar Class Style Augmentation for Efficient Cross-Domain Few-Shot Learning},
+  booktitle={CVPR Workshops},
+  year={2023},
+  publisher={Springer Nature Switzerland}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="../pstarc/static/js/index.js"></script>
+    <script src="../pstarc/static/js/prism.js"></script>
+</body>
+
+</html>

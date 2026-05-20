@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="DSS" />
+    <meta property="og:description" content="A Simple Signal for Domain Shift" />
+    <meta property="og:url" content="https://manogna-s.github.io/dss" />
+    <meta name="keywords" content="Test-Time Adaptation, Continual Test-Time Adaptation, Domain Shift Detection" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>DSS</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/index.css">
+    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 5px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                A Simple Signal for Domain Shift
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://goirik-chakrabarty.github.io" target="_blank">Goirik Chakrabarty</a><sup>1</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a><sup>2</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a><sup>2</sup>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>1</sup>IISER Pune</span>
+                            &nbsp;&nbsp;
+                            <span class="author-block"><sup>2</sup>Indian Institute of Science, Bengaluru, India</span>
+                            <br>
+                            <span class="author-block"><b>ICCV Workshops (VCL), 2023</b></span>
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://openaccess.thecvf.com/content/ICCV2023W/VCL/papers/Chakrabarty_A_Simple_Signal_for_Domain_Shift_ICCVW_2023_paper.pdf" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>paper</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p><small>
+                            Test time domain adaptation has come to the forefront as a challenging scenario in recent times. Although single domain test-time adaptation has been well studied and shown impressive performance, this can be limiting when the model is deployed in a dynamic test environment. We explore this continual domain test time adaptation problem here. Specifically, we question if we can translate the effectiveness of single domain adaptation methods to continuous test-time adaptation scenario. We take a step towards bridging the gap between these two settings by proposing a domain shift detection mechanism and hence allowing us to employ the current test-time adaptation methods even in a continual setting. We propose to use the given source domain trained model to continually measure the similarity between the feature representations of the consecutive batches. A domain shift is detected when this measure crosses a certain threshold, which we use as a trigger to reset the model back to source and continue test-time adaptation. We demonstrate the effectiveness of our method by performing experiments across datasets, batch sizes and different single domain test-time adaptation baselines.
+                        </small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre><code class="language-bibtex">@InProceedings{chakrabarty2023dss,
+  abbr={ICCVW},
+  author={Chakrabarty, Goirik and Sreenivas, Manogna and Biswas, Soma},
+  title={A Simple Signal for Domain Shift},
+  booktitle={ICCV Workshops},
+  year={2023},
+  publisher={Springer Nature Switzerland}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="../pstarc/static/js/index.js"></script>
+    <script src="../pstarc/static/js/prism.js"></script>
+</body>
+
+</html>

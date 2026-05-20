@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="SANTA" />
+    <meta property="og:description" content="SANTA: Source Anchoring Network and Target Alignment for Continual Test Time Adaptation" />
+    <meta property="og:url" content="https://manogna-s.github.io/santa" />
+    <meta name="keywords" content="Test-Time Adaptation, Continual Test-Time Adaptation, Domain Adaptation, Distribution Shift" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>SANTA</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/index.css">
+    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 5px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                SANTA: Source Anchoring Network and Target Alignment for Continual Test Time Adaptation
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://goirik-chakrabarty.github.io" target="_blank">Goirik Chakrabarty</a><sup>1</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a><sup>2</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a><sup>2</sup>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>1</sup>Indian Institute of Science Education and Research, Pune</span>
+                            &nbsp;&nbsp;
+                            <span class="author-block"><sup>2</sup>Indian Institute of Science, Bengaluru, India</span>
+                            <br>
+                            <span class="author-block"><b>Transactions on Machine Learning Research (TMLR), 2023</b></span>
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://openreview.net/forum?id=V7guVYzvE4" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="ai ai-open-review"></i></span>
+                                    <span>OpenReview</span>
+                                </a>
+                            </button>
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://openreview.net/pdf?id=V7guVYzvE4" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>paper</span>
+                                </a>
+                            </button>
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://github.com/goirik-chakrabarty/SANTA" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fab fa-github"></i></span>
+                                    <span>code</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p><small>
+                            Adapting a trained model to perform satisfactorily on continually changing test environments is an important and challenging task. In this work, we propose a novel framework, SANTA, which aims to satisfy the following characteristics required for online adaptation: 1) can work effectively for different (even small) batch sizes; 2) should continue to work well on the source domain; 3) should have minimal tunable hyperparameters and storage requirements. Given a pre-trained network trained on source domain data, the proposed framework modifies the affine parameters of the batch normalization layers using source anchoring based self-distillation. This ensures that the model incorporates knowledge from the newly encountered domains, without catastrophically forgetting the previously seen domains. We also propose a source-prototype driven contrastive alignment to ensure natural grouping of the target samples, while maintaining the already learnt semantic information. Extensive evaluation on three benchmark datasets under challenging settings justify the effectiveness of SANTA for real-world applications.
+                        </small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre><code class="language-bibtex">@article{chakrabarty2023santa,
+  abbr={TMLR},
+  author={Chakrabarty, Goirik and Sreenivas, Manogna and Biswas, Soma},
+  title={SANTA: Source Anchoring Network and Target Alignment for Continual Test Time Adaptation},
+  journal={Transactions on Machine Learning Research},
+  year={2023}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="../pstarc/static/js/index.js"></script>
+    <script src="../pstarc/static/js/prism.js"></script>
+</body>
+
+</html>

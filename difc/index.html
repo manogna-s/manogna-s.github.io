@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="DIFC" />
+    <meta property="og:description" content="Improved Cross-Dataset Facial Expression Recognition by Handling Data Imbalance and Feature Confusion" />
+    <meta property="og:url" content="https://manogna-s.github.io/difc" />
+    <meta name="keywords" content="Facial Expression Recognition, Domain Adaptation, Data Imbalance" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>DIFC</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/index.css">
+    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 5px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                Improved Cross-Dataset Facial Expression Recognition by Handling Data Imbalance and Feature Confusion
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a><sup>1</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Sawa Takamuku<sup>2</sup></span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a><sup>1</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Aditya Chepuri<sup>3</sup></span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Balasubramanian Vengatesan<sup>3</sup></span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Naotake Natori<sup>2</sup></span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>1</sup>Indian Institute of Science, Bengaluru, India</span>
+                            &nbsp;&nbsp;
+                            <span class="author-block"><sup>2</sup>Aisin Corporation, Tokyo, Japan</span>
+                            &nbsp;&nbsp;
+                            <span class="author-block"><sup>3</sup>Aisin Automotive Haryana Pvt Ltd., Bangalore, India</span>
+                            <br>
+                            <span class="author-block"><b>ECCV Workshops (WCPA), 2022</b></span>
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://link.springer.com/chapter/10.1007/978-3-031-25072-9_17" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>paper</span>
+                                </a>
+                            </button>
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://github.com/manogna-s/da-fer" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fab fa-github"></i></span>
+                                    <span>code</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p><small>
+                            Facial Expression Recognition (FER) models trained on one dataset (source) usually do not perform well on a different dataset (target) due to the implicit domain shift between different datasets. In addition, FER data is naturally highly imbalanced, with a majority of the samples belonging to few expressions like neutral, happy and relatively fewer samples coming from expressions like disgust, fear, etc., which makes the FER task even more challenging. This class imbalance of the source and target data (which may be different), along with other factors like similarity of few expressions, etc., can result in unsatisfactory target classification performance due to confusion between the different classes. In this work, we propose an integrated module, termed DIFC, which can not only handle the source Data Imbalance, but also the Feature Confusion of the target data for improved classification of the target expressions. We integrate this DIFC module with an existing Unsupervised Domain Adaptation (UDA) approach to handle the domain shift and show that the proposed simple yet effective module can result in significant performance improvement on four benchmark datasets for Cross-Dataset FER (CD-FER) task. We also show that the proposed module works across different architectures and can be used with other UDA baselines to further boost their performance.
+                        </small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre><code class="language-bibtex">@InProceedings{sreenivas2022difc,
+  abbr={ECCVW},
+  author={Sreenivas, Manogna and Takamuku, Sawa and Biswas, Soma
+          and Chepuri, Aditya and Vengatesan, Balasubramanian and Natori, Naotake},
+  title={Improved Cross-Dataset Facial Expression Recognition by Handling
+         Data Imbalance and Feature Confusion},
+  booktitle={ECCV Workshops},
+  year={2022},
+  publisher={Springer Nature Switzerland}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="../pstarc/static/js/index.js"></script>
+    <script src="../pstarc/static/js/prism.js"></script>
+</body>
+
+</html>
