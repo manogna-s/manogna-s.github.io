@@ -155,6 +155,10 @@
                         <p>
                             The key challenge is: <strong>can we automatically detect when a domain shift has occurred, so that TTA methods can be applied effectively in a continual setting, without requiring oracle domain shift labels?</strong>
                         </p>
+                        <figure>
+                            <img src="./static/images/dss-tsne-signal.png" alt="t-SNE plots and DSS signals across batch sizes">
+                            <figcaption>Figure 1: (Top) t-SNE plots of batch features for batch sizes 25, 50, and 200, coloured by corruption order. Clusters become more compact and separated as batch size grows. (Bottom) Corresponding DSS signals: spikes align with actual domain shifts (red dotted lines), showing that the mean feature cosine dissimilarity is a reliable domain shift indicator.</figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
