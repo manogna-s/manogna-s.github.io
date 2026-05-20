@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="SSA-BNS" />
+    <meta property="og:description" content="Similar Class Style Augmentation for Efficient Cross-Domain Few-Shot Learning" />
+    <meta property="og:url" content="https://manogna-s.github.io/ssa-bns" />
+    <meta name="keywords" content="Cross-Domain Few-Shot Learning, Style Augmentation, Batch Normalization, Meta-Dataset" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>SSA-BNS</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-size: 1.0rem; }
+
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+        figure img {
+            max-height: 600px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .section-alt { background-color: #f9f9f9; }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88em;
+        }
+        .results-table th, .results-table td {
+            padding: 5px 8px;
+            text-align: center !important;
+            border: 1px solid #ddd;
+        }
+        .results-table th { background-color: #f0f0f0; font-weight: 600; }
+        .results-table td:first-child { text-align: center !important; font-weight: 500; }
+        .results-table th:first-child { text-align: center !important; }
+        .results-table tr.ours-row td { font-weight: bold; color: #2c6e49; }
+        .results-table tr.group-sep td { border-top: 2px solid #aaa; }
+        .results-table tr.avg-row td { background-color: #f7f7f7; font-style: italic; }
+        .table-caption {
+            margin-top: 0.6em;
+            font-size: 0.88em;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 5px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                Similar Class Style Augmentation for Efficient Cross-Domain Few-Shot Learning
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Indian Institute of Science, Bengaluru, India</span>
+                            <br>
+                            <span class="author-block"><b>CVPRW, 2023</b></span>
+                        </div>
+
+                        <p style="padding: 8px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://openaccess.thecvf.com/content/CVPR2023W/ECV/papers/Sreenivas_Similar_Class_Style_Augmentation_for_Efficient_Cross-Domain_Few-Shot_Learning_CVPRW_2023_paper.pdf" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>Paper</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <!-- Abstract -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Cross-Domain Few-Shot Learning (CD-FSL) aims to recognize new classes from unseen domains,
+                            given limited training samples. Majority of the state-of-the-art approaches for this task
+                            introduce new task-specific additional parameters for adapting to the novel task, which
+                            involves changing the trained model architecture, in addition to increasing the number of
+                            model parameters. The first contribution of this work is to revisit existing approaches like
+                            modifying the Batch Normalization affine parameters and the scale hyperparameter in cosine
+                            similarity based softmax loss for adapting the trained model to new tasks, without changing
+                            the model architecture. Secondly, to aid model learning with few examples per class, we
+                            propose to augment the data of each class with the styles of semantically similar classes.
+                            Extensive evaluation on the challenging Meta-Dataset shows that this simple framework is
+                            very effective for the CD-FSL task. We also show that the Similar-class Style Augmentation
+                            module can be seamlessly integrated with existing approaches to further improve their
+                            performance, thus establishing state-of-the-art in this challenging area.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Setting -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Cross-Domain Few-Shot Learning</h2>
+            </div>
+            <p style="padding: 8px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            In CD-FSL, a universal feature extractor \(F\) is trained on labeled data from multiple
+                            source domains \(D_\text{train}\). At test time, it must adapt to N-way K-shot tasks
+                            sampled from unseen classes in unseen domains \(D_\text{test}\). Each task
+                            \(\mathcal{T} = (\mathcal{S}, \mathcal{Q})\) consists of a labeled support set
+                            \(\mathcal{S}\) and an unlabeled query set \(\mathcal{Q}\).
+                        </p>
+                        <p>
+                            Most state-of-the-art methods (FLUTE, URL, TSA) handle this by introducing
+                            task-specific learnable modules, which either increase model parameters or change
+                            the trained architecture. This is undesirable in many practical settings. <b>SSA-BNS</b>
+                            addresses CD-FSL without any architectural changes or extra parameters, by revisiting
+                            two under-explored components: BatchNorm adaptation and the cosine similarity scale factor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/cd-fsl-task.png" alt="CD-FSL task overview" draggable="false" />
+                        <figcaption>
+                            <b>Figure 1. CD-FSL task.</b> Training (left): use labeled multi-domain data to learn a
+                            universal feature extractor. Testing (right): N-way K-shot tasks with unseen classes from
+                            unseen domains. The support set adapts the model; the query set evaluates it.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">SSA-BNS Framework</h2>
+            </div>
+            <p style="padding: 8px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/ssabns-framework.png" alt="SSA-BNS framework" draggable="false" />
+                        <figcaption>
+                            <b>Figure 2. SSA-BNS framework.</b> A support set instance \(x_i^s\) is augmented using
+                            a similar-class sample \(x_j^s\) (where \(y_j^s \in \mathcal{S}_{y_i^s}\)) through SSA
+                            modules inserted in the universal feature extractor. Task adaptation minimizes the
+                            \(\mathcal{L}_\text{NCC}\) loss over actual and SSA-augmented features.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p style="padding: 12px;" />
+
+            <!-- BN Adaptation -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <h4>1. BatchNorm Adaptation</h4>
+                        <p>
+                            Given the universal feature extractor, we adapt only the BatchNorm affine parameters
+                            \(\{\gamma, \beta\}\) at each layer \(l\), without changing any other part of the model.
+                            Batch-normalized activations are:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            f^l_\text{BN} = \gamma^l \hat{f}^l + \beta^l; \quad \hat{f}^l = \frac{f^l - \mu^l}{\sqrt{(\sigma^l)^2 + \epsilon}}
+                            \end{align}
+                        </p>
+                        <p>
+                            The BN parameters \(\{\gamma, \beta\}\) are optimized to minimize the Nearest Centroid
+                            Classifier (NCC) loss over the support set:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \min_{\gamma, \beta} \; \frac{1}{n_\mathcal{S}} \sum_{(x_i^s, y_i^s) \in \mathcal{S}} \mathcal{L}_\text{NCC}(z_i^s, y_i^s; \eta) \quad \text{where} \quad z_i^s = F(x_i^s)
+                            \end{align}
+                        </p>
+                        <p>
+                            Class centroids are the mean of support features per class:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \mathbf{c}_k = \frac{1}{|\mathcal{S}_k|} \sum_{x_i^s \in \mathcal{S}_k} z_i^s
+                            \end{align}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scale Factor -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <h4>2. Cosine Similarity Scale Factor</h4>
+                        <p>
+                            The NCC loss uses cosine similarity with a scale hyperparameter \(\eta\):
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            p(y=k \mid z_i^s; \eta) = \frac{e^{\eta \cos\theta_{i,k}}}{\sum_{j=1}^{C} e^{\eta \cos\theta_{i,j}}}
+                            \end{align}
+                        </p>
+                        <p>
+                            Prior works URL and TSA fixed \(\eta = 10\). In CD-FSL, the test domain can be very
+                            different from training, so cosine similarities tend to be low. We find that
+                            <b>\(\eta = 25\)</b> is significantly better: it expands the probability range so
+                            that correctly classified samples receive high confidence without the collapse seen at
+                            \(\eta = 50\) (which causes rapid overfitting on the support set within ~10 iterations).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SSA -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <h4>3. Similar Class Style Augmentation (SSA)</h4>
+                        <p>
+                            To overcome limited support data, we augment each sample with the style
+                            (channel-wise feature statistics) of a semantically similar class sample.
+                            Class similarity is measured via cosine similarity of centroids:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \text{sim}(\mathbf{c}_i, \mathbf{c}_j) = \frac{\mathbf{c}_i^T \mathbf{c}_j}{\|\mathbf{c}_i\| \|\mathbf{c}_j\|}
+                            \end{align}
+                        </p>
+                        <p>
+                            The similar class set for class \(k\) is:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \mathcal{S}_k = \{t \mid \text{sim}(\mathbf{c}_t, \mathbf{c}_k) > \tau;\; t = 1,\ldots,C\}
+                            \end{align}
+                        </p>
+                        <p>
+                            For sample \(x_i\) of class \(y_i\), we randomly pick \(x_j\) from a similar class
+                            \(y_j \in \mathcal{S}_{y_i}\) and mix their intermediate feature statistics at layer \(l\):
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \mu_\text{ssa}(f_i; f_j) &= \lambda\,\mu(f_i) + (1-\lambda)\,\mu(f_j) \\
+                            \sigma_\text{ssa}(f_i; f_j) &= \lambda\,\sigma(f_i) + (1-\lambda)\,\sigma(f_j) \\
+                            f_i^\text{ssa} &= \sigma_\text{ssa} \odot \frac{f_i - \mu(f_i)}{\sigma(f_i)} + \mu_\text{ssa}
+                            \end{align}
+                        </p>
+                        <p>
+                            The content of \(x_i\) is preserved in \(f_i^\text{ssa}\), so the augmented sample
+                            retains its class label \(y_i\). The final SSA-BNS objective jointly minimizes NCC loss
+                            on real and augmented features:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \min_{\gamma, \beta} \; \frac{1}{2n_\mathcal{S}} \sum_{(x_i^s, y_i^s)} \left[ \mathcal{L}_\text{NCC}(z_i^s, y_i^s; \eta) + \mathcal{L}_\text{NCC}(z_i^\text{ssa}, y_i^s; \eta) \right]
+                            \end{align}
+                        </p>
+                        <p>
+                            SSA is inserted after the first two ResNet blocks with \(\lambda = 0.5\) and
+                            similarity threshold \(\tau = 0.7\). No additional parameters are introduced.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Experimental Results</h2>
+            </div>
+            <p style="padding: 8px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            We evaluate on the Meta-Dataset benchmark (8 seen + 5 unseen domains) using a ResNet-18
+                            universal feature extractor. Average accuracy and 95% confidence interval are reported
+                            over 600 tasks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table 1: Main Results -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Dataset</th>
+                                <th>SUR</th>
+                                <th>URT</th>
+                                <th>FLUTE</th>
+                                <th>tri-M</th>
+                                <th>URL*</th>
+                                <th>TSA*</th>
+                                <th>SSA-BNS</th>
+                                <th>TSA*+SSA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ImageNet</td><td>56.2±1.0</td><td>56.8±1.1</td><td>58.6±1.0</td><td>51.8±1.1</td><td>58.8±1.1</td><td>59.5±1.0</td><td>56.6±1.0</td><td>58.9±1.1</td></tr>
+                            <tr><td>Omniglot</td><td>94.1±0.4</td><td>94.2±0.4</td><td>92.0±0.6</td><td>93.2±0.5</td><td>94.5±0.4</td><td>94.9±0.4</td><td>95.2±0.5</td><td>95.6±0.4</td></tr>
+                            <tr><td>Aircraft</td><td>85.5±0.5</td><td>85.8±0.5</td><td>82.8±0.7</td><td>87.2±0.5</td><td>89.4±0.4</td><td>89.9±0.4</td><td>89.6±0.4</td><td>90.0±0.5</td></tr>
+                            <tr><td>Birds</td><td>71.0±1.0</td><td>76.2±0.8</td><td>75.3±0.8</td><td>79.2±0.8</td><td>80.7±0.8</td><td>81.1±0.8</td><td>81.8±0.8</td><td>82.2±0.7</td></tr>
+                            <tr><td>Textures</td><td>71.0±0.8</td><td>71.6±0.7</td><td>71.2±0.8</td><td>68.8±0.8</td><td>77.2±0.7</td><td>77.5±0.7</td><td>76.4±0.7</td><td>77.6±0.7</td></tr>
+                            <tr><td>Quick Draw</td><td>81.8±0.6</td><td>82.4±0.6</td><td>77.3±0.7</td><td>79.5±0.7</td><td>82.5±0.6</td><td>81.7±0.6</td><td>82.8±0.6</td><td>82.7±0.7</td></tr>
+                            <tr><td>Fungi</td><td>64.3±0.9</td><td>64.0±1.0</td><td>48.5±1.0</td><td>58.1±1.1</td><td>68.1±0.9</td><td>66.3±0.8</td><td>66.7±0.8</td><td>66.6±0.8</td></tr>
+                            <tr><td>VGG Flower</td><td>82.9±0.8</td><td>87.9±0.6</td><td>90.5±0.5</td><td>91.6±0.6</td><td>92.0±0.5</td><td>92.2±0.5</td><td>92.8±0.6</td><td>93.0±0.5</td></tr>
+                            <tr class="group-sep"><td>Traffic Sign</td><td>51.0±1.1</td><td>48.2±1.1</td><td>63.0±1.0</td><td>58.4±1.1</td><td>63.3±1.1</td><td>82.8±1.0</td><td>77.9±1.1</td><td>84.9±1.1</td></tr>
+                            <tr><td>MSCOCO</td><td>52.0±1.1</td><td>51.5±1.1</td><td>52.8±1.1</td><td>50.0±1.0</td><td>57.3±1.0</td><td>57.6±1.0</td><td>56.1±0.9</td><td>58.1±1.0</td></tr>
+                            <tr><td>MNIST</td><td>94.3±0.4</td><td>90.6±0.5</td><td>96.2±0.3</td><td>95.6±0.5</td><td>94.7±0.4</td><td>96.7±0.4</td><td>98.3±0.5</td><td>98.5±0.4</td></tr>
+                            <tr><td>CIFAR-10</td><td>66.5±0.9</td><td>67.0±0.8</td><td>75.4±0.8</td><td>78.6±0.7</td><td>74.2±0.8</td><td>82.9±0.7</td><td>79.4±0.7</td><td>82.9±0.7</td></tr>
+                            <tr><td>CIFAR-100</td><td>56.9±1.1</td><td>57.3±1.0</td><td>62.0±1.0</td><td>67.1±1.0</td><td>63.5±1.0</td><td>70.4±0.9</td><td>69.0±0.9</td><td>70.8±0.9</td></tr>
+                            <tr class="group-sep avg-row"><td>Avg seen</td><td>75.9</td><td>77.4</td><td>74.5</td><td>76.2</td><td>80.4</td><td>80.4</td><td>80.2</td><td>80.8</td></tr>
+                            <tr class="avg-row"><td>Avg unseen</td><td>64.1</td><td>62.9</td><td>69.9</td><td>69.9</td><td>70.6</td><td>78.1</td><td>76.1</td><td>79.0</td></tr>
+                            <tr class="avg-row ours-row"><td>Avg all</td><td>71.4</td><td>71.8</td><td>72.7</td><td>73.8</td><td>76.6</td><td>79.5</td><td>78.7</td><td>80.1</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="table-caption">Table 1. Average accuracy (%) over 600 tasks on Meta-Dataset. * indicates methods that use additional parameters beyond the feature extractor. SSA-BNS uses <b>no additional parameters</b> and outperforms URL with 262K extra parameters. TSA*+SSA achieves the best overall average.</p>
+                </div>
+            </div>
+
+            <p style="padding: 16px;" />
+
+            <!-- Tables 2 and 3 side by side -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <h4 class="title is-5">Ablation: Effect of BN Adaptation and SSA</h4>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>SSA</th>
+                                <th>BNS (η)</th>
+                                <th>Aircraft</th>
+                                <th>Fungi</th>
+                                <th>CIFAR-100</th>
+                                <th>MSCOCO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>✗</td><td>✗</td><td>87.0</td><td>65.6</td><td>59.9</td><td>53.1</td></tr>
+                            <tr><td>✗</td><td>η=10</td><td>89.1</td><td>66.0</td><td>66.9</td><td>54.5</td></tr>
+                            <tr><td>✗</td><td>η=25</td><td>89.5</td><td>66.4</td><td>68.4</td><td>55.7</td></tr>
+                            <tr><td>✗</td><td>η=50</td><td>89.5</td><td>66.2</td><td>67.7</td><td>55.4</td></tr>
+                            <tr class="ours-row"><td>✓</td><td>η=25</td><td>89.6</td><td>66.7</td><td>69.0</td><td>56.1</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="table-caption">Table 2. BN adaptation with η=25 consistently outperforms η=10 (default in URL/TSA). Adding SSA further improves performance across both seen and unseen domains.</p>
+                </div>
+            </div>
+
+            <p style="padding: 16px;" />
+
+            <!-- Table 3: Augmentation Comparison -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <h4 class="title is-5">Comparison with Other Augmentation Strategies</h4>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Augmentation</th>
+                                <th>Aircraft</th>
+                                <th>Fungi</th>
+                                <th>CIFAR-100</th>
+                                <th>MSCOCO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>RandAugment</td><td>88.8</td><td>65.2</td><td>66.9</td><td>55.2</td></tr>
+                            <tr><td>MixUp</td><td>88.4</td><td>66.3</td><td>67.9</td><td>54.6</td></tr>
+                            <tr><td>Feature MixUp</td><td>88.9</td><td>66.3</td><td>68.3</td><td>55.3</td></tr>
+                            <tr><td>Random MixStyle</td><td>89.6</td><td>66.2</td><td>68.2</td><td>55.3</td></tr>
+                            <tr class="ours-row"><td>SSA (Proposed)</td><td>89.6</td><td>66.7</td><td>69.0</td><td>56.1</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="table-caption">Table 3. SSA outperforms all compared augmentation techniques. Restricting style mixing to semantically similar classes (SSA) consistently beats class-agnostic Random MixStyle.</p>
+                </div>
+            </div>
+
+            <p style="padding: 16px;" />
+
+            <!-- Table 4: Parameters -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <h4 class="title is-5">Parameter Efficiency</h4>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Additional parameters</th>
+                                <th>Trainable parameters</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>FLUTE</td><td>32K</td><td>32K</td></tr>
+                            <tr><td>URL</td><td>262K</td><td>262K</td></tr>
+                            <tr><td>TSA</td><td>1482K</td><td>1482K</td></tr>
+                            <tr><td>TSA+SSA</td><td>1482K</td><td>1482K</td></tr>
+                            <tr class="ours-row group-sep"><td>SSA-BNS</td><td>None</td><td>9.6K</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="table-caption">Table 4. SSA-BNS introduces no additional parameters, training only the existing BN affine parameters (9.6K in ResNet-18). It outperforms URL which adds 262K parameters, using 154x fewer trainable parameters than TSA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BibTeX -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre class="language-bibtex"><code class="language-bibtex">@InProceedings{sreenivas2023ssabns,
+  author    = {Sreenivas, Manogna and Biswas, Soma},
+  title     = {Similar Class Style Augmentation for Efficient Cross-Domain Few-Shot Learning},
+  booktitle = {CVPR Workshops},
+  year      = {2023}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
+</body>
+
+</html>

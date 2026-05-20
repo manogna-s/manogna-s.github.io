@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="DSS" />
+    <meta property="og:description" content="A Simple Signal for Domain Shift" />
+    <meta property="og:url" content="https://manogna-s.github.io/dss" />
+    <meta name="keywords" content="Test-Time Adaptation, Continual Test-Time Adaptation, Domain Shift Detection" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>DSS</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../pstarc/static/css/index.css">
+    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-size: 1.0rem; }
+
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+        figure img {
+            max-height: 480px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .section-alt { background-color: #f9f9f9; }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92em;
+        }
+        .results-table th, .results-table td {
+            padding: 6px 10px;
+            text-align: center !important;
+            border: 1px solid #ddd;
+        }
+        .results-table th:first-child, .results-table td:first-child { text-align: center !important; }
+        .results-table th { background-color: #f0f0f0; font-weight: 600; }
+        .results-table tr.dss-row td { font-weight: bold; color: #2c6e49; }
+        .results-table tr.group-sep td { border-top: 2px solid #aaa; }
+        .table-caption {
+            margin-top: 0.6em;
+            font-size: 0.88em;
+            color: #555;
+        }
+
+        a:hover { color: #1c1a7a; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 5px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                A Simple Signal for Domain Shift
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://goirik-chakrabarty.github.io" target="_blank">Goirik Chakrabarty</a><sup>1</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a><sup>2</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a><sup>2</sup>
+                            </span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>1</sup>IISER Pune</span>
+                            &nbsp;&nbsp;
+                            <span class="author-block"><sup>2</sup>Indian Institute of Science, Bengaluru, India</span>
+                            <br>
+                            <span class="author-block"><b>ICCVW, 2023</b></span>
+                        </div>
+
+                        <p style="padding: 8px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://openaccess.thecvf.com/content/ICCV2023W/VCL/papers/Chakrabarty_A_Simple_Signal_for_Domain_Shift_ICCVW_2023_paper.pdf" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>Paper</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <!-- Abstract -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Test time domain adaptation has come to the forefront as a challenging scenario in recent times. Although single domain test-time adaptation has been well studied and shown impressive performance, this can be limiting when the model is deployed in a dynamic test environment. We explore this continual domain test time adaptation problem here. Specifically, we question if we can translate the effectiveness of single domain adaptation methods to continuous test-time adaptation scenario. We take a step towards bridging the gap between these two settings by proposing a domain shift detection mechanism and hence allowing us to employ the current test-time adaptation methods even in a continual setting. We propose to use the given source domain trained model to continually measure the similarity between the feature representations of the consecutive batches. A domain shift is detected when this measure crosses a certain threshold, which we use as a trigger to reset the model back to source and continue test-time adaptation. We demonstrate the effectiveness of our method by performing experiments across datasets, batch sizes and different single domain test-time adaptation baselines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Setting -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Problem Setting</h2>
+                    <div class="content">
+                        <p>
+                            In standard Test-Time Adaptation (TTA), a model trained on source domain data is adapted at test time to a single target domain. Existing methods (TENT, AaD, EATA) work well under this assumption. However, when the model is deployed in the real world, it encounters a continuous stream of data from changing domains — a setting known as Continual Test-Time Adaptation (CTTA).
+                        </p>
+                        <p>
+                            In CTTA, no explicit signal is provided about when the domain changes. Naively applying TTA methods in this setting causes <em>error accumulation</em> and <em>catastrophic forgetting</em>: the model overfits to past domains and degrades as new domains arrive. For example, TENT-CTTA achieves 86.8% mean error on ImageNet-C, while TENT-TTA (with oracle domain shift knowledge) achieves only 58.6%.
+                        </p>
+                        <p>
+                            The key challenge is: <strong>can we automatically detect when a domain shift has occurred, so that TTA methods can be applied effectively in a continual setting, without requiring oracle domain shift labels?</strong>
+                        </p>
+                        <figure>
+                            <img src="./static/images/dss-tsne-signal.png" alt="t-SNE plots and DSS signals across batch sizes">
+                            <figcaption>Figure 1: (Top) t-SNE plots of batch features for batch sizes 25, 50, and 200, coloured by corruption order. Clusters become more compact and separated as batch size grows. (Bottom) Corresponding DSS signals: spikes align with actual domain shifts (red dotted lines), showing that the mean feature cosine dissimilarity is a reliable domain shift indicator.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Proposed Method: DSS</h2>
+                    <div class="content">
+                        <h4>Source Model as a Domain Shift Detector</h4>
+                        <p>
+                            We observe that the feature extractor of the source-trained model naturally encodes domain-specific information. For a batch of test samples \(x_t = \{x_1, \ldots, x_N\}\) at time \(t\), we compute the mean feature vector:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathbb{E}[v_f(t)] = \frac{1}{N} \sum_{k=1}^{N} f(x_k) \]
+                        </div>
+                        <p>
+                            As batch size increases, the class-specific component of the mean averages out, leaving the domain-specific component dominant. This makes the mean feature a reliable proxy for the domain identity of the batch.
+                        </p>
+
+                        <h4>Domain Shift Signal (DSS)</h4>
+                        <p>
+                            We define the Domain Shift Signal as the cosine dissimilarity between the mean features of consecutive batches:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \text{DSS} = 1 - \cos\!\left(\mathbb{E}[v_f(t)],\; \mathbb{E}[v_f(t-1)]\right) \tag{1} \]
+                        </div>
+                        <p>
+                            When consecutive batches come from the same domain, DSS is low. When a domain shift occurs, the mean features diverge and DSS spikes.
+                        </p>
+
+                        <h4>Domain Shift Detector (DSD)</h4>
+                        <p>
+                            To robustly detect shifts, we compute a moving average of DSS and define the detector as:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \text{DSD} = \mathbb{1}\!\left\{\text{DSS} > k \cdot \text{MovAvg}(\text{DSS})\right\} \tag{2} \]
+                        </div>
+                        <p>
+                            where \(k = 3\) across all experiments. When DSD fires, the model is reset to the source checkpoint, allowing the underlying TTA method to restart adaptation on the new domain.
+                        </p>
+
+                        <h4>Algorithm</h4>
+                        <p>
+                            The DSS module is entirely decoupled from the choice of TTA method. It wraps any single-domain TTA method (TENT, AaD, EATA, etc.) and converts it into a continual TTA method:
+                        </p>
+                        <ol>
+                            <li>For each incoming batch, compute the mean feature vector using the <em>fixed source</em> feature extractor.</li>
+                            <li>Compute DSS as cosine dissimilarity with the previous batch's mean feature.</li>
+                            <li>If DSD fires (DSS exceeds adaptive threshold): reset model to source checkpoint and reset optimizer state.</li>
+                            <li>Continue with standard TTA adaptation on the current batch.</li>
+                        </ol>
+                        <p>
+                            This approach is computationally cheap: it adds only a single forward pass through the frozen source feature extractor per batch, with negligible memory overhead.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Results</h2>
+                    <div class="content">
+                        <p>
+                            We evaluate DSS on three benchmarks (ImageNet-C, CIFAR-100C, CIFAR-10C) with 15 corruption types at severity 5. Each TTA method is compared in three settings: <strong>TTA</strong> (oracle domain shift labels, upper bound), <strong>CTTA</strong> (continual, no domain labels, baseline), and <strong>DSS</strong> (our method, no domain labels). Metric: error % (lower is better). Numbers in brackets show improvement of DSS over CTTA.
+                        </p>
+
+                        <div style="overflow-x:auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Method</th>
+                                    <th colspan="3">Mean Error (%) &darr;</th>
+                                </tr>
+                                <tr>
+                                    <th>ImageNet-C</th>
+                                    <th>CIFAR-100C</th>
+                                    <th>CIFAR-10C</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Source</td><td>82.0</td><td>46.4</td><td>43.5</td></tr>
+                                <tr><td>BN Stats</td><td>68.6</td><td>35.4</td><td>20.4</td></tr>
+                                <tr class="group-sep"><td>CoTTA</td><td>62.6</td><td>32.5</td><td>16.2</td></tr>
+                                <tr><td>RMT</td><td>59.9</td><td>30.2</td><td>17.0</td></tr>
+                                <tr><td>SATA</td><td>60.1</td><td>30.3</td><td>16.1</td></tr>
+                                <tr class="group-sep"><td>TENT-TTA</td><td>58.6</td><td>31.0</td><td>18.6</td></tr>
+                                <tr><td>TENT-CTTA</td><td>86.8</td><td>61.2</td><td>20.7</td></tr>
+                                <tr class="dss-row"><td>TENT-DSS (Ours)</td><td>57.9 (+28.9)</td><td>31.5 (+29.7)</td><td>18.4 (+0.2)</td></tr>
+                                <tr class="group-sep"><td>AaD-TTA</td><td>68.5</td><td>34.9</td><td>19.6</td></tr>
+                                <tr><td>AaD-CTTA</td><td>90.0</td><td>62.5</td><td>22.0</td></tr>
+                                <tr class="dss-row"><td>AaD-DSS (Ours)</td><td>68.4 (+21.6)</td><td>35.0 (+27.5)</td><td>19.5 (+1.5)</td></tr>
+                                <tr class="group-sep"><td>EATA-TTA</td><td>56.9</td><td>31.6</td><td>18.1</td></tr>
+                                <tr><td>EATA-CTTA</td><td>58.0</td><td>32.2</td><td>17.9</td></tr>
+                                <tr class="dss-row"><td>EATA-DSS (Ours)</td><td>56.7 (+1.3)</td><td>31.4 (+0.8)</td><td>17.9 (0.0)</td></tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <p class="table-caption">Table 1: Mean error % (lower is better) across 15 corruptions at severity 5. Numbers in brackets show improvement of DSS over the corresponding CTTA baseline. Backbones: ResNet-50 (ImageNet-C), ResNeXt-29 (CIFAR-100C), WideResNet-28 (CIFAR-10C).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BibTeX -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre class="language-bibtex"><code class="language-bibtex">@InProceedings{chakrabarty2023dss,
+  author    = {Chakrabarty, Goirik and Sreenivas, Manogna and Biswas, Soma},
+  title     = {A Simple Signal for Domain Shift},
+  booktitle = {ICCVW},
+  year      = {2023}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="../pstarc/static/js/index.js"></script>
+    <script src="../pstarc/static/js/prism.js"></script>
+</body>
+
+</html>

@@ -3,58 +3,78 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
     <meta charset="utf-8">
     <meta property="og:title" content="SegAssist" />
     <meta property="og:description" content="Segmentation Assisted Incremental Test Time Adaptation in an Open World" />
     <meta property="og:url" content="https://manogna-s.github.io/segassist" />
-    <meta property="og:image" content="https://manogna-s.github.io/rosita/static/images/preview.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-    <meta name="description"
-        content="" />
-    <meta name="keywords"
-        content="Test-Time-Adaptation, Vision Language Models, Open World Learning, Distribution Alignment" />
+    <meta name="keywords" content="Test-Time-Adaptation, Vision Language Models, Open World Learning, Incremental Learning, CLIP" />
     <meta name="viewport" content="initial-scale=1" />
-
 
     <title>SegAssist</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-
     <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
-    <link rel="stylesheet" href="https://use.typekit.net/iag3ven.css">
-
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-coy.min.css"/> -->
     <link rel="stylesheet" href="./static/css/prism.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js">
-    </script>
-
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
-
-    <!-- mathjax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+    <style>
+        body { font-size: 1.0rem; }
+
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+        figure img {
+            max-height: 480px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .section-alt { background-color: #f9f9f9; }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92em;
+        }
+        .results-table th:first-child { text-align: center !important; }
+        .results-table td:first-child, .results-table td:nth-child(2) { text-align: center !important; }
+        .results-table th, .results-table td {
+            padding: 6px 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .results-table th { background-color: #f0f0f0; font-weight: 600; }
+        .results-table tr.segassist-row td { font-weight: bold; color: #2c6e49; }
+        .results-table tr.group-sep td { border-top: 2px solid #aaa; }
+        .results-table .section-header td {
+            background-color: #e8e8e8;
+            font-weight: 600;
+            text-align: left;
+        }
+        .table-caption {
+            margin-top: 0.6em;
+            font-size: 0.88em;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-body">
             <div class="container is-max-desktop">
@@ -67,60 +87,34 @@
                             </span>
                         </h1>
                         <div class="is-size-5 publication-authors">
-                            <!-- TODO: FIX -->
                             <span class="author-block">
                                 <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a>
                             </span>
-                            &nbsp;
-                            &nbsp;
+                            &nbsp;&nbsp;
                             <span class="author-block">
                                 <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a>
                             </span>
                         </div>
                         <p style="padding: 0.25rem;" />
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block">Indian Institute of Science, Bengaluru, India </span>
+                            <span class="author-block">Indian Institute of Science, Bengaluru, India</span>
                             <br>
-                            <span class="author-block"> British Machine Vision Conference (BMVC), 2025 </span>
-
-                            &nbsp;
-<!--                            <span class="author-block"><sup>2</sup>IISER Pune</span>-->
-                            &nbsp;
-<!--                            <span class="author-block"><sup>3</sup>Australian National University</span>-->
-                            <br>
-<!--                            <span class="author-block">PrePrint. Under Review</span>-->
-                            <!-- <br style="line-height: 2px" /> -->
-                            <!-- <span class="author-block" style="font-size: 0.7em; font-style: italic;"><sup>*</sup>Equal
-                                contribution</span> -->
-
+                            <span class="author-block"><b>British Machine Vision Conference (BMVC), 2025</b></span>
                         </div>
 
-                        <p style="padding: 20px;" />
+                        <p style="padding: 8px;" />
 
                         <div class="buttons is-centered">
                             <button class="external-link button is-medium is-ghost publication-links is-rounded">
-                                <a href="https://arxiv.org/abs/2508.20029" target="_blank"
-                                    style="text-decoration:none;">
-                                    <span class="icon is-small">
-                                        <i class="ai ai-arxiv"></i>
-                                    </span>
+                                <a href="https://arxiv.org/abs/2508.20029" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="ai ai-arxiv"></i></span>
                                     <span>arXiv</span>
                                 </a>
                             </button>
-<!--                            <button class="external-link button is-medium is-ghost publication-links is-rounded">-->
-<!--                                <a href="./static/docs/pSTarC_slides.pdf" target="_blank">-->
-<!--                                    <span class="icon is-small">-->
-<!--                                        <i class="fas fa-file-pdf"></i>-->
-<!--                                    </span>-->
-<!--                                    <span>slides</span>-->
-<!--                                </a>-->
-<!--                            </button>-->
                             <button class="external-link button is-medium is-ghost publication-links is-rounded">
-                                <a href="https://github.com/manogna-s/SegAssist" target="_blank">
-                                    <span class="icon is-small">
-                                        <i class="fab fa-github"></i>
-                                    </span>
-                                    <span>code</span>
+                                <a href="https://github.com/manogna-s/SegAssist" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fab fa-github"></i></span>
+                                    <span>Code</span>
                                 </a>
                             </button>
                         </div>
@@ -130,194 +124,315 @@
         </div>
     </section>
 
-    <!-- hack to pull the below up vertically -->
     <span style="display:block; margin-top:-1.75em;"/>
 
-<!--    <section class="section">-->
-<!--        <div class="container is-max-desktop">-->
-<!--            &lt;!&ndash; Abstract. &ndash;&gt;-->
-<!--            <div class="columns is-centered has-text-centered">-->
-<!--                <div class="column is-three-quarters">-->
-<!--                    <h2 class="title is-3">Abstract</h2>-->
-<!--                    <div class="content has-text-justified">-->
-<!--                        <p>-->
-<!--                        We propose a novel framework to address the real-world challenging task of Single Image Test Time Adaptation in an open and dynamic environment. We leverage large scale Vision Language Models like CLIP to enable real time adaptation on a per-image basis without access to source data or ground truth labels. Since the deployed model can also encounter unseen classes in an open world, we first employ a simple and effective Out of Distribution (OOD) detection module to distinguish between weak and strong OOD samples. We propose a novel contrastive learning based objective to enhance the discriminability between weak and strong OOD samples by utilizing  small, dynamically updated feature banks. Finally, we also employ a classification objective for adapting the model using the reliable weak OOD samples. The proposed framework ROSITA combines these components, enabling continuous online adaptation of Vision Language Models on a single image basis. Extensive experimentation on diverse domain adaptation benchmarks validates the effectiveness of the proposed framework.-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;/ Abstract. &ndash;&gt;-->
-
-<!--    <p style="padding: 5px;" />-->
-
-<!--    <section class="section">-->
-<!--        <div class="container is-max-desktop">-->
-<!--                <div class="columns is-centered has-text-centered">-->
-<!--                    <h2 class="title is-3">ROSITA Framework</h2>-->
-<!--                 </div>-->
-<!--                <p style="padding: 3px;" />-->
-<!--                <div class="columns is-centered has-text-centered">-->
-<!--&lt;!&ndash;                    <div class="column is-three-quarters">&ndash;&gt;-->
-<!--                        <figure>-->
-<!--                            <img src="./static/images/rosita.png" alt="PromptAlign design" id="design-image"-->
-<!--                                draggable="false" />-->
-<!--                            <figcaption>-->
-<!--                                <div class="content has-text-justified">-->
-<!--                                    <small><b>Overview of ROSITA framework:</b> The test samples with Desired and Undesired classes arrive one at a time. The image features are matched with the text based classifier, the confidence scores of which are used to distinguish between desired and undesired class samples through a simple LDA based class identifier. Based on this classification and if a sample is identified to be reliable, the respective feature banks are updated and the proposed ReDUCe loss is optimized to update the LayerNorm parameters of the Vision Encoder.</br>-->
-<!--&lt;!&ndash;                                        <b>viz credits:</b> <a href="https://in.linkedin.com/in/rohitronie" target="_blank">Rohit Kumar</a>&ndash;&gt;-->
-<!--                                    </small>-->
-<!--                                </div>-->
-<!--                            </figcaption>-->
-<!--                        </figure>-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--                </div>-->
-<!--&lt;!&ndash;            <p style="padding: 20px;" />&ndash;&gt;-->
-<!--        </div>-->
-<!--    </section>-->
-
-        <section class="section">
-        <div class="container is-max-desktop">
-            <!-- Abstract. -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-three-quarters">
-                    <h2 class="title is-3">Abstract</h2>
-                    <div class="content has-text-justified">
-                        <p><small>
-                            In dynamic environments, unfamiliar objects and distribution shifts are often encountered which challenge the generalization abilities of the deployed trained models. This work addresses Incremental Test Time Adaptation (ITTA) of Vision-Language Models (VLMs), tackling scenarios where unseen classes and unseen domains continuously appear during testing. Unlike traditional Test Time Adaptation approaches where the test samples come only from a predefined set of classes, our framework allows models to adapt simultaneously to both covariate and label shifts, actively incorporating new classes as they emerge. Towards this goal, we establish a new benchmark for ITTA, integrating single-image TTA methods for VLMs with active labeling to query an oracle for samples potentially representing unseen classes during test time. We propose a segmentation assisted active labeling module, termed SegAssist, which is training-free and repurposes the VLM’s segmentation capabilities to refine active sample selection, prioritizing samples likely to belong to unseen classes. Extensive experiments on several benchmark datasets demonstrate the potential of SegAssist to enhance the performance of VLMs in real-world scenarios, where continuous adaptation to emerging data is essential.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!--/ Abstract. -->
-
-
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-three-quarters">
-                    <div class="content has-text-justified">
-                                                <p class="equation-text">
-                            <h4>Incremental Test Time Adaptation</h4>
-<!--                        A plug-in module which can be integrated with existing TTA and active labeling methods. It prioritizes unseen class samples by performing pixel wise segmentation of uncertain samples, selecting it for active labeling only if the pixels are predominantly classified as “background”.-->
-                        </p>
-                        <figure>
-                            <img src="./static/images/ITTA.png" alt="ITTA framework" id="design-image"
-                                draggable="false" />
-                            <figcaption>
-                                <div class="content has-text-justified">
-                                    <small><b>ITTA framework:</b>
-                                        We address the problem of Incremental Test-Time Adaptation (ITTA) in an open-world using VLMs, where both covariate and label shifts can occur. The task is to predict a label for each incoming test sample while also adapting to distributional shifts and dynamically incorporating new classes as they emerge. This is done by integrating active labeling with TTA.
-                                    </small>
-                                </div>
-                            </figcaption>
-                        </figure>
-                        <p style="padding: 5px;" />
-                        <p class="equation-text">
-                            <h4>SegAssist for Active Sample Selection</h4>
-<!--                        A plug-in module which can be integrated with existing TTA and active labeling methods. It prioritizes unseen class samples by performing pixel wise segmentation of uncertain samples, selecting it for active labeling only if the pixels are predominantly classified as “background”.-->
-                        </p>
-                        <figure>
-                            <img src="./static/images/SegAssist.png" alt="SegAssist" id="design-image"
-                                draggable="false" />
-                            <figcaption>
-                                <div class="content has-text-justified">
-                                    <small><b>SegAssist framework:</b>
-                                        A plug-in module which can be integrated with existing TTA and active labeling methods. It prioritizes unseen class samples by performing pixel wise segmentation of uncertain samples, selecting it for active labeling only if the pixels are predominantly classified as “background”.
-                                    </small>
-                                </div>
-                            </figcaption>
-                        </figure>
-                        <p style="padding: 5px;" />
-                        <p class="equation-text">
-                            <h4>Incremental Class Detection Delay (ICDD) Metric</h4>
-<!--                        A plug-in module which can be integrated with existing TTA and active labeling methods. It prioritizes unseen class samples by performing pixel wise segmentation of uncertain samples, selecting it for active labeling only if the pixels are predominantly classified as “background”.-->
-                        </p>
-                        <figure>
-                            <img src="./static/images/icdd-metric.png" alt="ICDD Metric" id="design-image"
-                                draggable="false" />
-                            <figcaption>
-                                <div class="content has-text-justified">
-                                    <small><b>ICDD Metric:</b>
-                                        We design Incremental Class Detection Delay, a metric to quantify the performance of an ITTA system in identifying new classes in a timely manner. It compares the rate of new class introductions in the ground truth sequence with the rate of class detections by the ITTA framework, visualized as a normalized Area Under the Curve (AUC) plot.
-                                    </small>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-
+    <!-- Abstract -->
     <section class="section">
         <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                    <h2 class="title is-3">Experimental Results</h2>
-                </div>
-                <p style="padding: 10px;" />
-                <div class="columns is-centered has-text-centered">
-                    <div class="column is-three-quarters">
-                        <figure>
-                            <img src="./static/images/results-segassist.png" alt="results" id="spider-plot"
-                                draggable="false" />
-                            <figcaption>
-                               Table: Comparison of SegAssist with prior methods in ITTA framework.
-                            </figcaption>
-                        </figure>
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            In dynamic environments, unfamiliar objects and distribution shifts are often encountered
+                            which challenge the generalization abilities of deployed trained models. This work addresses
+                            <b>Incremental Test Time Adaptation (ITTA)</b> of Vision-Language Models (VLMs), tackling
+                            scenarios where unseen classes and unseen domains continuously appear during testing. Unlike
+                            traditional TTA approaches, where the test stream comes only from a predefined set of classes,
+                            our framework allows models to adapt simultaneously to both covariate and label shifts,
+                            actively incorporating new classes as they emerge. Towards this goal, we establish a new
+                            benchmark for ITTA, integrating single-image TTA methods for VLMs with active labeling
+                            techniques that query an oracle for samples potentially representing unseen classes during
+                            test time. We propose a segmentation assisted active labeling module, termed <b>SegAssist</b>,
+                            which is training-free and repurposes the VLM's segmentation capabilities to refine active
+                            sample selection, prioritizing samples likely to belong to unseen classes. Extensive
+                            experiments on several benchmark datasets demonstrate the potential of SegAssist to enhance
+                            the performance of VLMs in real-world scenarios, where continuous adaptation to emerging
+                            data is essential.
+                        </p>
                     </div>
                 </div>
+            </div>
         </div>
     </section>
 
+    <!-- ITTA Problem -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Incremental Test Time Adaptation</h2>
+            </div>
+            <p style="padding: 8px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            Consider a model deployed in the real world, navigating a dynamic environment where it
+                            encounters familiar objects in unfamiliar settings <em>and</em> new objects it has never
+                            seen before. Traditional TTA methods handle covariate shifts but cannot accommodate
+                            dynamically emerging new classes. We introduce <b>ITTA</b>, a protocol that requires the
+                            model to simultaneously:
+                        </p>
+                        <ol>
+                            <li>Continuously adapt to covariate shifts</li>
+                            <li>Recognize and incorporate new classes as they appear</li>
+                            <li>Operate on a <em>single-image</em> basis without access to batches or labeled data</li>
+                            <li>Maintain performance across seen classes and a growing set of dynamically incorporated unseen classes</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/ITTA.png" alt="ITTA framework overview" draggable="false" />
+                        <figcaption>
+                            <b>Figure 1. Incremental Test Time Adaptation.</b> A test stream in the real world can consist
+                            of samples with covariate shift (painting style) and label shift (unseen classes such as
+                            <em>Egret</em> and <em>Tiger</em>). Uncertain samples are queried for active labeling; new classes
+                            are added to the seen-class set when confirmed by an oracle. SegAssist is a plug-in module
+                            that favours selection of unseen class samples for active labeling.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p style="padding: 10px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            The table below situates ITTA among closely related research directions. ITTA is the only
+                            setting that handles <em>all</em> of: training-free adaptation, single-image testing, covariate
+                            shift, label shift, and a growing classification space \(\mathcal{C}_s + \mathcal{C}_u\).
+                        </p>
+                    </div>
 
-     <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
-        <h3 class="title">BibTeX</h3>
-        <pre><code class="language-bibtex">
-            @article{sreenivas2025segassist,
-              title={Segmentation Assisted Incremental Test Time Adaptation in an Open World},
-              author={Sreenivas, Manogna and Biswas, Soma},
-              journal={British Machine Vision Conference},
-              year={2025}
-            }
-        </code></pre>
-      </div>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Training-free</th>
+                                <th>TTA</th>
+                                <th>Covariate shift</th>
+                                <th>Label shift</th>
+                                <th>Single image</th>
+                                <th>Task space</th>
+                                <th>Methods</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>✗</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>\(\mathcal{C}_s\)</td><td>TENT, CoTTA, ROID</td>
+                            </tr>
+                            <tr>
+                                <td>✓</td><td>✓</td><td>✓</td><td>✗</td><td>✓</td><td>\(\mathcal{C}_s\)</td><td>TPT, TDA, DPE</td>
+                            </tr>
+                            <tr>
+                                <td>✗</td><td>✓</td><td>✓</td><td>✓</td><td>✗</td><td>\(\mathcal{C}_s+1\)</td><td>Open-world TTA</td>
+                            </tr>
+                            <tr>
+                                <td>✓</td><td>✗</td><td>✗</td><td>✓</td><td>✗</td><td>\(\mathcal{C}_s+\mathcal{C}_u\)</td><td>Class Incremental Learning</td>
+                            </tr>
+                            <tr class="segassist-row">
+                                <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>\(\mathcal{C}_s+\mathcal{C}_u\)</td><td>Proposed ITTA (Ours)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-caption">Table 1. Comparison of the proposed ITTA framework with existing research directions.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-<!--    <footer class="footer">-->
-<!--        <div class="container is-max-desktop content">-->
-<!--            <div class="content has-text-centered">-->
-<!--                &lt;!&ndash; TODO: UPDATE &ndash;&gt;-->
-<!--                <a class="icon-link" href="https://arxiv.org/pdf/2406.00481" target="_blank">-->
-<!--                    <i class="ai ai-arxiv"></i>-->
-<!--                </a>-->
-<!--                &nbsp;-->
-<!--                &lt;!&ndash; TODO: UPDATE &ndash;&gt;-->
-<!--&lt;!&ndash;                <a class="icon-link" href="https://arxiv.org/pdf/2309.00846.pdf" target="_blank">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <i class="fas fa-file-pdf"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--                &lt;!&ndash; &nbsp;-->
-<!--                <a class="icon-link" href="https://youtu.be/1hYtGZ0CUSA" target="_blank">-->
-<!--                    <i class="fab fa-youtube"></i>-->
-<!--                </a> &ndash;&gt;-->
-<!--                &nbsp;-->
-<!--&lt;!&ndash;                <a class="icon-link" href="./static/docs/pSTarC_slides.pdf" target="_blank">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <i class="fas fa-file-powerpoint"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--                &nbsp;-->
-<!--                <a class="icon-link" href="https://github.com/manogna-s/SegAssist"-->
-<!--                    target="_blank">-->
-<!--                    <i class="fab fa-github"></i>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="columns is-centered">-->
-<!--                <div class="content">-->
-<!--                    <p>-->
-<!--                        Page source code was adapted from-->
-<!--                        <a href="https://nerfies.github.io" target="_blank">here</a>-->
-<!--                        and can be found in <a-->
-<!--                            href="https://github.com/manogna-s/manogna-s.github.io/segassist"-->
-<!--                            target="_blank">this repository</a>.-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--    </footer>-->
+    <!-- SegAssist Method -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">SegAssist: Segmentation-Assisted Active Labeling</h2>
+            </div>
+            <p style="padding: 8px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/SegAssist.png" alt="SegAssist pipeline" draggable="false" />
+                        <figcaption>
+                            <b>Figure 2. SegAssist pipeline.</b> Uncertain samples are further filtered by performing
+                            pixel-wise segmentation using the top-K predicted classes plus a "background" class.
+                            A sample is forwarded to the oracle for labeling only if the majority of its pixels
+                            are classified as "background", prioritizing unseen-class samples.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p style="padding: 12px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <h4>Step 1: Pixel-wise segmentation of uncertain samples</h4>
+                        <p>
+                            For an uncertain sample \(x_t\), let \(\text{top}K(x_t)\) denote the top-\(K\) class names
+                            predicted by CLIP. We define \(\mathcal{C}_\text{seg}(x_t) = \text{top}K(x_t) \cup \{\text{"background"}\}\).
+                            Using patch features \(f_t(i,j)\) from the last self-attention layer, each patch is
+                            assigned a class label:
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \hat{y}_t(i,j) = \arg\max_{c \,\in\, \mathcal{C}_\text{seg}(x_t)} \langle f_t(i,j),\, t_c \rangle
+                            \end{align}
+                        </p>
+                        <p>
+                            where \(t_c\) is the text embedding of class \(c\). Patch predictions are upsampled via
+                            bilinear interpolation to produce the full segmentation map \(S(x_t)\).
+                        </p>
+
+                        <h4>Step 2: Background ratio for active sample selection</h4>
+                        <p>
+                            We compute the proportion of pixels classified as "background":
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            B(x_t) = \frac{1}{|S(x_t)|} \sum_{i=1}^{|S(x_t)|} \mathbb{I}\bigl[S_i(x_t) = \text{"background"}\bigr]
+                            \end{align}
+                        </p>
+                        <p>
+                            A sample \(x_t\) is selected for oracle querying only if \(B(x_t) > \alpha\), with
+                            \(\alpha = 0.95\). This ensures the limited active-labeling budget is spent primarily
+                            on genuinely novel, unseen-class samples. SegAssist requires no additional training and
+                            adds negligible computation overhead, as patch features are already computed during
+                            CLIP inference.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ICDD Metric -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Incremental Class Detection Delay (ICDD)</h2>
+            </div>
+            <p style="padding: 8px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            We propose a novel metric, <b>Incremental Class Detection Delay (ICDD)</b>, to quantify
+                            how <em>timely</em> an ITTA system discovers new classes. It compares the ground-truth
+                            class introduction curve \(n_\text{gt}(t)\) with the detected-class curve \(n_\text{det}(t)\)
+                            over normalized time \(t \in [0,1]\):
+                        </p>
+                        <p class="equation">
+                            \begin{align}
+                            \text{ICDD} = \text{AUC}(n_\text{gt}(t)) - \text{AUC}(n_\text{det}(t))
+                            \end{align}
+                        </p>
+                        <p>
+                            A <b>lower ICDD</b> (closer to zero) means the system detects new classes almost as
+                            soon as they appear. A higher ICDD indicates significant detection delay and consequent
+                            performance degradation. ICDD and Harmonic Mean (HM) accuracy are complementary:
+                            ICDD captures detection timeliness while HM measures classification correctness after
+                            detection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <figure>
+                        <img src="./static/images/icdd-metric.png" alt="ICDD metric illustration" draggable="false" />
+                        <figcaption>
+                            <b>Figure 3. ICDD metric.</b> Given a budget of 3 samples, MSP-based selection chooses
+                            2 seen-class and 1 unseen-class sample, exhausting the budget before later new classes
+                            arrive. SegAssist prioritizes unseen samples, detecting all three new classes as they are
+                            introduced. The bottom plot shows the detection curve \(n_\text{det}(t)\) vs. ground truth
+                            \(n_\text{gt}(t)\); the shaded area is the ICDD.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experimental Results -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Experimental Results</h2>
+            </div>
+            <p style="padding: 8px;" />
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            We evaluate SegAssist by plugging it into three VLM-based TTA baselines:
+                            <b>ZS-Eval</b> (zero-shot CLIP), <b>TDA</b> (CVPR'24), and <b>DPE</b> (NeurIPS'24),
+                            combined with three active labeling strategies: Random, Entropy, and MSP. Experiments
+                            are on ImageNet-R, ImageNet-A, Clipart, and Painting (DomainNet), using CLIP ViT-B/16.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Combined Table -->
+            <div class="columns is-centered">
+                <div class="column">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Base TTA</th>
+                                <th rowspan="2">Method</th>
+                                <th colspan="2">ImageNet-R</th>
+                                <th colspan="2">ImageNet-Adversarial</th>
+                                <th colspan="2">Clipart</th>
+                                <th colspan="2">Painting</th>
+                            </tr>
+                            <tr>
+                                <th>HM ↑</th><th>ICDD ↓</th>
+                                <th>HM ↑</th><th>ICDD ↓</th>
+                                <th>HM ↑</th><th>ICDD ↓</th>
+                                <th>HM ↑</th><th>ICDD ↓</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td rowspan="4" style="font-weight:600; text-align:center; vertical-align:middle;">ZS-Eval</td><td>Random</td>  <td>49.57</td><td>25.90</td> <td>23.60</td><td>45.33</td> <td>22.04</td><td>75.30</td> <td>32.54</td><td>68.41</td></tr>
+                            <tr><td>Entropy</td>  <td>59.89</td><td>21.99</td> <td>21.11</td><td>43.83</td> <td>48.25</td><td>61.88</td> <td>64.34</td><td>43.89</td></tr>
+                            <tr><td>MSP</td>      <td>62.92</td><td>17.21</td> <td>24.59</td><td>41.47</td> <td>47.65</td><td>62.04</td> <td>70.59</td><td>39.14</td></tr>
+                            <tr class="segassist-row"><td>SegAssist</td> <td>64.05</td><td>16.01</td> <td>23.94</td><td>41.89</td> <td>49.08</td><td>61.20</td> <td>71.21</td><td>38.56</td></tr>
+
+                            <tr class="group-sep"><td rowspan="4" style="font-weight:600; text-align:center; vertical-align:middle;">TDA</td><td>Random</td>  <td>53.33</td><td>25.90</td> <td>16.58</td><td>45.33</td> <td>22.54</td><td>75.30</td> <td>32.66</td><td>68.41</td></tr>
+                            <tr><td>Entropy</td>  <td>64.06</td><td>19.52</td> <td>18.78</td><td>44.95</td> <td>58.79</td><td>49.10</td> <td>67.27</td><td>46.08</td></tr>
+                            <tr><td>MSP</td>      <td>70.38</td><td>13.25</td> <td>19.27</td><td>43.93</td> <td>58.99</td><td>50.68</td> <td>68.83</td><td>39.31</td></tr>
+                            <tr class="segassist-row"><td>SegAssist</td> <td>70.48</td><td>13.07</td> <td>20.02</td><td>43.93</td> <td>60.25</td><td>48.96</td> <td>69.20</td><td>41.27</td></tr>
+
+                            <tr class="group-sep"><td rowspan="4" style="font-weight:600; text-align:center; vertical-align:middle;">DPE</td><td>Random</td>  <td>54.90</td><td>25.90</td> <td>28.52</td><td>45.33</td> <td>23.36</td><td>75.30</td> <td>33.49</td><td>68.41</td></tr>
+                            <tr><td>Entropy</td>  <td>0.19</td><td>56.05</td>   <td>4.44</td><td>57.88</td>  <td>15.50</td><td>80.27</td> <td>0.00</td><td>81.81</td></tr>
+                            <tr><td>MSP</td>      <td>68.09</td><td>19.64</td> <td>24.62</td><td>47.18</td> <td>65.35</td><td>49.00</td> <td>71.45</td><td>34.70</td></tr>
+                            <tr class="segassist-row"><td>SegAssist</td> <td>69.39</td><td>16.38</td> <td>33.42</td><td>44.98</td> <td>65.49</td><td>49.00</td> <td>72.40</td><td>33.12</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="table-caption">Comparison of Harmonic Mean (HM ↑) and Incremental Class Detection Delay (ICDD ↓) across active labeling and TTA methods on the ITTA benchmark, evaluated on ImageNet-R, ImageNet-Adversarial, Clipart, and Painting. SegAssist consistently improves over the MSP baseline across all settings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BibTeX -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre class="language-bibtex"><code class="language-bibtex">@InProceedings{sreenivas2025segassist,
+  author    = {Sreenivas, Manogna and Biswas, Soma},
+  title     = {Segmentation Assisted Incremental Test Time Adaptation in an Open World},
+  booktitle = {British Machine Vision Conference},
+  year      = {2025}
+}</code></pre>
+        </div>
+    </section>
 
     <script src="./static/js/index.js"></script>
     <script src="./static/js/prism.js"></script>

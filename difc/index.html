@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta property="og:title" content="DIFC" />
+    <meta property="og:description" content="Improved Cross-Dataset Facial Expression Recognition by Handling Data Imbalance and Feature Confusion" />
+    <meta property="og:url" content="https://manogna-s.github.io/difc" />
+    <meta name="keywords" content="Facial Expression Recognition, Unsupervised Domain Adaptation, Class Imbalance, Feature Confusion" />
+    <meta name="viewport" content="initial-scale=1" />
+
+    <title>DIFC</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😊</text></svg>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-size: 1.0rem; }
+
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+        figure img {
+            max-height: 480px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .section-alt { background-color: #f9f9f9; }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92em;
+        }
+        .results-table th, .results-table td {
+            padding: 6px 10px;
+            text-align: center !important;
+            border: 1px solid #ddd;
+        }
+        .results-table th:first-child, .results-table td:first-child { text-align: center !important; }
+        .results-table th { background-color: #f0f0f0; font-weight: 600; }
+        .results-table tr.difc-row td { font-weight: bold; color: #2c6e49; }
+        .results-table tr.group-sep td { border-top: 2px solid #aaa; }
+        .table-caption {
+            margin-top: 0.6em;
+            font-size: 0.88em;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 5px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                Improved Cross-Dataset Facial Expression Recognition by Handling Data Imbalance and Feature Confusion
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://manogna-s.github.io" target="_blank">Manogna Sreenivas</a><sup>1</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Sawa Takamuku<sup>2</sup></span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">
+                                <a href="https://sites.google.com/iisc.ac.in/somabiswas" target="_blank">Soma Biswas</a><sup>1</sup>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Aditya Chepuri<sup>3</sup></span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Balasubramanian Vengatesan<sup>3</sup></span>
+                            &nbsp;&nbsp;
+                            <span class="author-block">Naotake Natori<sup>2</sup></span>
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>1</sup>Indian Institute of Science, Bengaluru, India</span>
+                            &nbsp;&nbsp;
+                            <span class="author-block"><sup>2</sup>Aisin Corporation, Tokyo, Japan</span>
+                            &nbsp;&nbsp;
+                            <span class="author-block"><sup>3</sup>Aisin Automotive Haryana Pvt Ltd., Bangalore, India</span>
+                            <br>
+                            <span class="author-block"><b>ECCVW, 2022</b></span>
+                        </div>
+
+                        <p style="padding: 8px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://link.springer.com/chapter/10.1007/978-3-031-25072-9_17" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+                                    <span>Paper</span>
+                                </a>
+                            </button>
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://github.com/manogna-s/da-fer" target="_blank" style="text-decoration:none;">
+                                    <span class="icon is-small"><i class="fab fa-github"></i></span>
+                                    <span>Code</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span style="display:block; margin-top:-1.75em;"/>
+
+    <!-- Abstract -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Facial Expression Recognition (FER) models trained on one dataset (source) usually do not perform well on a different dataset (target) due to the implicit domain shift between different datasets. In addition, FER data is naturally highly imbalanced, with a majority of the samples belonging to few expressions like neutral, happy and relatively fewer samples coming from expressions like disgust, fear, etc., which makes the FER task even more challenging. This class imbalance of the source and target data (which may be different), along with other factors like similarity of few expressions, etc., can result in unsatisfactory target classification performance due to confusion between the different classes. In this work, we propose an integrated module, termed <span class="method-name">DIFC</span>, which can not only handle the source Data Imbalance, but also the Feature Confusion of the target data for improved classification of the target expressions. We integrate this DIFC module with an existing Unsupervised Domain Adaptation (UDA) approach to handle the domain shift and show that the proposed simple yet effective module can result in significant performance improvement on four benchmark datasets for Cross-Dataset FER (CD-FER) task. We also show that the proposed module can be used with other UDA baselines to further boost their performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Setting -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Problem Setting</h2>
+                    <div class="content">
+                        <p>
+                            The <b>Cross-Dataset FER (CD-FER)</b> task requires adapting a model trained on a labelled source FER dataset to correctly classify expressions on a different, unlabelled target dataset. Two complementary challenges make this difficult beyond standard domain shift:
+                        </p>
+                        <ul>
+                            <li><b>Source Data Imbalance:</b> FER datasets are naturally highly skewed. Expressions like <em>happy</em> and <em>neutral</em> dominate, while <em>disgust</em>, <em>fear</em>, and <em>surprise</em> have far fewer samples. The standard cross-entropy loss learns poor decision boundaries for minority classes, and this imbalance ratio varies substantially across datasets (Fig. 1).</li>
+                            <li><b>Target Feature Confusion:</b> The target dataset may have a different imbalance profile from the source. Additionally, inherent perceptual similarity between certain expressions causes the model to confuse nearby classes in feature space, an effect that source-supervised training alone cannot resolve.</li>
+                        </ul>
+                        <p>
+                            Given a labelled source dataset \( \mathcal{D}_s = \{(x^i_s, y^i_s)\}_{i=1}^{n_s} \) with \( y^i_s \in \{1, \ldots, K\} \) and an unlabelled target dataset \( \mathcal{D}_t = \{x^i_t\}_{i=1}^{n_t} \) sharing the same label space, the goal is to correctly classify the target samples. For class \( k \) with \( N_k \) training samples, the imbalance ratio is:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \text{Imbalance ratio}_k = \frac{N_k}{\min_j(N_j)}, \quad j,k \in \{1, \ldots, K\} \tag{1} \]
+                        </div>
+                    </div>
+
+                    <figure>
+                        <img src="./static/images/imbalance-ratio.png" alt="Imbalance ratio for different FER classes across datasets">
+                        <figcaption>
+                            <b>Fig. 1:</b> Imbalance ratio for different classes varies across FER datasets. Majority and minority classes differ by dataset, motivating class-dependent margins.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Proposed Method: DIFC</h2>
+                    <div class="content">
+                        <p>
+                            We propose the <span class="method-name">DIFC</span> (Data Imbalance and Feature Confusion) module, which addresses both challenges in an integrated manner. DIFC replaces the standard cross-entropy classification loss in a UDA framework with a two-phase loss that first handles source imbalance and then adapts to target confusion.
+                        </p>
+                    </div>
+
+                    <h3 class="title is-4">Handling Data Imbalance (DI Loss)</h3>
+                    <div class="content">
+                        <p>
+                            Standard cross-entropy training on imbalanced data leads to poor margins for minority classes. We adopt Label Distribution Aware Margin (LDAM) loss, which enforces class-dependent margins: larger margins for minority classes relative to majority classes. Given source logits \( z_s = [z_1, \ldots, z_K]^\top \), the standard CE loss is:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}_\text{CE}(z_s, y_s) = -\log \frac{\exp(z_{y_s})}{\sum_{k=1}^{K} \exp(z_k)} \tag{2} \]
+                        </div>
+                        <p>
+                            The DI loss modifies CE with class-dependent margins \( \Delta \in \mathbb{R}^K \):
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}_\text{DI}(z_s, y_s; \Delta) = -\log \frac{e^{z_{y_s} - \Delta_{y_s}}}{e^{z_{y_s} - \Delta_{y_s}} + \sum_{k \neq y_s} e^{z_k}}, \quad \text{where } \Delta_k = \frac{\gamma}{N_k^{1/4}} \tag{3} \]
+                        </div>
+                        <p>
+                            Here \( \gamma \) is a hyperparameter normalizing the margins. Following LDAM, we apply a deferred re-weighting scheme after a few initial epochs. Although effective for supervised imbalance, Eq. (3) uses source label distribution to compute margins, which may not match target data.
+                        </p>
+                    </div>
+
+                    <h3 class="title is-4">Handling Feature Confusion (FC)</h3>
+                    <div class="content">
+                        <p>
+                            The final goal is to correctly classify the <em>target</em> features. Minority classes in the target may differ from those in the source, and inherent perceptual similarity between certain expressions causes additional confusion. We quantify this using a <b>class confusion score</b> estimated from model predictions on unlabelled target data.
+                        </p>
+                        <p>
+                            Target samples are grouped into pseudo-class sets \( S_k \) based on current model predictions:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ S_k = \{x_t \mid \hat{y}_t = k\}, \quad \text{where} \quad \hat{y}_t = \arg\max(p_t) \tag{4} \]
+                        </div>
+                        <p>
+                            For each class \( k \), the confusion score is the inverse of the average margin between the top-2 softmax scores across all samples predicted as class \( k \):
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \text{conf}_k = \frac{1}{\mathbb{E}_{x_t \in S_k} |p^1_t - p^2_t|} \tag{5} \]
+                        </div>
+                        <p>
+                            A large average gap means the model is confident about class \( k \) (low confusion); a small gap means class \( k \) is frequently confused with another class (high confusion). Classes are sorted in decreasing order of confusion to obtain ordered indices \( C \). The DI margins are then updated with exponentially decaying increments to emphasize the most confusing classes:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \Delta'_{C[j]} = \Delta_{C[j]} + \frac{\epsilon}{2^{j-1}}, \qquad \mathcal{L}_\text{DIFC} = \mathcal{L}_\text{DI}(x_t, y_t; \Delta') \tag{6} \]
+                        </div>
+                        <p>
+                            Here \( \epsilon \) controls the margin increase for the most confusing class \( C[1] \). This formulation learns class boundaries that account for source imbalance while simultaneously reducing target confusion.
+                        </p>
+                    </div>
+
+                    <h3 class="title is-4">Integration with MCD Baseline</h3>
+                    <div class="content">
+                        <p>
+                            We integrate DIFC with Maximum Classifier Discrepancy (MCD), which uses a feature extractor \( F \) and two classifiers \( C_1, C_2 \). MCD optimizes three objectives:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[
+                            \min_{F,C_1,C_2} \; \mathcal{L}_\text{cls}(C_1(F(x_s)), y_s) + \mathcal{L}_\text{cls}(C_2(F(x_s)), y_s)
+                            \]
+                            \[
+                            \max_{C_1,C_2} \; \|C_1(F(x_t)) - C_2(F(x_t))\|_1
+                            \]
+                            \[
+                            \min_{F} \; \|C_1(F(x_t)) - C_2(F(x_t))\|_1 \tag{7}
+                            \]
+                        </div>
+                        <p>
+                            DIFC replaces the classification loss \( \mathcal{L}_\text{cls} \): DI loss is used for the initial \( T_1 \) epochs to stabilize source discrimination, then the full DIFC loss is used for epochs \( T_1+1 \) to \( T_2 \). Confusion scores are computed using the ensemble prediction:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ p_{t,i} = \text{softmax}(C_i(F(x_t))), \quad p_t = \tfrac{1}{2}(p_{t,1} + p_{t,2}), \quad \hat{y}_t = \arg\max_k(p_t) \tag{8} \]
+                        </div>
+                    </div>
+
+                    <figure>
+                        <img src="./static/images/fer-examples.png" alt="Example facial expression predictions from DI and DIFC models">
+                        <figcaption>
+                            <b>Fig. 2:</b> Example model predictions comparing DI loss and DIFC loss on target dataset samples. DIFC corrects several samples misclassified under DI loss.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Results</h2>
+
+                    <!-- Table 1: Main results -->
+                    <h3 class="title is-4">Comparison with State-of-the-Art</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>JAFFE</th>
+                                    <th>SFEW2.0</th>
+                                    <th>FER2013</th>
+                                    <th>ExpW</th>
+                                    <th>Avg</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CADA</td>
+                                    <td>52.11</td>
+                                    <td>53.44</td>
+                                    <td>57.61</td>
+                                    <td>63.15</td>
+                                    <td>56.58</td>
+                                </tr>
+                                <tr>
+                                    <td>SAFN</td>
+                                    <td>61.03</td>
+                                    <td>52.98</td>
+                                    <td>55.64</td>
+                                    <td>64.91</td>
+                                    <td>58.64</td>
+                                </tr>
+                                <tr>
+                                    <td>SWD</td>
+                                    <td>54.93</td>
+                                    <td>52.06</td>
+                                    <td>55.84</td>
+                                    <td>68.35</td>
+                                    <td>57.79</td>
+                                </tr>
+                                <tr>
+                                    <td>LPL</td>
+                                    <td>53.05</td>
+                                    <td>48.85</td>
+                                    <td>55.89</td>
+                                    <td>66.90</td>
+                                    <td>56.17</td>
+                                </tr>
+                                <tr>
+                                    <td>DETN</td>
+                                    <td>55.89</td>
+                                    <td>49.40</td>
+                                    <td>52.29</td>
+                                    <td>47.58</td>
+                                    <td>51.29</td>
+                                </tr>
+                                <tr>
+                                    <td>ECAN</td>
+                                    <td>57.28</td>
+                                    <td>52.29</td>
+                                    <td>56.46</td>
+                                    <td>47.37</td>
+                                    <td>53.35</td>
+                                </tr>
+                                <tr>
+                                    <td>JUMBOT</td>
+                                    <td>54.13</td>
+                                    <td>51.97</td>
+                                    <td>53.56</td>
+                                    <td>63.69</td>
+                                    <td>55.84</td>
+                                </tr>
+                                <tr>
+                                    <td>ETD</td>
+                                    <td>51.19</td>
+                                    <td>52.77</td>
+                                    <td>50.41</td>
+                                    <td>67.82</td>
+                                    <td>55.55</td>
+                                </tr>
+                                <tr>
+                                    <td>AGRA</td>
+                                    <td>61.50</td>
+                                    <td><b>56.43</b></td>
+                                    <td>58.95</td>
+                                    <td>68.50</td>
+                                    <td>61.34</td>
+                                </tr>
+                                <tr class="difc-row group-sep">
+                                    <td>Proposed DIFC</td>
+                                    <td>68.54</td>
+                                    <td>56.87</td>
+                                    <td>58.06</td>
+                                    <td>71.20</td>
+                                    <td>63.67</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 1:</b> Target classification accuracy (%). Source: RAF-DB. Backbone: ResNet-50. Results of baselines taken from AGRA. DIFC outperforms all methods on average and on JAFFE and ExpW.</p>
+
+                    <!-- Table 2: Ablation -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Ablation Study</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Loss</th>
+                                    <th>JAFFE</th>
+                                    <th>SFEW2.0</th>
+                                    <th>FER2013</th>
+                                    <th>ExpW</th>
+                                    <th>Avg</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CE</td>
+                                    <td>64.79</td>
+                                    <td>53.73</td>
+                                    <td>55.80</td>
+                                    <td>69.10</td>
+                                    <td>60.85</td>
+                                </tr>
+                                <tr>
+                                    <td>DI (LDAM)</td>
+                                    <td>67.14</td>
+                                    <td>55.90</td>
+                                    <td>57.30</td>
+                                    <td>70.70</td>
+                                    <td>62.76</td>
+                                </tr>
+                                <tr class="difc-row group-sep">
+                                    <td>DIFC</td>
+                                    <td>68.54</td>
+                                    <td>56.87</td>
+                                    <td>58.06</td>
+                                    <td>71.20</td>
+                                    <td>63.67</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 2:</b> Effect of each loss component with MCD as the base UDA method. DI loss adds ~2% over CE; DIFC further improves by adapting margins to target confusion.</p>
+
+                    <!-- Table 3: Confusion Order -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Confusion Order Across Datasets</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Dataset</th>
+                                    <th>Surprise</th>
+                                    <th>Fear</th>
+                                    <th>Disgust</th>
+                                    <th>Happy</th>
+                                    <th>Sad</th>
+                                    <th>Anger</th>
+                                    <th>Neutral</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>JAFFE</td>
+                                    <td>5</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>7</td>
+                                    <td>3</td>
+                                    <td>6</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>SFEW2.0</td>
+                                    <td>4</td>
+                                    <td>2</td>
+                                    <td>5</td>
+                                    <td>7</td>
+                                    <td>3</td>
+                                    <td>6</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>FER2013</td>
+                                    <td>6</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td>4</td>
+                                    <td>3</td>
+                                    <td>7</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>ExpW</td>
+                                    <td>3</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>7</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 3:</b> Order of confusion for each expression class per target dataset (1 = most confusing, 7 = least confusing), computed using Eq. (5) after the DI phase. Confusing classes vary by dataset and do not directly correspond to minority classes in Fig. 1.</p>
+
+                    <!-- Table 4: Confusing vs Non-confusing -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Confusing vs. Non-Confusing Class Accuracy</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Dataset</th>
+                                    <th colspan="2">Confusing Classes</th>
+                                    <th colspan="2">Non-Confusing Classes</th>
+                                </tr>
+                                <tr>
+                                    <th>DI</th>
+                                    <th>DIFC</th>
+                                    <th>DI</th>
+                                    <th>DIFC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>JAFFE</td>
+                                    <td>48.01</td>
+                                    <td>51.22</td>
+                                    <td>80.88</td>
+                                    <td>80.88</td>
+                                </tr>
+                                <tr>
+                                    <td>SFEW2.0</td>
+                                    <td>50.70</td>
+                                    <td>51.89</td>
+                                    <td>46.88</td>
+                                    <td>48.02</td>
+                                </tr>
+                                <tr>
+                                    <td>FER2013</td>
+                                    <td>34.57</td>
+                                    <td>38.09</td>
+                                    <td>67.58</td>
+                                    <td>67.41</td>
+                                </tr>
+                                <tr>
+                                    <td>ExpW</td>
+                                    <td>30.78</td>
+                                    <td>31.20</td>
+                                    <td>66.25</td>
+                                    <td>66.75</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 4:</b> Average per-class accuracy for the top-3 confusing classes vs. the remaining 4 classes, after DI and DIFC training. DIFC improves confusing-class accuracy without degrading non-confusing ones.</p>
+
+                    <!-- Table 5: Plug-and-play -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Plug-and-Play with Other UDA Methods</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Loss</th>
+                                    <th>DANN</th>
+                                    <th>SAFN</th>
+                                    <th>MCD</th>
+                                    <th>Avg</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CE</td>
+                                    <td>48.67</td>
+                                    <td>50.46</td>
+                                    <td>52.75</td>
+                                    <td>50.63</td>
+                                </tr>
+                                <tr>
+                                    <td>DI</td>
+                                    <td>50.12</td>
+                                    <td>51.81</td>
+                                    <td>53.25</td>
+                                    <td>51.73</td>
+                                </tr>
+                                <tr class="difc-row group-sep">
+                                    <td>DIFC</td>
+                                    <td>51.33</td>
+                                    <td>53.01</td>
+                                    <td>55.66</td>
+                                    <td>53.33</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 5:</b> DIFC as a plug-in replacement for CE loss across UDA methods. Target: SFEW2.0, source: RAF-DB, backbone: ResNet-18. DIFC consistently improves over CE across adversarial (DANN), non-adversarial (SAFN), and multi-classifier (MCD) baselines.</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BibTeX -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h3 class="title">BibTeX</h3>
+            <pre class="language-bibtex"><code class="language-bibtex">@InProceedings{sreenivas2022difc,
+  author    = {Sreenivas, Manogna and Takamuku, Sawa and Biswas, Soma
+               and Chepuri, Aditya and Vengatesan, Balasubramanian and Natori, Naotake},
+  title     = {Improved Cross-Dataset Facial Expression Recognition by Handling
+               Data Imbalance and Feature Confusion},
+  booktitle = {ECCV Workshops},
+  year      = {2022}
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
+</body>
+
+</html>
