@@ -13,22 +13,62 @@
     <title>SANTA</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-    <link rel="stylesheet" href="../pstarc/static/css/bulma.min.css">
-    <link rel="stylesheet" href="../pstarc/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="../pstarc/static/css/index.css">
-    <link rel="stylesheet" href="../pstarc/static/css/prism.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/prism.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧊</text></svg>">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="../pstarc/static/js/fontawesome.all.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-size: 1.0rem; }
+
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+        figure img {
+            max-height: 480px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .section-alt { background-color: #f9f9f9; }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92em;
+        }
+        .results-table th, .results-table td {
+            padding: 6px 10px;
+            text-align: center !important;
+            border: 1px solid #ddd;
+        }
+        .results-table th:first-child, .results-table td:first-child { text-align: center !important; }
+        .results-table th { background-color: #f0f0f0; font-weight: 600; }
+        .results-table tr.santa-row td { font-weight: bold; color: #2c6e49; }
+        .results-table tr.group-sep td { border-top: 2px solid #aaa; }
+        .table-caption {
+            margin-top: 0.6em;
+            font-size: 0.88em;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-body">
             <div class="container is-max-desktop">
@@ -59,7 +99,7 @@
                             &nbsp;&nbsp;
                             <span class="author-block"><sup>2</sup>Indian Institute of Science, Bengaluru, India</span>
                             <br>
-                            <span class="author-block"><b>Transactions on Machine Learning Research (TMLR), 2023</b></span>
+                            <span class="author-block"><b>TMLR, 2023</b></span>
                         </div>
 
                         <p style="padding: 20px;" />
@@ -74,13 +114,13 @@
                             <button class="external-link button is-medium is-ghost publication-links is-rounded">
                                 <a href="https://openreview.net/pdf?id=V7guVYzvE4" target="_blank" style="text-decoration:none;">
                                     <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
-                                    <span>paper</span>
+                                    <span>Paper</span>
                                 </a>
                             </button>
                             <button class="external-link button is-medium is-ghost publication-links is-rounded">
                                 <a href="https://github.com/goirik-chakrabarty/SANTA" target="_blank" style="text-decoration:none;">
                                     <span class="icon is-small"><i class="fab fa-github"></i></span>
-                                    <span>code</span>
+                                    <span>Code</span>
                                 </a>
                             </button>
                         </div>
@@ -92,36 +132,309 @@
 
     <span style="display:block; margin-top:-1.75em;"/>
 
+    <!-- Abstract -->
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
-                <div class="column is-three-quarters">
+                <div class="column">
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
-                        <p><small>
-                            Adapting a trained model to perform satisfactorily on continually changing test environments is an important and challenging task. In this work, we propose a novel framework, SANTA, which aims to satisfy the following characteristics required for online adaptation: 1) can work effectively for different (even small) batch sizes; 2) should continue to work well on the source domain; 3) should have minimal tunable hyperparameters and storage requirements. Given a pre-trained network trained on source domain data, the proposed framework modifies the affine parameters of the batch normalization layers using source anchoring based self-distillation. This ensures that the model incorporates knowledge from the newly encountered domains, without catastrophically forgetting the previously seen domains. We also propose a source-prototype driven contrastive alignment to ensure natural grouping of the target samples, while maintaining the already learnt semantic information. Extensive evaluation on three benchmark datasets under challenging settings justify the effectiveness of SANTA for real-world applications.
-                        </small></p>
+                        <p>
+                            Adapting a trained model to perform satisfactorily on continually changing test environments is an important and challenging task. In this work, we propose a novel framework, <span class="method-name">SANTA</span>, which aims to satisfy the following characteristics required for online adaptation: (1) can work effectively for different (even small) batch sizes; (2) should continue to work well on the source domain; (3) should have minimal tunable hyperparameters and storage requirements. Given a pre-trained network trained on source domain data, the proposed framework modifies the affine parameters of the batch normalization layers using source anchoring based self-distillation. This ensures that the model incorporates knowledge from the newly encountered domains, without catastrophically forgetting the previously seen domains. We also propose a source-prototype driven contrastive alignment to ensure natural grouping of the target samples, while maintaining the already learnt semantic information. Extensive evaluation on three benchmark datasets under challenging settings justify the effectiveness of SANTA for real-world applications.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Problem Setting -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Problem Setting</h2>
+                    <div class="content">
+                        <p>
+                            In <b>Continual Test-Time Adaptation (CTTA)</b>, a model trained on source domain \( \mathcal{D}_s = \{(x_i, y_i)\}_{i=1}^{n_s} \sim P_s \) must adapt to a stream of test batches drawn from a dynamically changing distribution \( P_t^{(1)} \neq P_t^{(2)} \neq \ldots \neq P_s \), without accessing any source data. This is a challenging fully-online setting because:
+                        </p>
+                        <ul>
+                            <li><b>Small batch sizes:</b> Practical online deployment uses small batches (e.g., 10&ndash;25), yet most prior CTTA methods are validated only at batch size 200.</li>
+                            <li><b>Catastrophic forgetting:</b> Continuous adaptation to new domains may degrade performance on previously seen domains, including the source.</li>
+                            <li><b>Hyperparameter sensitivity:</b> Without a validation set at test time, methods requiring extensive hyperparameter tuning are impractical.</li>
+                        </ul>
+                        <p>
+                            Existing approaches like CoTTA store 3N parameters (source, teacher, student models) and require hyperparameters for stochastic restoration. SANTA addresses all three challenges with a framework that stores only 1.02N parameters (source + BN parameters of the adapting model), requires no restoration, and has a single hyperparameter (temperature for contrastive loss).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Proposed Method: SANTA</h2>
+                    <div class="content">
+                        <p>
+                            Only the BN affine parameters of the adapting model \( f_\theta \) are updated during test time. The adapting model is initialised from the source model \( f_{\theta_s} \). At each step, both models have their BN statistics updated to match the current test batch statistics; the source-corrected model is called the <b>Target Corrected Source (TCS)</b> model \( f_{\theta_s}^k \). SANTA has two components:
+                        </p>
+                    </div>
+
+                    <figure>
+                        <img src="./static/images/santa.png" alt="SANTA framework diagram">
+                        <figcaption>
+                            <b>Fig. 1:</b> SANTA framework. The original image and its augmentation pass through both the adapting model and source model. (1) Source-anchoring loss uses TCS model predictions as anchors. (2) Source prototype guided target alignment enforces semantically meaningful clustering in the feature space.
+                        </figcaption>
+                    </figure>
+
+                    <p style="padding: 8px;" />
+
+                    <h3 class="title is-4">Source Anchoring (SA Loss)</h3>
+                    <div class="content">
+                        <p>
+                            The TCS model provides domain-invariant predictions for the current batch. We use its outputs as soft anchors for the adapting model via self-distillation. Let \( p_{ij} \) and \( a_{ij} \) denote the \( j \)-th class scores from the adapting and TCS models for image \( x_i \). The base source-anchoring loss is:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}'_{SA} = -\frac{1}{N}\sum_{i=1}^{N}\sum_{j=1}^{C} p_{ij} \log(a_{ij}) \tag{1} \]
+                        </div>
+                        <p>
+                            Using augmented copies of the test images makes the model more robust. Let \( q_{ij} \) be the adapting model's score for the augmented version. The complete SA loss is:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}_{SA} = -\frac{1}{N}\sum_{i=1}^{N}\sum_{j=1}^{C} \left( p_{ij}\log(a_{ij}) + q_{ij}\log(a_{ij}) \right) \tag{2} \]
+                        </div>
+                        <p>
+                            This avoids storing a separate teacher model, requires no restoration hyperparameter, and directly uses the adapting model for prediction.
+                        </p>
+                    </div>
+
+                    <h3 class="title is-4">Target Alignment (TA Loss)</h3>
+                    <div class="content">
+                        <p>
+                            The goal is to make features gradually domain-invariant as the model encounters data from different domains. The adapting model \( f_\theta^k = h \circ g_\phi^k \) is decomposed into a feature extractor \( g_\phi^k \) and a fixed classifier \( h \). Features are projected to a \( d \)-dimensional hypersphere:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ z_i = p_\psi \circ g_\phi^k(x_i) \tag{3} \]
+                        </div>
+                        <p>
+                            The base contrastive loss pairs each sample with its augmented view:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}_{con} = \frac{1}{N}\sum_{i=1}^{N} \log \frac{\exp(z_i \cdot z_{N+i}/\tau)}{\sum_{k=1, k\neq i}^{2N}\exp(z_i \cdot z_k/\tau)} \tag{4} \]
+                        </div>
+                        <p>
+                            To ensure target clusters align with the source feature space, the nearest source prototype \( \pi(x_i) \) is used as a third view:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \pi(x_i) = \{\pi_t \mid t = \arg\max_c \cos(\pi_c,\, g_\phi^k(x_i))\} \tag{5} \]
+                        </div>
+                        <p>
+                            The source prototype guided Target Alignment loss uses two positive views per sample (augmented image + nearest source prototype):
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}_{TA} = \frac{1}{2N}\sum_{i=1}^{N}\left[\log \frac{\exp(z_i \cdot z_{N+i}/\tau)}{\sum_{k\neq i}^{3N}\exp(z_i \cdot z_k/\tau)} + \log \frac{\exp(z_i \cdot z_{2N+i}/\tau)}{\sum_{k\neq i}^{3N}\exp(z_i \cdot z_k/\tau)}\right] \tag{6} \]
+                        </div>
+                    </div>
+
+                    <h3 class="title is-4">Final Loss</h3>
+                    <div class="content">
+                        <p>
+                            The BN affine parameters \( \phi \) and projection head \( \psi \) are updated at each test batch by minimizing:
+                        </p>
+                        <div style="text-align:center; margin: 1em 0;">
+                            \[ \mathcal{L}_{SANTA} = \mathcal{L}_{SA} + \mathcal{L}_{TA} \tag{7} \]
+                        </div>
+                        <p>
+                            The adapting model is used directly for prediction and is robust enough to update continuously without any restoration back to the source model.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section section-alt">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Results</h2>
+
+                    <!-- Table 1 -->
+                    <h3 class="title is-4">Comparison with State-of-the-Art</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>CIFAR-10C</th>
+                                    <th>CIFAR-100C</th>
+                                    <th>ImageNet-C (5k)</th>
+                                    <th>ImageNet-C (50k)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Source</td>
+                                    <td>43.5</td>
+                                    <td>46.4</td>
+                                    <td>82.0</td>
+                                    <td>82.0</td>
+                                </tr>
+                                <tr>
+                                    <td>BN Stats Adapt</td>
+                                    <td>20.4</td>
+                                    <td>35.4</td>
+                                    <td>68.6</td>
+                                    <td>68.5</td>
+                                </tr>
+                                <tr>
+                                    <td>TENT-Continual</td>
+                                    <td>20.7</td>
+                                    <td>60.9</td>
+                                    <td>62.6</td>
+                                    <td>91.0</td>
+                                </tr>
+                                <tr>
+                                    <td>CoTTA</td>
+                                    <td>16.2</td>
+                                    <td>32.5</td>
+                                    <td>62.7</td>
+                                    <td>69.7</td>
+                                </tr>
+                                <tr>
+                                    <td>RMT</td>
+                                    <td>17.3</td>
+                                    <td>30.4</td>
+                                    <td>60.2</td>
+                                    <td>69.9</td>
+                                </tr>
+                                <tr class="santa-row group-sep">
+                                    <td>SANTA</td>
+                                    <td>16.1 &plusmn;0.06</td>
+                                    <td>30.3 &plusmn;0.05</td>
+                                    <td>60.1 &plusmn;0.06</td>
+                                    <td>60.3 &plusmn;0.07</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 1:</b> Mean error % (lower is better) across all 15 corruptions at severity 5. Batch sizes: 200 / 200 / 64 for CIFAR-10C / CIFAR-100C / ImageNet-C. SANTA is competitive with or better than all methods, and is the only method that remains stable at ImageNet-C 50k (where TENT diverges to 91%).</p>
+
+                    <!-- Table 2 -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Ablation Study</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th colspan="6">CIFAR-10C (batch size)</th>
+                                    <th colspan="6">CIFAR-100C (batch size)</th>
+                                    <th colspan="4">ImageNet-C (batch size)</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>200</th><th>150</th><th>100</th><th>50</th><th>25</th><th>10</th>
+                                    <th>200</th><th>150</th><th>100</th><th>50</th><th>25</th><th>10</th>
+                                    <th>64</th><th>32</th><th>16</th><th>8</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SA (orig only)</td>
+                                    <td>20.1</td><td>20.1</td><td>20.4</td><td>20.7</td><td>21.7</td><td>24.8</td>
+                                    <td>32.6</td><td>32.8</td><td>33.2</td><td>34.0</td><td>35.7</td><td>40.7</td>
+                                    <td>62.7</td><td>64.9</td><td>69.4</td><td>77.8</td>
+                                </tr>
+                                <tr>
+                                    <td>SA (orig + aug)</td>
+                                    <td>17.1</td><td>17.2</td><td>17.4</td><td>18.0</td><td>19.0</td><td>22.5</td>
+                                    <td>31.4</td><td>31.6</td><td>32.0</td><td>32.8</td><td>34.7</td><td>39.9</td>
+                                    <td>61.3</td><td>63.8</td><td>68.5</td><td>76.8</td>
+                                </tr>
+                                <tr class="santa-row group-sep">
+                                    <td>SANTA (SA + TA)</td>
+                                    <td>16.1</td><td>16.2</td><td>16.5</td><td>17.2</td><td>18.3</td><td>22.0</td>
+                                    <td>30.4</td><td>30.5</td><td>30.8</td><td>31.9</td><td>33.9</td><td>39.1</td>
+                                    <td>60.2</td><td>63.2</td><td>68.5</td><td>78.5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 2:</b> Ablation across batch sizes. Both loss components contribute, with augmentation in SA providing the larger gain and TA providing consistent additional improvement.</p>
+
+                    <!-- Table 3: Parameter efficiency -->
+                    <h3 class="title is-4" style="margin-top: 2em;">Parameter Efficiency</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Total Params</th>
+                                    <th>Trainable Params</th>
+                                    <th>% Trainable</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>BN-Stats</td>
+                                    <td>6.9M</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr>
+                                    <td>TENT</td>
+                                    <td>6.9M</td>
+                                    <td>25K</td>
+                                    <td>0.37%</td>
+                                </tr>
+                                <tr>
+                                    <td>CoTTA</td>
+                                    <td>20.7M (3N)</td>
+                                    <td>6.9M</td>
+                                    <td>33.3%</td>
+                                </tr>
+                                <tr>
+                                    <td>RMT</td>
+                                    <td>13.9M (2N)</td>
+                                    <td>6.9M</td>
+                                    <td>50.0%</td>
+                                </tr>
+                                <tr class="santa-row group-sep">
+                                    <td>SANTA</td>
+                                    <td>7.05M (1.02N)</td>
+                                    <td>173K</td>
+                                    <td>2.5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-caption"><b>Table 3:</b> Storage comparison for CIFAR-100C with ResNeXt-29. SANTA stores only the source model plus BN affine parameters (1.02N), vs 3N for CoTTA. SANTA is also ~10x faster than CoTTA at inference (0.22s vs 2.2s per batch of 200).</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BibTeX -->
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h3 class="title">BibTeX</h3>
-            <pre><code class="language-bibtex">@article{chakrabarty2023santa,
-  abbr={TMLR},
-  author={Chakrabarty, Goirik and Sreenivas, Manogna and Biswas, Soma},
-  title={SANTA: Source Anchoring Network and Target Alignment for Continual Test Time Adaptation},
-  journal={Transactions on Machine Learning Research},
-  year={2023}
+            <pre class="language-bibtex"><code class="language-bibtex">@article{chakrabarty2023santa,
+  author    = {Chakrabarty, Goirik and Sreenivas, Manogna and Biswas, Soma},
+  title     = {SANTA: Source Anchoring Network and Target Alignment for Continual Test Time Adaptation},
+  journal   = {Transactions on Machine Learning Research},
+  year      = {2023}
 }</code></pre>
         </div>
     </section>
 
-    <script src="../pstarc/static/js/index.js"></script>
-    <script src="../pstarc/static/js/prism.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
 </body>
 
 </html>
