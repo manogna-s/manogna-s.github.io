@@ -28,6 +28,18 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
+        figure img {
+            max-height: 480px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        figcaption {
+            margin-top: 0.75em;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
         .results-table {
             width: 100%;
             border-collapse: collapse;
@@ -57,12 +69,6 @@
         }
         body {
             font-size: 1.0rem;
-        }
-        figcaption {
-            margin-top: 0.75em;
-            font-size: 0.9em;
-            color: #555;
-            text-align: left;
         }
     </style>
 </head>
@@ -209,7 +215,7 @@
                         <p>
                             We define this as the <b>attribute realization problem</b>: ensuring that explicitly specified,
                             fine-grained visual attributes (e.g., <i>"red shirt"</i>, <i>"blue sneakers"</i>) are actually
-                            realized in generated images — orthogonal to cross-scene character consistency.
+                            realized in generated images, orthogonal to cross-scene character consistency.
                         </p>
                     </div>
                 </div>
@@ -338,7 +344,7 @@
                         <p>
                             This update is applied during the <b>early denoising timesteps (steps 1–25 out of 50)</b>, which
                             are critical for establishing structure and semantic content including colors and textures. AttriLoss
-                            integrates as a <b>plug-and-play module</b> with Vanilla SDXL, ConsiStory, and StoryDiffusion —
+                            integrates as a <b>plug-and-play module</b> with Vanilla SDXL, ConsiStory, and StoryDiffusion:
                             no architectural modifications or retraining required.
                         </p>
                     </div>
@@ -434,7 +440,7 @@
             </div>
             <p style="padding: 10px;" />
             <div class="columns is-centered">
-                <div class="column is-four-fifths">
+                <div class="column">
                     <table class="results-table">
                         <thead>
                             <tr>
@@ -510,7 +516,7 @@
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h3 class="title">BibTeX</h3>
-            <pre><code class="language-bibtex">@InProceedings{sreenivas2026attristory,
+            <pre class="language-bibtex"><code class="language-bibtex">@InProceedings{sreenivas2026attristory,
   author    = {Sreenivas, Manogna and Kumar, Rohit and Biswas, Soma},
   title     = {AttriStory: Fine-grained Attribute Realization for Visual Storytelling with Diffusion Models},
   booktitle = {CVPR Workshops},
